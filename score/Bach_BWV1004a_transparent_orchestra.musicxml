@@ -5,7 +5,9 @@
     <work-title>Chaconne in D minor, BWV 1004a (imaginary orchestral version)</work-title>
   </work>
   <identification>
-    <creator type="composer">Johann Sebastian Bach; orchestral realization composed with Codex</creator>
+    <creator type="composer">Johann Sebastian Bach</creator>
+    <creator type="arranger">Codex (OpenAI; GPT-5.6 Sol High)</creator>
+    <creator type="other">Created in collaboration with the repository owner</creator>
     <rights>Source engraving: Hajo Dezelski / Mutopia Project, CC BY-SA 3.0. Arrangement shared under CC BY-SA 3.0.</rights>
     <encoding>
       <software>Codex transparent-orchestra generator</software>

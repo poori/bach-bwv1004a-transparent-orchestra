@@ -29,6 +29,14 @@ public **v0.1 realization**: ranges, source-note identity, and file integrity
 are checked, but the orchestration has not yet been rehearsed by a live
 orchestra.
 
+## Credits
+
+- Original music: Johann Sebastian Bach
+- Orchestral realization and build system: **Codex (OpenAI)**
+- Model: **GPT-5.6 Sol High**
+- Created in collaboration with the repository owner
+- Source engraving: Hajo Dezelski / Mutopia Project
+
 ## Repository layout
 
 ```text

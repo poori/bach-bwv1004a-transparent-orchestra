@@ -1,5 +1,8 @@
 # Orchestration and editorial notes
 
+Orchestral realization by **Codex (OpenAI)** using **GPT-5.6 Sol High**,
+created in collaboration with the repository owner.
+
 ## What works
 
 The arrangement's strongest feature is its architecture. Bach's four implied

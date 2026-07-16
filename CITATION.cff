@@ -3,7 +3,8 @@ title: "BWV 1004a: a transparent orchestral Chaconne"
 message: "Please cite this repository and the Mutopia source engraving."
 type: software
 authors:
-  - name: "Codex orchestral realization"
+  - name: "Codex (OpenAI; GPT-5.6 Sol High)"
+    website: "https://openai.com/"
 version: 0.1.0
 date-released: 2026-07-16
 license: CC-BY-SA-3.0
