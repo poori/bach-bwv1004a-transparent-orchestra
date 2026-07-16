@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "BWV 1004a: a transparent orchestral Chaconne"
+message: "Please cite this repository and the Mutopia source engraving."
+type: software
+authors:
+  - name: "Codex orchestral realization"
+version: 0.1.0
+date-released: 2026-07-16
+license: CC-BY-SA-3.0
+keywords:
+  - Johann Sebastian Bach
+  - BWV 1004
+  - Chaconne
+  - orchestration
+  - MusicXML
+references:
+  - type: generic
+    title: "BWV 1004 Chaconne"
+    authors:
+      - family-names: Dezelski
+        given-names: Hajo
+    url: "https://www.ibiblio.org/mutopia/cgibin/piece-info.cgi?id=1426"
