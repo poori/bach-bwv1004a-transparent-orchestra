@@ -68852,30 +68852,84 @@
       </note>
     </measure>
     <measure number="2" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">arco, lightly</words>
+        </direction-type>
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <p />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="50" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <alter>1</alter>
+          <octave>3</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="3" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="4" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>G</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="5" implicit="no">
@@ -68888,30 +68942,86 @@
       </note>
     </measure>
     <measure number="6" implicit="no">
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <p />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="50" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <alter>1</alter>
+          <octave>3</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="7" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="8" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>G</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>288</duration>
+        <voice>1</voice>
+        <type>eighth</type>
         <dot />
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
       </note>
     </measure>
     <measure number="9" implicit="no">
@@ -68924,30 +69034,125 @@
       </note>
     </measure>
     <measure number="10" implicit="no">
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <p />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="50" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>192</duration>
         <voice>1</voice>
-        <type>half</type>
+        <type>eighth</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <alter>1</alter>
+          <octave>3</octave>
+        </pitch>
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>576</duration>
+        <voice>1</voice>
+        <type>quarter</type>
         <dot />
       </note>
     </measure>
     <measure number="11" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>192</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>eighth</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
       </note>
     </measure>
     <measure number="12" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
       </note>
     </measure>
     <measure number="13" implicit="no">
@@ -68960,30 +69165,124 @@
       </note>
     </measure>
     <measure number="14" implicit="no">
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <p />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="50" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>192</duration>
         <voice>1</voice>
-        <type>half</type>
+        <type>eighth</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <alter>1</alter>
+          <octave>3</octave>
+        </pitch>
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>576</duration>
+        <voice>1</voice>
+        <type>quarter</type>
         <dot />
       </note>
     </measure>
     <measure number="15" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>192</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>eighth</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
       </note>
     </measure>
     <measure number="16" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>288</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+        <dot />
+      </note>
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="17" implicit="no">
@@ -69691,30 +69990,96 @@
           <words font-style="italic">ripieno</words>
         </direction-type>
       </direction>
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">fondamento, non pesante</words>
+        </direction-type>
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <mf />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="76" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="94" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="95" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="96" implicit="no">
@@ -69781,84 +70146,203 @@
       </note>
     </measure>
     <measure number="103" implicit="no">
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <p />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="50" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <alter>1</alter>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="104" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="105" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="106" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>G</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="107" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="108" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="109" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="110" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>E</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="111" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>F</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="112" implicit="no">
@@ -69871,12 +70355,28 @@
       </note>
     </measure>
     <measure number="113" implicit="no">
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <mp />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="62" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="114" implicit="no">
@@ -69907,39 +70407,118 @@
       </note>
     </measure>
     <measure number="117" implicit="no">
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <mp />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="62" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="118" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>C</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="119" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="120" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>A</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="121" implicit="no">
@@ -70522,93 +71101,266 @@
       </note>
     </measure>
     <measure number="183" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">fondamento, non pesante</words>
+        </direction-type>
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <p />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="50" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>G</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="184" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="185" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>576</duration>
+        <voice>1</voice>
+        <type>quarter</type>
         <dot />
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
       </note>
     </measure>
     <measure number="186" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>C</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="187" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>B</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>E</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="188" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="189" implicit="no">
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <mp />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="62" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>576</duration>
+        <voice>1</voice>
+        <type>quarter</type>
         <dot />
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
       </note>
     </measure>
     <measure number="190" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>C</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>576</duration>
+        <voice>1</voice>
+        <type>quarter</type>
         <dot />
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
       </note>
     </measure>
     <measure number="191" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>B</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <alter>1</alter>
+          <octave>3</octave>
+        </pitch>
+        <duration>576</duration>
+        <voice>1</voice>
+        <type>quarter</type>
         <dot />
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <alter>1</alter>
+          <octave>3</octave>
+        </pitch>
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
       </note>
     </measure>
     <measure number="192" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
-        <dot />
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
       </note>
     </measure>
     <measure number="193" implicit="no">
@@ -70949,39 +71701,108 @@
           <words font-style="italic">ripieno</words>
         </direction-type>
       </direction>
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">arco, non pesante</words>
+        </direction-type>
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <f />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="90" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="210" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>C</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>384</duration>
         <voice>1</voice>
-        <type>half</type>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>576</duration>
+        <voice>1</voice>
+        <type>quarter</type>
         <dot />
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
       </note>
     </measure>
     <measure number="211" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>288</duration>
         <voice>1</voice>
-        <type>half</type>
+        <type>eighth</type>
         <dot />
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>672</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+        <dot />
+        <dot />
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
       </note>
     </measure>
     <measure number="212" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
       </note>
     </measure>
     <measure number="213" implicit="no">
@@ -71148,29 +71969,88 @@
       </note>
     </measure>
     <measure number="230" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">sostenuto, non pesante</words>
+        </direction-type>
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <f />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="90" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>C</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>288</duration>
+        <voice>1</voice>
+        <type>eighth</type>
         <dot />
       </note>
     </measure>
     <measure number="231" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>288</duration>
+        <voice>1</voice>
+        <type>eighth</type>
         <dot />
       </note>
     </measure>
     <measure number="232" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>288</duration>
+        <voice>1</voice>
+        <type>eighth</type>
         <dot />
       </note>
     </measure>
@@ -71189,39 +72069,176 @@
       </note>
     </measure>
     <measure number="234" implicit="no">
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <f />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="90" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>C</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>288</duration>
+        <voice>1</voice>
+        <type>eighth</type>
         <dot />
       </note>
     </measure>
     <measure number="235" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>B</step>
+          <alter>-1</alter>
+          <octave>2</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>288</duration>
+        <voice>1</voice>
+        <type>eighth</type>
         <dot />
       </note>
     </measure>
     <measure number="236" implicit="no">
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>96</duration>
         <voice>1</voice>
-        <type>half</type>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <pitch>
+          <step>B</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <pitch>
+          <step>C</step>
+          <alter>1</alter>
+          <octave>3</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>288</duration>
+        <voice>1</voice>
+        <type>eighth</type>
         <dot />
       </note>
     </measure>
     <measure number="237" implicit="no">
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <ff />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="104" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>192</duration>
+        <voice>1</voice>
+        <type>eighth</type>
+      </note>
+      <note>
+        <pitch>
+          <step>D</step>
+          <octave>3</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>768</duration>
         <voice>1</voice>
         <type>half</type>
-        <dot />
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
       </note>
     </measure>
     <measure number="238" implicit="no">
@@ -71243,12 +72260,41 @@
       </note>
     </measure>
     <measure number="240" implicit="no">
+      <direction placement="below">
+        <direction-type>
+          <dynamics>
+            <ff />
+          </dynamics>
+        </direction-type>
+        <sound dynamics="104" />
+      </direction>
       <note>
-        <rest measure="yes" />
-        <duration>1152</duration>
+        <rest measure="no" />
+        <duration>576</duration>
         <voice>1</voice>
-        <type>half</type>
+        <type>quarter</type>
         <dot />
+      </note>
+      <note>
+        <pitch>
+          <step>A</step>
+          <octave>2</octave>
+        </pitch>
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>384</duration>
+        <voice>1</voice>
+        <type>quarter</type>
+      </note>
+      <note>
+        <rest measure="no" />
+        <duration>96</duration>
+        <voice>1</voice>
+        <type>16th</type>
       </note>
     </measure>
     <measure number="241" implicit="no">

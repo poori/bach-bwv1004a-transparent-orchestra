@@ -15,6 +15,12 @@ The central D-major span deliberately avoids a generic “heavenly strings”
 effect. Flutes and oboe first expose its clarity; strings then take up the
 figuration; horns appear only at the crown and later joints.
 
+The orchestral floor is structural rather than continuous. Double bass
+reinforces Bach's actual lowest simultaneous strand at the opening, the two
+chorales, the D-minor return, and the contrapuntal summit. It withdraws from
+the intervening single-line figuration, where an octave bass would invent a
+continuo part that the violin text does not contain.
+
 ## What remains open
 
 This is a working realization rather than a performance-tested edition. A
@@ -72,6 +78,11 @@ sixteenths in bars 157, 160, and 222–224.
 - The double-bass line is displaced down an octave when it owns the fourth
   strand, preserving pitch class and giving the orchestral bass a credible
   register.
+- In bars 1–16, 93–120, 177–212, and 229–240, the double bass also reinforces
+  the genuine fourth contrapuntal strand one octave below. This selective
+  16-foot foundation comprises 99 source-derived notes; monophonic
+  arpeggiation is explicitly excluded. Bars 197–208 already assign that
+  strand to double bass and therefore receive no duplicate layer.
 - Horn sonorities occur only at bars 97, 113, 169, 177, 197, 209, 229, and
   249. The orchestra withdraws completely from Bach's final two-string unison
   D rather than completing it as a brass triad.

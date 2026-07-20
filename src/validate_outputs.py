@@ -129,6 +129,10 @@ def validate_expressive_notation(root: ET.Element) -> None:
     words = [node.text or "" for node in root.findall(".//direction-type/words")]
     assert words.count("arpeggiate upward, together") == 5
     assert "two-string unison" in words
+    assert words.count("arco, lightly") == 1
+    assert words.count("fondamento, non pesante") == 2
+    assert words.count("arco, non pesante") == 1
+    assert words.count("sostenuto, non pesante") == 1
     assert not root.findall(".//detached-legato")
 
 
@@ -155,6 +159,14 @@ def main() -> None:
     assert root.tag == "score-partwise"
     assert len(parts) == 16
     assert {len(part.findall("measure")) for part in parts} == {257}
+    part_names = {
+        score_part.get("id"): score_part.findtext("part-name", "")
+        for score_part in root.findall("./part-list/score-part")
+    }
+    double_bass = next(
+        part for part in parts if part_names.get(part.get("id")) == "Double Bass"
+    )
+    assert len(double_bass.findall(".//note[pitch]")) == 128
     validate_musicxml_rhythm(root)
     validate_musicxml_ranges(root)
     validate_expressive_notation(root)
@@ -207,6 +219,8 @@ def main() -> None:
         assert mscx.count(b"<Fermata>") == len(root.findall(".//fermata"))
         assert mscx.count(b"arpeggiate upward, together") == 5
         assert mscx.count(b"two-string unison") == 1
+        assert mscx.count(b"fondamento, non pesante") == 2
+        assert mscx.count(b"non pesante") == 4
 
     midi = midi_path.read_bytes()
     assert midi[:4] == b"MThd"

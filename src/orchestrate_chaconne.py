@@ -41,6 +41,7 @@ class Note:
     velocity: int = 72
     tie_start: bool = False
     tie_stop: bool = False
+    editorial: str | None = None
 
 
 @dataclass(frozen=True)
@@ -330,6 +331,27 @@ ARPEGGIO_DIRECTIONS = {
 }
 FINAL_UNISON_DIRECTION = "two-string unison"
 
+# A 16-foot foundation belongs only where Bach supplies a real lowest
+# contrapuntal strand.  The double bass doubles that fourth voice at the
+# opening, the two chorales, the D-minor return, and the contrapuntal summit;
+# it remains silent through the single-line violinistic passagework.  Bars
+# 197--208 and 249--254 need no editorial doubling because the double bass
+# already owns Bach's fourth strand there.
+BASS_FOUNDATION_RANGES = (
+    (1, 16),
+    (93, 120),
+    (177, 212),
+    (229, 240),
+)
+BASS_FOUNDATION_MARKS = {
+    2: "arco, lightly",
+    93: "fondamento, non pesante",
+    183: "fondamento, non pesante",
+    209: "arco, non pesante",
+    230: "sostenuto, non pesante",
+}
+BASS_FOUNDATION_LABEL = "bass-foundation"
+
 # A restrained but fully visible dynamic architecture.  Every player receives
 # the prevailing mark on entry after a rest, while these change bars restate
 # the large-scale curve for players already sounding.
@@ -514,6 +536,24 @@ def orchestrate(voices: list[list[Note]]) -> dict[str, list[Note]]:
             pitch = n.pitch - 12 if target == "cb" else n.pitch
             parts[target].append(Note(n.start, n.end, pitch,
                                       dynamic_velocity(bar, inst.family, n.velocity)))
+
+    # Reinforce only Bach's genuine lowest simultaneous strand.  Isolated
+    # single-line notes are deliberately excluded: octave-doubling those
+    # arpeggiations would manufacture a continuo part that is not in the
+    # violin text.
+    for n in voices[3]:
+        bar = score_bar(n.start)
+        if not bar_in_ranges(bar, BASS_FOUNDATION_RANGES):
+            continue
+        if id(n) in monophonic or ownership_for(bar)[3] == "cb":
+            continue
+        parts["cb"].append(Note(
+            n.start,
+            n.end,
+            n.pitch - 12,
+            max(36, dynamic_velocity(bar, "strings", n.velocity) - 10),
+            editorial=BASS_FOUNDATION_LABEL,
+        ))
 
     # Sustained brass sonorities exist only at large joints in the architecture.
     horn_bars = [97, 113, 169, 177, 197, 209, 229, 249]
@@ -819,7 +859,8 @@ def split_at_barlines(notes: list[Note]) -> list[Note]:
             end = min(note.end, boundary)
             result.append(Note(cursor, end, note.pitch, note.velocity,
                                tie_start=end < note.end,
-                               tie_stop=not first))
+                               tie_stop=not first,
+                               editorial=note.editorial))
             cursor = end
             first = False
     return result
@@ -883,6 +924,8 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                 append_direction(measure, section[4], section[3], letter)
             if inst.family == "strings" and bar in STRING_TEXTURE_MARKS:
                 append_direction(measure, STRING_TEXTURE_MARKS[bar])
+            if inst.key == "cb" and bar in BASS_FOUNDATION_MARKS:
+                append_direction(measure, BASS_FOUNDATION_MARKS[bar])
             arpeggio = ARPEGGIO_DIRECTIONS.get((inst.key, bar))
             if arpeggio:
                 offset, words = arpeggio
@@ -1099,7 +1142,13 @@ def render_audio(parts: dict[str, list[Note]], wav_path: Path, sample_rate: int 
 
 def validate(parts: dict[str, list[Note]], original: list[Note], voices: list[list[Note]]) -> None:
     structural = {"hn1", "hn2", "tpt1", "tpt2", "timp"}
-    owned_notes = [n for key, notes in parts.items() if key not in structural for n in notes]
+    owned_notes = [
+        n
+        for key, notes in parts.items()
+        if key not in structural
+        for n in notes
+        if n.editorial is None
+    ]
     expected = [n for voice in voices for n in voice]
     owned = len(owned_notes)
     if owned != len(expected):
@@ -1110,6 +1159,32 @@ def validate(parts: dict[str, list[Note]], original: list[Note], voices: list[li
     arranged_identity = sorted((n.start, n.end, n.pitch % 12) for n in owned_notes)
     if arranged_identity != source_identity:
         raise AssertionError("The orchestration altered source rhythms or pitch classes")
+    monophonic = monophonic_note_ids(voices)
+    expected_bass_foundation = sorted(
+        (n.start, n.end, n.pitch - 12)
+        for n in voices[3]
+        if bar_in_ranges(score_bar(n.start), BASS_FOUNDATION_RANGES)
+        and id(n) not in monophonic
+        and ownership_for(score_bar(n.start))[3] != "cb"
+    )
+    actual_bass_foundation = sorted(
+        (n.start, n.end, n.pitch)
+        for key, notes in parts.items()
+        for n in notes
+        if n.editorial == BASS_FOUNDATION_LABEL
+        and key == "cb"
+    )
+    if actual_bass_foundation != expected_bass_foundation:
+        raise AssertionError("The selective double-bass foundation is incomplete")
+    unexpected_editorial = [
+        (key, n.editorial, score_bar(n.start))
+        for key, notes in parts.items()
+        for n in notes
+        if n.editorial is not None
+        and (key != "cb" or n.editorial != BASS_FOUNDATION_LABEL)
+    ]
+    if unexpected_editorial:
+        raise AssertionError(f"Unexpected editorial notes: {unexpected_editorial}")
     for key, (low, high) in PROFESSIONAL_RANGES.items():
         outside = [n for n in parts[key] if not low <= n.pitch <= high]
         if outside:
@@ -1186,7 +1261,13 @@ def main() -> None:
     print(f"source_notes={len(original)}")
     print("voices=" + ",".join(str(len(v)) for v in voices))
     structural = {"hn1", "hn2", "tpt1", "tpt2", "timp"}
-    owned_count = sum(len(notes) for key, notes in parts.items() if key not in structural)
+    owned_count = sum(
+        1
+        for key, notes in parts.items()
+        if key not in structural
+        for note in notes
+        if note.editorial is None
+    )
     print(f"source_note_omissions={len(original) - owned_count}")
     print("parts=" + ",".join(f"{k}:{len(v)}" for k, v in parts.items()))
     print(f"duration_seconds={tick_to_seconds(max(n.end for n in original)):.2f}")
