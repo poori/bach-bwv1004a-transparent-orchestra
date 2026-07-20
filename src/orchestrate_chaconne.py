@@ -11,6 +11,7 @@ mock-up.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 from itertools import combinations
 from pathlib import Path
 import math
@@ -40,6 +41,17 @@ class Note:
     velocity: int = 72
     tie_start: bool = False
     tie_stop: bool = False
+
+
+@dataclass(frozen=True)
+class WrittenDuration:
+    """One conventional MusicXML spelling for an exact tick duration."""
+
+    ticks: int
+    note_type: str
+    dots: int = 0
+    actual_notes: int | None = None
+    normal_notes: int | None = None
 
 
 @dataclass(frozen=True)
@@ -186,22 +198,206 @@ def separate_voices(notes: list[Note]) -> list[list[Note]]:
 SECTIONS = [
     (1, 16, ("vln1", "vln2", "vla", "vc"), 62, "A · Grave — strings alone"),
     (17, 32, ("ob1", "vln1", "vla", "bn1"), 64, "B · Oboe enters as a voice"),
-    (33, 56, ("vln1", "vln2", "vla", "vc"), 66, "C · Figuration in the strings"),
-    (57, 76, ("fl1", "ob1", "vla", "bn1"), 68, "D · Wind consort"),
-    (77, 96, ("vln1", "ob1", "vla", "vc"), 64, "E · Dialogue"),
+    (33, 56, ("vln1", "vln2", "vla", "vc"), 66, "C · Figuration — violin-led"),
+    (57, 76, ("fl1", "ob1", "vla", "bn1"), 68, "D · Flute-led dialogue"),
+    (77, 96, ("vln1", "ob1", "vla", "vc"), 64, "E · Dialogue — gathering to strings"),
     (97, 120, ("ob1", "ob2", "bn1", "bn2"), 60, "F · Chorale, senza vibrato"),
     (121, 132, ("vln1", "vln2", "vla", "vc"), 66, "G · Gathering motion"),
     (133, 148, ("fl1", "fl2", "ob1", "bn1"), 68, "H · D major — chiaro"),
-    (149, 168, ("vln1", "vln2", "vla", "vc"), 70, "I · D major — flowing"),
+    (149, 168, ("vln1", "vln2", "vla", "vc"), 70, "I · D major — violin-led flow"),
     (169, 176, ("vln1", "fl1", "vla", "vc"), 72, "J · Crown of the major section"),
     (177, 196, ("ob1", "ob2", "bn1", "bn2"), 64, "K · Second chorale"),
     (197, 208, ("fl1", "ob1", "vla", "cb"), 68, "L · Major-mode cadence"),
-    (209, 228, ("vln1", "vln2", "vla", "vc"), 66, "M · D minor returns"),
-    (229, 240, ("vln1", "ob1", "vla", "bn1"), 72, "N · Contrapuntal summit"),
+    (209, 228, ("vln1", "vln2", "vla", "vc"), 66, "M · D minor returns — ripieno, then relays"),
+    (229, 240, ("vln1", "ob1", "vla", "bn1"), 72, "N · Contrapuntal summit — staggered colors"),
     (241, 248, ("fl1", "ob1", "vla", "vc"), 66, "O · Subsiding"),
     (249, 254, ("ob1", "vln1", "bn1", "cb"), 60, "P · Final pillars"),
     (255, 257, ("vln1", "vln2", "vla", "vc"), 52, "Q · Coda — morendo"),
 ]
+
+
+# Keep actual simultaneous strands stable within each contrapuntal cell.
+# Subordinate colors change one at a time where practical.  Single-line
+# passages use the separate phrase-relay map below.  Each mapping here runs
+# from the highest to the lowest strand.
+MOTIVE_HANDOFFS = [
+    (33, 36, ("vln1", "vln2", "vla", "vc")),
+    (37, 40, ("vln1", "ob1", "vla", "vc")),
+    (41, 44, ("vln1", "ob1", "vla", "bn1")),
+    (45, 48, ("vln1", "vln2", "vla", "bn1")),
+    (49, 52, ("vln1", "vln2", "vla", "vc")),
+    (53, 56, ("vln1", "vln2", "vla", "vc")),
+    (57, 60, ("fl1", "ob1", "vla", "bn1")),
+    (61, 64, ("fl1", "vln2", "vla", "bn1")),
+    (65, 68, ("fl1", "vln2", "vla", "vc")),
+    (69, 72, ("fl1", "ob1", "vla", "vc")),
+    (73, 76, ("fl1", "ob1", "vla", "bn1")),
+    (77, 80, ("vln1", "ob1", "vla", "bn1")),
+    (81, 84, ("vln1", "vln2", "vla", "bn1")),
+    (85, 88, ("vln1", "vln2", "vla", "vc")),
+    (89, 92, ("vln1", "ob1", "vla", "vc")),
+    (93, 96, ("vln1", "vln2", "vla", "vc")),
+    (149, 152, ("vln1", "vln2", "vla", "vc")),
+    (153, 156, ("vln1", "ob1", "vla", "vc")),
+    (157, 160, ("vln1", "ob1", "vla", "vc")),
+    (161, 164, ("vln1", "ob1", "vla", "bn1")),
+    (165, 168, ("vln1", "vln2", "vla", "vc")),
+    (169, 172, ("vln1", "fl1", "vla", "vc")),
+    (173, 176, ("vln1", "ob1", "vla", "vc")),
+    (209, 212, ("vln1", "vln2", "vla", "vc")),
+    (213, 216, ("vln1", "ob1", "vla", "vc")),
+    (217, 220, ("vln1", "ob1", "vla", "vc")),
+    (221, 224, ("vln1", "vln2", "vla", "bn1")),
+    (225, 228, ("vln1", "vln2", "vla", "vc")),
+    (229, 232, ("vln1", "ob1", "vla", "bn1")),
+    (233, 236, ("vln1", "vln2", "vla", "bn1")),
+    (237, 240, ("vln1", "vln2", "vla", "vc")),
+]
+
+# When Bach's notation contracts to a single sounding line, the automatic
+# voice index no longer describes a true contrapuntal strand.  Assign those
+# notes in complete two- to four-bar cells instead: the resulting relays keep
+# whole gestures intact, provide natural wind breaths, and avoid asking a
+# flute or oboe to inherit the violin's low arpeggiation note by note.
+MONOPHONIC_RELAYS = (
+    (31, 32, "vla"),
+    (33, 36, "vln1"),
+    (37, 40, "ob2"),
+    (41, 44, "vla"),
+    (45, 48, "vln2"),
+    (49, 52, "vc"),
+    (53, 56, "vln1"),
+    (57, 60, "ob1"),
+    (61, 64, "vln2"),
+    (65, 68, "vla"),
+    (69, 70, "fl2"),
+    (71, 72, "vln1"),
+    (73, 74, "vla"),
+    (75, 76, "vln2"),
+    (77, 80, "vla"),
+    (81, 84, "vln2"),
+    (85, 89, "vln1"),
+    (153, 154, "ob1"),
+    (155, 156, "vla"),
+    (157, 160, "vln2"),
+    (161, 162, "vla"),
+    (163, 164, "ob1"),
+    (165, 168, "vln1"),
+    (217, 220, "ob2"),
+    (221, 224, "vla"),
+    (225, 226, "ob1"),
+    (227, 228, "vln1"),
+    (241, 242, "fl1"),
+    (243, 244, "ob1"),
+    (245, 246, "vla"),
+    (247, 248, "vln1"),
+)
+
+PROFESSIONAL_RANGES = {
+    "fl1": (60, 96),
+    "fl2": (60, 96),
+    "ob1": (58, 91),
+    "ob2": (58, 91),
+}
+
+REFINED_RANGES = ((33, 96), (149, 176), (209, 240))
+RIPIENO_RANGES = ((53, 56), (93, 96), (165, 168), (209, 212), (229, 232))
+STRING_TEXTURE_MARKS = {
+    33: "solo", 53: "ripieno", 57: "solo", 93: "ripieno",
+    149: "solo", 165: "ripieno", 169: "solo",
+    209: "ripieno", 213: "solo", 229: "ripieno", 233: "solo",
+    249: "ripieno",
+}
+
+# A restrained but fully visible dynamic architecture.  Every player receives
+# the prevailing mark on entry after a rest, while these change bars restate
+# the large-scale curve for players already sounding.
+DYNAMIC_CHANGES = {
+    1: "p", 17: "mp", 33: "mf", 53: "f", 57: "mf", 77: "mp",
+    89: "mf", 97: "p", 113: "mp", 121: "mp", 133: "p",
+    141: "mp", 149: "mf", 165: "f", 177: "p", 189: "mp",
+    197: "mp", 209: "f", 213: "mf", 229: "f", 237: "ff",
+    241: "mp", 249: "f", 255: "p", 257: "pp",
+}
+
+DYNAMIC_LEVELS = {
+    "pp": 38, "p": 50, "mp": 62, "mf": 76, "f": 90, "ff": 104,
+}
+
+# Curated spans rather than automatic note-by-note shaping.  Short entries get
+# their own echo/swell; the chorales and formal transitions receive longer
+# ensemble hairpins.
+HAIRPIN_SPANS = (
+    (9, 16, "crescendo", ("vln1", "vln2", "vla", "vc")),
+    (25, 32, "crescendo", ("ob1", "vln1", "vla", "bn1")),
+    (37, 40, "crescendo", ("ob2",)),
+    (41, 44, "diminuendo", ("vla",)),
+    (45, 48, "crescendo", ("vln2",)),
+    (49, 52, "crescendo", ("vc",)),
+    (53, 56, "diminuendo", ("vln1",)),
+    (57, 60, "diminuendo", ("ob1",)),
+    (61, 64, "crescendo", ("vln2",)),
+    (65, 68, "crescendo", ("vla",)),
+    (69, 70, "diminuendo", ("fl2",)),
+    (71, 72, "crescendo", ("vln1",)),
+    (73, 74, "diminuendo", ("vla",)),
+    (75, 76, "crescendo", ("vln2",)),
+    (77, 80, "diminuendo", ("vla",)),
+    (81, 84, "crescendo", ("vln2",)),
+    (85, 89, "crescendo", ("vln1",)),
+    (113, 120, "diminuendo", ("ob1", "ob2", "bn1", "bn2")),
+    (121, 132, "crescendo", ("vln1", "vln2", "vla", "vc")),
+    (133, 140, "crescendo", ("fl1", "fl2", "ob1", "bn1")),
+    (141, 148, "diminuendo", ("fl1", "fl2", "ob1", "bn1")),
+    (153, 154, "crescendo", ("ob1",)),
+    (155, 156, "diminuendo", ("vla",)),
+    (157, 160, "crescendo", ("vln2",)),
+    (161, 162, "diminuendo", ("vla",)),
+    (163, 164, "crescendo", ("ob1",)),
+    (165, 168, "crescendo", ("vln1",)),
+    (177, 188, "crescendo", ("ob1", "ob2", "bn1", "bn2")),
+    (189, 196, "diminuendo", ("ob1", "ob2", "bn1", "bn2")),
+    (197, 208, "crescendo", ("fl1", "ob1", "vla", "cb")),
+    (209, 212, "diminuendo", ("vln1", "vln2", "vla", "vc", "hn1", "hn2")),
+    (217, 220, "crescendo", ("ob2",)),
+    (221, 224, "diminuendo", ("vla",)),
+    (225, 226, "crescendo", ("ob1",)),
+    (227, 228, "crescendo", ("vln1",)),
+    (229, 240, "crescendo", ("vln1", "vln2", "vla", "bn1", "ob1")),
+    (241, 242, "diminuendo", ("fl1",)),
+    (243, 244, "diminuendo", ("ob1",)),
+    (245, 246, "diminuendo", ("vla",)),
+    (247, 248, "diminuendo", ("vln1",)),
+    (249, 254, "diminuendo", ("ob1", "vln1", "bn1", "cb", "hn1", "hn2")),
+    (255, 257, "diminuendo", ("vln1", "vln2", "vla", "vc")),
+)
+
+# The unison-D pillars at 209, 249, and 257 are opened into D-minor/fifth
+# spacings.  Trumpet II releases first, so the resonance clarifies rather than
+# ending as a single brass block.
+PILLAR_VOICINGS = {
+    209: {"hn1": 69, "hn2": 62, "tpt1": 74, "tpt2": 69},
+    249: {"hn1": 69, "hn2": 62, "tpt1": 74, "tpt2": 65},
+    257: {"hn1": 65, "hn2": 62, "tpt1": 74, "tpt2": 69},
+}
+
+
+def bar_in_ranges(bar: int, ranges: tuple[tuple[int, int], ...]) -> bool:
+    return any(first <= bar <= last for first, last in ranges)
+
+
+def prevailing_dynamic(bar: int) -> str:
+    return DYNAMIC_CHANGES[max(change for change in DYNAMIC_CHANGES if change <= bar)]
+
+
+def hairpins_for(inst_key: str, bar: int, edge: str) -> list[str]:
+    """Return wedge types beginning or ending in this bar for one part."""
+    result = []
+    for first, last, kind, targets in HAIRPIN_SPANS:
+        boundary = first if edge == "start" else last
+        if bar == boundary and inst_key in targets:
+            result.append(kind if edge == "start" else "stop")
+    return result
 
 
 def section_for(bar: int):
@@ -217,6 +413,9 @@ def ownership_for(bar: int) -> tuple[str, str, str, str]:
     The formal sections remain clear, but changing two strands before the
     other two avoids the mechanical impression of an organ registration stop.
     """
+    for first, last, mapping in MOTIVE_HANDOFFS:
+        if first <= bar <= last:
+            return mapping
     transitions = [
         (97, 98, ("ob1", "vln2", "bn1", "vc")),
         (133, 136, ("fl1", "vln2", "ob1", "bn1")),
@@ -226,6 +425,14 @@ def ownership_for(bar: int) -> tuple[str, str, str, str]:
         if first <= bar <= last:
             return mapping
     return section_for(bar)[2]
+
+
+def monophonic_owner_for(bar: int) -> str:
+    """Return the phrase-level owner for an isolated source note."""
+    for first, last, owner in MONOPHONIC_RELAYS:
+        if first <= bar <= last:
+            return owner
+    return ownership_for(bar)[0]
 
 
 def dynamic_velocity(bar: int, family: str, original: int) -> int:
@@ -246,21 +453,52 @@ def dynamic_velocity(bar: int, family: str, original: int) -> int:
     return max(36, min(104, int(base + family_offset + (original - 64) * 0.12)))
 
 
+def monophonic_note_ids(voices: list[list[Note]]) -> set[int]:
+    """Return notes that never overlap another source note.
+
+    The separated voice index is meaningful during simultaneous counterpoint,
+    but can jump registral lanes in a single-line passage.  Treating those
+    isolated notes as separate orchestral strands creates note-by-note timbral
+    flicker, so they are consolidated onto the principal owner instead.
+    """
+    by_start: dict[int, list[Note]] = {}
+    for voice in voices:
+        for note in voice:
+            by_start.setdefault(note.start, []).append(note)
+    overlapping: set[int] = set()
+    active: list[Note] = []
+    for start in sorted(by_start):
+        active = [note for note in active if note.end > start]
+        entering = by_start[start]
+        if active or len(entering) > 1:
+            overlapping.update(id(note) for note in active)
+            overlapping.update(id(note) for note in entering)
+        active.extend(entering)
+    return {
+        id(note)
+        for voice in voices
+        for note in voice
+        if id(note) not in overlapping
+    }
+
+
 def orchestrate(voices: list[list[Note]]) -> dict[str, list[Note]]:
     parts: dict[str, list[Note]] = {i.key: [] for i in INSTRUMENTS}
+    monophonic = monophonic_note_ids(voices)
     for voice_idx, voice in enumerate(voices):
         for n in voice:
             bar = score_bar(n.start)
-            target = ownership_for(bar)[voice_idx]
+            owners = ownership_for(bar)
+            target = monophonic_owner_for(bar) if id(n) in monophonic else owners[voice_idx]
             inst = INST[target]
             pitch = n.pitch - 12 if target == "cb" else n.pitch
             parts[target].append(Note(n.start, n.end, pitch,
                                       dynamic_velocity(bar, inst.family, n.velocity)))
 
     # Sustained brass sonorities exist only at large joints in the architecture.
-    horn_bars = [97, 113, 169, 177, 197, 209, 229, 241, 249, 257]
-    trumpet_bars = [209, 229, 241, 249, 257]
-    timpani_bars = [209, 229, 241, 249, 257]
+    horn_bars = [97, 113, 169, 177, 197, 209, 229, 249, 257]
+    trumpet_bars = [209, 229, 249, 257]
+    timpani_bars = [209, 229, 249, 257]
     source = [n for v in voices for n in v]
 
     def harmony_at(bar: int) -> list[int]:
@@ -280,25 +518,32 @@ def orchestrate(voices: list[list[Note]]) -> dict[str, list[Note]]:
         low_pc, high_pc = pcs[0], pcs[-1]
         start = bar_start(bar)
         duration = BAR * (2 if bar in (97, 177) else 1)
-        parts["hn1"].append(Note(start, start + duration - 24,
-                                  place_in_range(high_pc, 55, 74, 67), 64 if bar < 209 else 78))
-        parts["hn2"].append(Note(start, start + duration - 24,
-                                  place_in_range(low_pc, 48, 67, 57), 61 if bar < 209 else 75))
+        voicing = PILLAR_VOICINGS.get(bar, {})
+        parts["hn1"].append(Note(start, start + duration,
+                                  voicing.get("hn1", place_in_range(high_pc, 55, 74, 67)),
+                                  64 if bar < 209 else 78))
+        parts["hn2"].append(Note(start, start + duration,
+                                  voicing.get("hn2", place_in_range(low_pc, 48, 67, 57)),
+                                  61 if bar < 209 else 75))
     for bar in trumpet_bars:
         pcs = harmony_at(bar)
         start = bar_start(bar)
-        dur = TPQ * 2 if bar != 257 else BAR - 24
+        dur = TPQ * 2 if bar != 257 else BAR
+        voicing = PILLAR_VOICINGS.get(bar, {})
         parts["tpt1"].append(Note(start, start + dur,
-                                   place_in_range(pcs[-1], 62, 82, 74), 82 if bar < 249 else 88))
-        parts["tpt2"].append(Note(start, start + dur,
-                                   place_in_range(pcs[0], 57, 76, 66), 78 if bar < 249 else 84))
+                                   voicing.get("tpt1", place_in_range(pcs[-1], 62, 82, 74)),
+                                   82 if bar < 249 else 88))
+        second_dur = TPQ * 3 // 2 if bar != 257 else TPQ * 2
+        parts["tpt2"].append(Note(start, start + second_dur,
+                                   voicing.get("tpt2", place_in_range(pcs[0], 57, 76, 66)),
+                                   78 if bar < 249 else 84))
     for bar in timpani_bars:
         start = bar_start(bar)
         tonic = 38  # D2
         dominant = 45  # A2
-        parts["timp"].append(Note(start, start + TPQ - 20, tonic, 78 if bar < 249 else 90))
+        parts["timp"].append(Note(start, start + TPQ, tonic, 78 if bar < 249 else 90))
         if bar != 257:
-            parts["timp"].append(Note(start + TPQ * 2, start + BAR - 20, dominant, 68))
+            parts["timp"].append(Note(start + TPQ * 2, start + BAR, dominant, 68))
 
     for key in parts:
         parts[key].sort(key=lambda n: (n.start, n.end, n.pitch))
@@ -329,6 +574,28 @@ def midi_track(events: list[tuple[int, int, bytes]]) -> bytes:
     return b"MTrk" + len(body).to_bytes(4, "big") + body
 
 
+def performance_end(note: Note, inst: Instrument) -> int:
+    """Gate sustained wind/string notes without changing the written rhythm."""
+    bar = score_bar(note.start)
+    duration = note.end - note.start
+    # Structural releases belong to playback, not to the written rhythm.  The
+    # previous MusicXML encoded these tiny gaps literally (20/384 and 24/384
+    # of a quarter), leaving importers to invent invalid note values.
+    if inst.family == "horn":
+        return note.end - 24
+    if inst.family == "trumpet" and bar == 257:
+        return note.end - 24
+    if inst.family == "timpani":
+        return note.end - 20
+    if (inst.family not in {"flute", "oboe", "bassoon", "strings"}
+            or not bar_in_ranges(bar, REFINED_RANGES)
+            or bar_in_ranges(bar, RIPIENO_RANGES)
+            or duration < TPQ // 2):
+        return note.end
+    gap = min(TPQ // 10, duration // 8)
+    return max(note.start + TPQ // 4, note.end - gap)
+
+
 def write_midi(parts: dict[str, list[Note]], path: Path) -> None:
     tempo_events: list[tuple[int, int, bytes]] = [
         (0, 0, meta(0x03, b"BWV 1004a - control track")),
@@ -352,7 +619,8 @@ def write_midi(parts: dict[str, list[Note]], path: Path) -> None:
         ]
         for note in parts[inst.key]:
             events.append((note.start, 1, bytes([0x90 | inst.channel, note.pitch, note.velocity])))
-            events.append((note.end, 0, bytes([0x80 | inst.channel, note.pitch, 40])))
+            events.append((performance_end(note, inst), 0,
+                           bytes([0x80 | inst.channel, note.pitch, 40])))
         tracks.append(midi_track(events))
     header = b"MThd" + (6).to_bytes(4, "big") + (1).to_bytes(2, "big")
     header += len(tracks).to_bytes(2, "big") + TPQ.to_bytes(2, "big")
@@ -377,6 +645,93 @@ def add_text(parent, tag: str, text: str, **attrs):
     return node
 
 
+def _duration_vocabulary() -> tuple[WrittenDuration, ...]:
+    bases = (
+        ("whole", TPQ * 4),
+        ("half", TPQ * 2),
+        ("quarter", TPQ),
+        ("eighth", TPQ // 2),
+        ("16th", TPQ // 4),
+        ("32nd", TPQ // 8),
+        ("64th", TPQ // 16),
+        ("128th", TPQ // 32),
+    )
+    values: dict[tuple[int, int | None, int | None], WrittenDuration] = {}
+    for note_type, base in bases:
+        for dots in range(4):
+            numerator = (2 ** (dots + 1)) - 1
+            denominator = 2 ** dots
+            if (base * numerator) % denominator:
+                continue
+            ticks = base * numerator // denominator
+            values[(ticks, None, None)] = WrittenDuration(ticks, note_type, dots)
+        # Ordinary triplets: three values in the time of two.  Dotted
+        # tuplets are deliberately omitted; tied ordinary values are clearer.
+        if (base * 2) % 3 == 0:
+            ticks = base * 2 // 3
+            values[(ticks, 3, 2)] = WrittenDuration(
+                ticks, note_type, actual_notes=3, normal_notes=2
+            )
+    return tuple(sorted(
+        values.values(),
+        key=lambda item: (-item.ticks, item.actual_notes is not None, item.dots),
+    ))
+
+
+DURATION_VOCABULARY = _duration_vocabulary()
+
+
+@lru_cache(maxsize=None)
+def spell_duration(ticks: int) -> tuple[WrittenDuration, ...]:
+    """Decompose a span into the fewest exact, conventional note values."""
+    if ticks <= 0:
+        raise ValueError(f"Duration must be positive, got {ticks}")
+    candidates: list[tuple[WrittenDuration, ...]] = []
+    for value in DURATION_VOCABULARY:
+        if value.ticks > ticks:
+            continue
+        if value.ticks == ticks:
+            candidates.append((value,))
+            continue
+        try:
+            tail = spell_duration(ticks - value.ticks)
+        except ValueError:
+            continue
+        candidates.append((value,) + tail)
+    if not candidates:
+        raise ValueError(
+            f"Cannot spell {ticks} ticks using standard values or 3:2 tuplets"
+        )
+    return min(candidates, key=lambda result: (
+        len(result),
+        sum(value.actual_notes is not None for value in result),
+        sum(value.dots for value in result),
+    ))
+
+
+def append_written_duration(note_el, value: WrittenDuration) -> None:
+    add_text(note_el, "type", value.note_type)
+    for _ in range(value.dots):
+        ET.SubElement(note_el, "dot")
+    if value.actual_notes is not None:
+        modification = ET.SubElement(note_el, "time-modification")
+        add_text(modification, "actual-notes", str(value.actual_notes))
+        add_text(modification, "normal-notes", str(value.normal_notes))
+        add_text(modification, "normal-type", value.note_type)
+
+
+def append_rest_events(measure, ticks: int, *, measure_rest: bool = False) -> None:
+    values = spell_duration(ticks)
+    if measure_rest and len(values) != 1:
+        raise ValueError(f"Full-measure rest unexpectedly needs {len(values)} values")
+    for value in values:
+        rest_el = ET.SubElement(measure, "note")
+        ET.SubElement(rest_el, "rest", measure="yes" if measure_rest else "no")
+        add_text(rest_el, "duration", str(value.ticks))
+        add_text(rest_el, "voice", "1")
+        append_written_duration(rest_el, value)
+
+
 def append_direction(measure, words: str, bpm: int | None = None, rehearsal: str | None = None):
     direction = ET.SubElement(measure, "direction", placement="above")
     dtype = ET.SubElement(direction, "direction-type")
@@ -386,6 +741,46 @@ def append_direction(measure, words: str, bpm: int | None = None, rehearsal: str
     if bpm:
         sound = ET.SubElement(direction, "sound", tempo=str(bpm))
         sound.set("dynamics", "70")
+
+
+def append_dynamic(measure, mark: str) -> None:
+    direction = ET.SubElement(measure, "direction", placement="below")
+    dtype = ET.SubElement(direction, "direction-type")
+    dynamics = ET.SubElement(dtype, "dynamics")
+    ET.SubElement(dynamics, mark)
+    ET.SubElement(direction, "sound", dynamics=str(DYNAMIC_LEVELS[mark]))
+
+
+def append_wedge(measure, wedge_type: str, number: int) -> None:
+    direction = ET.SubElement(measure, "direction", placement="below")
+    dtype = ET.SubElement(direction, "direction-type")
+    ET.SubElement(dtype, "wedge", type=wedge_type, number=str(number))
+
+
+def beat_slur_plan(notes: list[Note]) -> tuple[set[int], set[int]]:
+    """Slur contiguous short-note gestures within each notated beat."""
+    starts: set[int] = set()
+    stops: set[int] = set()
+    by_beat: dict[int, list[Note]] = {}
+    for note in notes:
+        beat = (note.start - bar_start(score_bar(note.start))) // TPQ
+        by_beat.setdefault(beat, []).append(note)
+    for beat_notes in by_beat.values():
+        run: list[Note] = []
+        for note in sorted(beat_notes, key=lambda item: item.start):
+            short = note.end - note.start <= TPQ // 2
+            contiguous = not run or run[-1].end == note.start
+            if short and contiguous:
+                run.append(note)
+                continue
+            if len(run) >= 2:
+                starts.add(id(run[0]))
+                stops.add(id(run[-1]))
+            run = [note] if short else []
+        if len(run) >= 2:
+            starts.add(id(run[0]))
+            stops.add(id(run[-1]))
+    return starts, stops
 
 
 def split_at_barlines(notes: list[Note]) -> list[Note]:
@@ -461,43 +856,95 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                 section = section_starts[bar]
                 letter = letters[list(section_starts).index(bar)]
                 append_direction(measure, section[4], section[3], letter)
+            if inst.family == "strings" and bar in STRING_TEXTURE_MARKS:
+                append_direction(measure, STRING_TEXTURE_MARKS[bar])
+            bar_notes = sorted(by_bar.get(bar, []), key=lambda x: (x.start, x.pitch))
+            previous_bar_sounds = bool(by_bar.get(bar - 1, []))
+            if bar_notes and (bar in DYNAMIC_CHANGES or not previous_bar_sounds):
+                append_dynamic(measure, prevailing_dynamic(bar))
+            for wedge_number, wedge_type in enumerate(
+                hairpins_for(inst.key, bar, "start"), 1
+            ):
+                append_wedge(measure, wedge_type, wedge_number)
+            if inst.family in {"flute", "oboe", "bassoon", "strings"}:
+                slur_starts, slur_stops = beat_slur_plan(bar_notes)
+            else:
+                slur_starts, slur_stops = set(), set()
+            relay_ending = any(
+                last == bar and owner == inst.key
+                for _first, last, owner in MONOPHONIC_RELAYS
+            )
             cursor = bar_start(bar)
             end_bar = PICKUP if bar == 1 else cursor + BAR
-            for n in sorted(by_bar.get(bar, []), key=lambda x: (x.start, x.pitch)):
+            for note_index, n in enumerate(bar_notes):
                 if n.start > cursor:
-                    rest = ET.SubElement(measure, "note")
-                    ET.SubElement(rest, "rest")
-                    add_text(rest, "duration", str(n.start - cursor))
-                    add_text(rest, "voice", "1")
+                    append_rest_events(measure, n.start - cursor)
                 if n.start < cursor:
                     # Should not occur in the separated monophonic material.
                     continue
-                note_el = ET.SubElement(measure, "note")
-                pitch = ET.SubElement(note_el, "pitch")
-                names = MAJOR_NAMES if 133 <= bar < 209 else MINOR_NAMES
-                step, alter = names[n.pitch % 12]
-                add_text(pitch, "step", step)
-                if alter:
-                    add_text(pitch, "alter", str(alter))
-                add_text(pitch, "octave", str(n.pitch // 12 - 1))
-                add_text(note_el, "duration", str(n.end - n.start))
-                add_text(note_el, "voice", "1")
-                if n.tie_stop:
-                    ET.SubElement(note_el, "tie", type="stop")
-                if n.tie_start:
-                    ET.SubElement(note_el, "tie", type="start")
-                if n.tie_start or n.tie_stop:
-                    notations = ET.SubElement(note_el, "notations")
-                    if n.tie_stop:
-                        ET.SubElement(notations, "tied", type="stop")
-                    if n.tie_start:
-                        ET.SubElement(notations, "tied", type="start")
+                values = spell_duration(n.end - n.start)
+                for value_index, value in enumerate(values):
+                    note_el = ET.SubElement(measure, "note")
+                    pitch = ET.SubElement(note_el, "pitch")
+                    names = MAJOR_NAMES if 133 <= bar < 209 else MINOR_NAMES
+                    step, alter = names[n.pitch % 12]
+                    add_text(pitch, "step", step)
+                    if alter:
+                        add_text(pitch, "alter", str(alter))
+                    add_text(pitch, "octave", str(n.pitch // 12 - 1))
+                    add_text(note_el, "duration", str(value.ticks))
+                    tie_stop = n.tie_stop or value_index > 0
+                    tie_start = n.tie_start or value_index < len(values) - 1
+                    if tie_stop:
+                        ET.SubElement(note_el, "tie", type="stop")
+                    if tie_start:
+                        ET.SubElement(note_el, "tie", type="start")
+                    add_text(note_el, "voice", "1")
+                    append_written_duration(note_el, value)
+                    slur_start = id(n) in slur_starts and value_index == 0
+                    slur_stop = id(n) in slur_stops and value_index == len(values) - 1
+                    phrase_end = (
+                        relay_ending
+                        and note_index == len(bar_notes) - 1
+                        and value_index == len(values) - 1
+                        and not tie_start
+                    )
+                    structural_accent = (
+                        bar in {209, 229, 249, 257}
+                        and note_index == 0
+                        and value_index == 0
+                        and inst.family in {"horn", "trumpet", "timpani"}
+                    )
+                    if (tie_start or tie_stop or slur_start or slur_stop
+                            or phrase_end or structural_accent):
+                        notations = ET.SubElement(note_el, "notations")
+                        if tie_stop:
+                            ET.SubElement(notations, "tied", type="stop")
+                        if tie_start:
+                            ET.SubElement(notations, "tied", type="start")
+                        if slur_start:
+                            ET.SubElement(notations, "slur", type="start", number="1")
+                        if slur_stop:
+                            ET.SubElement(notations, "slur", type="stop", number="1")
+                        if phrase_end or structural_accent:
+                            articulations = ET.SubElement(notations, "articulations")
+                            if phrase_end and inst.family in {"flute", "oboe", "bassoon"}:
+                                ET.SubElement(articulations, "breath-mark")
+                            elif phrase_end:
+                                ET.SubElement(articulations, "tenuto")
+                            if structural_accent:
+                                ET.SubElement(articulations, "accent")
                 cursor = n.end
             if cursor < end_bar:
-                rest = ET.SubElement(measure, "note")
-                ET.SubElement(rest, "rest", measure="yes" if cursor == bar_start(bar) else "no")
-                add_text(rest, "duration", str(end_bar - cursor))
-                add_text(rest, "voice", "1")
+                append_rest_events(
+                    measure,
+                    end_bar - cursor,
+                    measure_rest=cursor == bar_start(bar),
+                )
+            for wedge_number, wedge_type in enumerate(
+                hairpins_for(inst.key, bar, "stop"), 1
+            ):
+                append_wedge(measure, wedge_type, wedge_number)
     ET.indent(root, space="  ")
     xml = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n'
     xml += '<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">\n'
@@ -567,7 +1014,7 @@ def render_audio(parts: dict[str, list[Note]], wav_path: Path, sample_rate: int 
         right = math.sqrt((1 + pan) / 2)
         for note in parts[inst.key]:
             start_s = tick_to_seconds(note.start)
-            end_s = tick_to_seconds(note.end)
+            end_s = tick_to_seconds(performance_end(note, inst))
             dur = max(0.03, end_s - start_s)
             start = int(start_s * sample_rate)
             count = min(frames - start, int((dur + 0.10) * sample_rate))
@@ -606,16 +1053,59 @@ def render_audio(parts: dict[str, list[Note]], wav_path: Path, sample_rate: int 
     mmap_path.unlink(missing_ok=True)
 
 
-def validate(parts: dict[str, list[Note]], original: list[Note]) -> None:
+def validate(parts: dict[str, list[Note]], original: list[Note], voices: list[list[Note]]) -> None:
     structural = {"hn1", "hn2", "tpt1", "tpt2", "timp"}
     owned_notes = [n for key, notes in parts.items() if key not in structural for n in notes]
+    expected = [n for voice in voices for n in voice]
     owned = len(owned_notes)
-    if owned != len(original):
-        raise AssertionError(f"Lost source notes: {owned} orchestrated vs {len(original)} source")
-    source_identity = sorted((n.start, n.end, n.pitch % 12) for n in original)
+    if owned != len(expected):
+        raise AssertionError(
+            f"Unexpected source-note count: {owned} orchestrated vs {len(expected)} expected"
+        )
+    source_identity = sorted((n.start, n.end, n.pitch % 12) for n in expected)
     arranged_identity = sorted((n.start, n.end, n.pitch % 12) for n in owned_notes)
     if arranged_identity != source_identity:
         raise AssertionError("The orchestration altered source rhythms or pitch classes")
+    for key, (low, high) in PROFESSIONAL_RANGES.items():
+        outside = [n for n in parts[key] if not low <= n.pitch <= high]
+        if outside:
+            bars = sorted({score_bar(n.start) for n in outside})
+            raise AssertionError(
+                f"{INST[key].name} outside professional range {low}-{high} "
+                f"in bars {bars}"
+            )
+    for bar, voicing in PILLAR_VOICINGS.items():
+        for key, expected_pitch in voicing.items():
+            notes = [n for n in parts[key] if score_bar(n.start) == bar]
+            if len(notes) != 1 or notes[0].pitch != expected_pitch:
+                raise AssertionError(
+                    f"Unexpected {key} voicing at bar {bar}: {notes}"
+                )
+        trumpet_one = next(n for n in parts["tpt1"] if score_bar(n.start) == bar)
+        trumpet_two = next(n for n in parts["tpt2"] if score_bar(n.start) == bar)
+        if trumpet_two.end >= trumpet_one.end:
+            raise AssertionError(f"Trumpet II must release first at bar {bar}")
+    # The exposed violinistic spans may remain transparent, but no one player
+    # should carry more than a four-bar unaccompanied cell there.
+    relay_ranges = ((31, 89), (153, 168), (217, 228), (241, 248))
+    sounding_by_bar = {bar: set() for bar in range(1, 258)}
+    for key, notes in parts.items():
+        if key in structural:
+            continue
+        for note in notes:
+            sounding_by_bar[score_bar(note.start)].add(key)
+    for first, last in relay_ranges:
+        previous_owner = None
+        run = 0
+        for bar in range(first, last + 1):
+            owners = sounding_by_bar[bar]
+            sole_owner = next(iter(owners)) if len(owners) == 1 else None
+            run = run + 1 if sole_owner == previous_owner and sole_owner else int(bool(sole_owner))
+            previous_owner = sole_owner
+            if run > 4:
+                raise AssertionError(
+                    f"Unaccompanied {sole_owner} phrase exceeds four bars at bar {bar}"
+                )
     for key, notes in parts.items():
         if key in {"hn1", "hn2", "tpt1", "tpt2", "timp"}:
             continue
@@ -630,7 +1120,7 @@ def main() -> None:
     original = parse_midi_notes(SOURCE_MIDI)
     voices = separate_voices(original)
     parts = orchestrate(voices)
-    validate(parts, original)
+    validate(parts, original, voices)
     midi_path = OUT / "Bach_BWV1004a_transparent_orchestra.mid"
     xml_path = OUT / "Bach_BWV1004a_transparent_orchestra.musicxml"
     mxl_path = OUT / "Bach_BWV1004a_transparent_orchestra.mxl"
@@ -641,6 +1131,9 @@ def main() -> None:
     render_audio(parts, wav_path)
     print(f"source_notes={len(original)}")
     print("voices=" + ",".join(str(len(v)) for v in voices))
+    structural = {"hn1", "hn2", "tpt1", "tpt2", "timp"}
+    owned_count = sum(len(notes) for key, notes in parts.items() if key not in structural)
+    print(f"source_note_omissions={len(original) - owned_count}")
     print("parts=" + ",".join(f"{k}:{len(v)}" for k, v in parts.items()))
     print(f"duration_seconds={tick_to_seconds(max(n.end for n in original)):.2f}")
     print(wav_path)

@@ -8,6 +8,9 @@ Chaconne for the Leipzig Collegium Musicum, with a modest modern orchestra at
 his disposal but a Baroque ear still governing the result?**
 
 [Listen to the MP3 mock-up](audio/Bach_BWV1004a_transparent_orchestra.mp3?raw=1)
+· [Listen to the Muse Sounds render](audio/Bach_BWV1004a_transparent_orchestra_MuseSounds.mp3?raw=1)
+· [Listen to the MuseScore Basic render](audio/Bach_BWV1004a_transparent_orchestra_MuseScore_Basic.mp3?raw=1)
+· [Open the native MuseScore score](score/Bach_BWV1004a_transparent_orchestra.mscz)
 · [Open the editable score](score/Bach_BWV1004a_transparent_orchestra.mxl)
 · [Read the orchestration notes](docs/orchestration-notes.md)
 
@@ -29,6 +32,10 @@ public **v0.1 realization**: ranges, source-note identity, and file integrity
 are checked, but the orchestration has not yet been rehearsed by a live
 orchestra.
 
+The MuseScore file is a native import snapshot of the generated MusicXML,
+normalized so all sixteen orchestral parts resolve to installed Muse Sounds.
+Both Muse Sounds and MuseScore Basic renders are retained for comparison.
+
 ## Credits
 
 - Original music: Johann Sebastian Bach
@@ -42,7 +49,7 @@ orchestra.
 ```text
 audio/   listening mock-up
 docs/    orchestration and editorial notes
-score/   MusicXML, compressed MXL, and MIDI
+score/   MusicXML, compressed MXL, native MuseScore, and MIDI
 source/  Mutopia LilyPond and MIDI source
 src/     reproducible orchestration/build script
 ```
