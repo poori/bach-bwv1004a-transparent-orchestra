@@ -207,7 +207,7 @@ SECTIONS = [
     (133, 148, ("fl1", "fl2", "ob1", "bn1"), 68, "H · D major — chiaro"),
     (149, 168, ("vln1", "vln2", "vla", "vc"), 70, "I · D major — violin-led flow"),
     (169, 176, ("vln1", "fl1", "vla", "vc"), 72, "J · Crown of the major section"),
-    (177, 196, ("ob1", "ob2", "bn1", "bn2"), 64, "K · Second chorale"),
+    (177, 196, ("ob1", "ob2", "bn1", "bn2"), 64, "K · Second chorale — dolce, poco vibrato"),
     (197, 208, ("fl1", "ob1", "vla", "cb"), 68, "L · Major-mode cadence"),
     (209, 228, ("vln1", "vln2", "vla", "vc"), 66, "M · D minor returns — ripieno, then relays"),
     (229, 240, ("vln1", "ob1", "vla", "bn1"), 72, "N · Contrapuntal summit — staggered colors"),
@@ -329,7 +329,7 @@ ARPEGGIO_DIRECTIONS = {
     ("fl1", 201): (0, "arpeggiate upward, together"),
     ("vla", 201): (0, "arpeggiate upward, together"),
 }
-FINAL_UNISON_DIRECTION = "two-string unison"
+FINAL_UNISON_DIRECTION = "on two strings"
 
 # A 16-foot foundation belongs only where Bach supplies a real lowest
 # contrapuntal strand.  The double bass doubles that fourth voice at the
@@ -345,8 +345,8 @@ BASS_FOUNDATION_RANGES = (
 )
 BASS_FOUNDATION_MARKS = {
     2: "arco, lightly",
-    93: "fondamento, non pesante",
-    183: "fondamento, non pesante",
+    93: "non pesante",
+    183: "fondamento",
     209: "arco, non pesante",
     230: "sostenuto, non pesante",
 }
@@ -432,14 +432,26 @@ def prevailing_dynamic(bar: int) -> str:
     return DYNAMIC_CHANGES[max(change for change in DYNAMIC_CHANGES if change <= bar)]
 
 
-def hairpins_for(inst_key: str, bar: int, edge: str) -> list[str]:
-    """Return wedge types beginning or ending in this bar for one part."""
-    result = []
+def hairpin_edges_for_part(
+    inst_key: str,
+    by_bar: dict[int, list[Note]],
+) -> dict[tuple[int, str], list[str]]:
+    """Place each wedge on the first and last bars the player actually sounds."""
+    result: dict[tuple[int, str], list[str]] = {}
     for first, last, kind, targets in HAIRPIN_SPANS:
-        boundary = first if edge == "start" else last
-        if bar == boundary and inst_key in targets:
-            result.append(kind if edge == "start" else "stop")
+        if inst_key not in targets:
+            continue
+        sounding = [bar for bar in range(first, last + 1) if by_bar.get(bar)]
+        if len(sounding) < 2:
+            continue
+        result.setdefault((sounding[0], "start"), []).append(kind)
+        result.setdefault((sounding[-1], "stop"), []).append("stop")
     return result
+
+
+def prevailing_string_texture(bar: int) -> str | None:
+    changes = [change for change in STRING_TEXTURE_MARKS if change <= bar]
+    return STRING_TEXTURE_MARKS[max(changes)] if changes else None
 
 
 def section_for(bar: int):
@@ -822,8 +834,8 @@ def append_wedge(measure, wedge_type: str, number: int) -> None:
     ET.SubElement(dtype, "wedge", type=wedge_type, number=str(number))
 
 
-def beat_slur_plan(notes: list[Note]) -> tuple[set[int], set[int]]:
-    """Slur contiguous short-note gestures within each notated beat."""
+def gesture_slur_plan(notes: list[Note]) -> tuple[set[int], set[int]]:
+    """Slur only runs of at least three contiguous short notes within a beat."""
     starts: set[int] = set()
     stops: set[int] = set()
     by_beat: dict[int, list[Note]] = {}
@@ -838,11 +850,11 @@ def beat_slur_plan(notes: list[Note]) -> tuple[set[int], set[int]]:
             if short and contiguous:
                 run.append(note)
                 continue
-            if len(run) >= 2:
+            if len(run) >= 3:
                 starts.add(id(run[0]))
                 stops.add(id(run[-1]))
             run = [note] if short else []
-        if len(run) >= 2:
+        if len(run) >= 3:
             starts.add(id(run[0]))
             stops.add(id(run[-1]))
     return starts, stops
@@ -881,6 +893,17 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
     scaling = ET.SubElement(defaults, "scaling")
     add_text(scaling, "millimeters", "7.0")
     add_text(scaling, "tenths", "40")
+    # A sixteen-staff orchestral score needs tabloid/11×17 portrait pages.
+    # Letter paper can clip the double-bass staff when expressive directions
+    # increase a system's vertical spacing.
+    page_layout = ET.SubElement(defaults, "page-layout")
+    add_text(page_layout, "page-height", "2468")
+    add_text(page_layout, "page-width", "1597")
+    page_margins = ET.SubElement(page_layout, "page-margins", type="both")
+    add_text(page_margins, "left-margin", "70")
+    add_text(page_margins, "right-margin", "70")
+    add_text(page_margins, "top-margin", "70")
+    add_text(page_margins, "bottom-margin", "70")
     part_list = ET.SubElement(root, "part-list")
     for idx, inst in enumerate(INSTRUMENTS, 1):
         sp = ET.SubElement(part_list, "score-part", id=f"P{idx}")
@@ -902,8 +925,15 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
         by_bar: dict[int, list[Note]] = {}
         for n in split:
             by_bar.setdefault(score_bar(n.start), []).append(n)
+        hairpin_edges = hairpin_edges_for_part(inst.key, by_bar)
         for bar in range(1, 258):
             measure = ET.SubElement(part, "measure", number=str(bar), implicit="yes" if bar == 1 else "no")
+            bar_notes = sorted(by_bar.get(bar, []), key=lambda x: (x.start, x.pitch))
+            previous_bar_sounds = bool(by_bar.get(bar - 1, []))
+            recently_sounded = any(
+                by_bar.get(previous)
+                for previous in range(max(1, bar - 2), bar)
+            )
             if bar in (1, 133, 209):
                 attrs = ET.SubElement(measure, "attributes")
                 if bar == 1:
@@ -922,9 +952,16 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                 section = section_starts[bar]
                 letter = letters[list(section_starts).index(bar)]
                 append_direction(measure, section[4], section[3], letter)
-            if inst.family == "strings" and bar in STRING_TEXTURE_MARKS:
-                append_direction(measure, STRING_TEXTURE_MARKS[bar])
-            if inst.key == "cb" and bar in BASS_FOUNDATION_MARKS:
+            texture = prevailing_string_texture(bar)
+            if (
+                inst.family == "strings"
+                and inst.key != "cb"
+                and bar_notes
+                and texture is not None
+                and (bar in STRING_TEXTURE_MARKS or not recently_sounded)
+            ):
+                append_direction(measure, texture)
+            if inst.key == "cb" and bar_notes and bar in BASS_FOUNDATION_MARKS:
                 append_direction(measure, BASS_FOUNDATION_MARKS[bar])
             arpeggio = ARPEGGIO_DIRECTIONS.get((inst.key, bar))
             if arpeggio:
@@ -932,16 +969,14 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                 append_direction(measure, words, offset=offset)
             if inst.key == "vln1" and bar == 257:
                 append_direction(measure, FINAL_UNISON_DIRECTION)
-            bar_notes = sorted(by_bar.get(bar, []), key=lambda x: (x.start, x.pitch))
-            previous_bar_sounds = bool(by_bar.get(bar - 1, []))
             if bar_notes and (bar in DYNAMIC_CHANGES or not previous_bar_sounds):
                 append_dynamic(measure, prevailing_dynamic(bar))
             for wedge_number, wedge_type in enumerate(
-                hairpins_for(inst.key, bar, "start"), 1
+                hairpin_edges.get((bar, "start"), []), 1
             ):
                 append_wedge(measure, wedge_type, wedge_number)
             if inst.family in {"flute", "oboe", "bassoon", "strings"}:
-                slur_starts, slur_stops = beat_slur_plan(bar_notes)
+                slur_starts, slur_stops = gesture_slur_plan(bar_notes)
             else:
                 slur_starts, slur_stops = set(), set()
             relay_ending = any(
@@ -1029,7 +1064,7 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                     measure_rest=cursor == bar_start(bar),
                 )
             for wedge_number, wedge_type in enumerate(
-                hairpins_for(inst.key, bar, "stop"), 1
+                hairpin_edges.get((bar, "stop"), []), 1
             ):
                 append_wedge(measure, wedge_type, wedge_number)
     ET.indent(root, space="  ")

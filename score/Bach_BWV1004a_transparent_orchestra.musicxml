@@ -18,6 +18,16 @@
       <millimeters>7.0</millimeters>
       <tenths>40</tenths>
     </scaling>
+    <page-layout>
+      <page-height>2468</page-height>
+      <page-width>1597</page-width>
+      <page-margins type="both">
+        <left-margin>70</left-margin>
+        <right-margin>70</right-margin>
+        <top-margin>70</top-margin>
+        <bottom-margin>70</bottom-margin>
+      </page-margins>
+    </page-layout>
   </defaults>
   <part-list>
     <score-part id="P1">
@@ -836,9 +846,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -848,9 +855,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -1683,9 +1687,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -1695,9 +1696,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -1742,9 +1740,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -1754,9 +1749,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -1771,11 +1763,6 @@
       </direction>
     </measure>
     <measure number="141" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <wedge type="diminuendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -1793,6 +1780,11 @@
         </direction-type>
         <sound dynamics="62" />
       </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="diminuendo" number="1" />
+        </direction-type>
+      </direction>
       <note>
         <rest measure="no" />
         <duration>384</duration>
@@ -1808,9 +1800,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -1820,9 +1809,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -1850,9 +1836,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -1863,9 +1846,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -1875,9 +1855,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -1887,9 +1864,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -1924,9 +1898,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -1936,9 +1907,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2028,9 +1996,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2040,9 +2005,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2052,9 +2014,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2065,9 +2024,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2077,9 +2033,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2089,9 +2042,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="148" implicit="no">
@@ -2103,9 +2053,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2116,9 +2063,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2646,7 +2590,7 @@
       <direction placement="above">
         <direction-type>
           <rehearsal enclosure="rectangle">K</rehearsal>
-          <words font-style="italic">K · Second chorale</words>
+          <words font-style="italic">K · Second chorale — dolce, poco vibrato</words>
         </direction-type>
         <sound tempo="64" dynamics="70" />
       </direction>
@@ -2949,9 +2893,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2962,9 +2903,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2974,9 +2912,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2986,9 +2921,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -2998,9 +2930,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -3010,9 +2939,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="201" implicit="no">
@@ -3128,9 +3054,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -3141,9 +3064,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -5841,11 +5761,6 @@
           <mode>major</mode>
         </key>
       </attributes>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -5890,6 +5805,11 @@
         </direction-type>
         <sound dynamics="50" />
       </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="crescendo" number="1" />
+        </direction-type>
+      </direction>
       <note>
         <pitch>
           <step>F</step>
@@ -5918,9 +5838,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -5931,9 +5848,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="138" implicit="no">
@@ -5998,9 +5912,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6010,9 +5921,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="139" implicit="no">
@@ -6084,9 +5992,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6097,9 +6002,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -6146,9 +6048,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6158,9 +6057,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -6186,9 +6082,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6199,9 +6092,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="142" implicit="no">
@@ -6213,9 +6103,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6225,9 +6112,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -6243,9 +6127,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6255,9 +6136,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="143" implicit="no">
@@ -6300,9 +6178,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6312,9 +6187,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -6381,9 +6253,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6393,9 +6262,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6421,9 +6287,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6434,9 +6297,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="147" implicit="no">
@@ -6448,9 +6308,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6461,9 +6318,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6473,9 +6327,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6485,9 +6336,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6497,9 +6345,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6509,9 +6354,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="148" implicit="no">
@@ -6524,9 +6366,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -6536,9 +6375,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -7758,9 +7594,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -7770,9 +7603,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -7894,9 +7724,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -7907,9 +7734,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8009,9 +7833,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8021,9 +7842,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8043,9 +7861,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8055,9 +7870,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8179,9 +7991,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8192,9 +8001,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8255,9 +8061,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8267,9 +8070,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8318,9 +8118,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8330,9 +8127,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8343,9 +8137,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8355,9 +8146,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="26" implicit="no">
@@ -8375,9 +8163,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8388,9 +8173,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8401,9 +8183,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8414,9 +8193,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8426,9 +8202,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8438,9 +8211,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="27" implicit="no">
@@ -8458,9 +8228,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8470,9 +8237,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8483,9 +8247,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8495,9 +8256,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -8885,6 +8643,11 @@
           <slur type="stop" number="1" />
         </notations>
       </note>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="stop" number="1" />
+        </direction-type>
+      </direction>
     </measure>
     <measure number="31" implicit="no">
       <note>
@@ -8903,11 +8666,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="33" implicit="no">
       <note>
@@ -9147,9 +8905,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9159,9 +8914,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9171,9 +8923,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9183,9 +8932,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9231,9 +8977,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9243,9 +8986,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9255,9 +8995,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9267,9 +9004,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9314,9 +9048,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9326,9 +9057,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9339,9 +9067,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9351,9 +9076,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9419,9 +9141,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9432,7 +9151,6 @@
         <voice>1</voice>
         <type>16th</type>
         <notations>
-          <slur type="stop" number="1" />
           <articulations>
             <breath-mark />
           </articulations>
@@ -9775,9 +9493,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9787,9 +9502,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9799,9 +9511,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9811,9 +9520,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9975,9 +9681,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -9987,9 +9690,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -10728,9 +10428,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -10740,9 +10437,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -10795,9 +10489,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -10807,9 +10498,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -10980,9 +10668,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -10992,9 +10677,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -11004,9 +10686,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -11017,9 +10696,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -11029,9 +10705,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -11041,9 +10714,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="145" implicit="no">
@@ -11055,9 +10725,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -11067,9 +10734,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -11079,9 +10743,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -11091,9 +10752,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -11104,9 +10762,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -11116,9 +10771,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="146" implicit="no">
@@ -11168,9 +10820,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -11181,9 +10830,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="148" implicit="no">
@@ -11195,9 +10841,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -11207,9 +10850,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12421,9 +12061,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12433,9 +12070,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12466,9 +12100,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12478,9 +12109,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12511,9 +12139,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12523,9 +12148,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12536,9 +12158,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12548,9 +12167,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12560,9 +12176,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12572,9 +12185,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="181" implicit="no">
@@ -12649,9 +12259,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12662,9 +12269,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12674,9 +12278,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12686,9 +12287,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12698,9 +12296,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12711,9 +12306,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="184" implicit="no">
@@ -12725,9 +12317,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12737,9 +12326,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12815,9 +12401,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12827,9 +12410,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12975,9 +12555,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -12987,9 +12564,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13114,9 +12688,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13126,9 +12697,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13242,9 +12810,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13254,9 +12819,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13444,9 +13006,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13456,9 +13015,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13488,9 +13044,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13501,9 +13054,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13555,9 +13105,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13567,9 +13114,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13722,9 +13266,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -13734,9 +13275,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -14160,11 +13698,6 @@
         </direction-type>
         <sound dynamics="90" />
       </direction>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <pitch>
           <step>F</step>
@@ -14286,11 +13819,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="241" implicit="no">
       <direction placement="below">
@@ -17630,11 +17158,6 @@
       </note>
     </measure>
     <measure number="177" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -17678,6 +17201,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="50" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="crescendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <pitch>
@@ -17749,9 +17277,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -17761,9 +17286,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -17773,9 +17295,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -17785,9 +17304,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -17797,9 +17313,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -17809,9 +17322,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="184" implicit="no">
@@ -17917,6 +17427,11 @@
         <voice>1</voice>
         <type>eighth</type>
       </note>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="stop" number="1" />
+        </direction-type>
+      </direction>
     </measure>
     <measure number="188" implicit="no">
       <note>
@@ -17926,11 +17441,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="189" implicit="no">
       <direction placement="below">
@@ -18154,9 +17664,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -18167,9 +17674,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -19508,11 +19012,6 @@
       </note>
     </measure>
     <measure number="25" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -19616,11 +19115,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="33" implicit="no">
       <note>
@@ -19882,9 +19376,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -19894,9 +19385,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -20917,11 +20405,6 @@
           <mode>major</mode>
         </key>
       </attributes>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -20938,6 +20421,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="50" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="crescendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <rest measure="no" />
@@ -21098,11 +20586,6 @@
       </direction>
     </measure>
     <measure number="141" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <wedge type="diminuendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -21119,6 +20602,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="62" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="diminuendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <pitch>
@@ -21209,6 +20697,11 @@
         <voice>1</voice>
         <type>eighth</type>
       </note>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="stop" number="1" />
+        </direction-type>
+      </direction>
     </measure>
     <measure number="145" implicit="no">
       <note>
@@ -21245,11 +20738,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="149" implicit="no">
       <note>
@@ -21585,9 +21073,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21597,9 +21082,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="181" implicit="no">
@@ -21611,9 +21093,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21624,9 +21103,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21636,9 +21112,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21648,9 +21121,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21660,9 +21130,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21673,9 +21140,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="182" implicit="no">
@@ -21687,9 +21151,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21699,9 +21160,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21711,9 +21169,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21723,9 +21178,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21736,9 +21188,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21748,9 +21197,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="183" implicit="no">
@@ -21763,9 +21209,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21775,9 +21218,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21805,9 +21245,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21818,9 +21255,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21937,9 +21371,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21950,9 +21381,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21962,9 +21390,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -21974,9 +21399,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -22115,9 +21537,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -22128,9 +21547,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -22149,9 +21565,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -22161,9 +21574,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -22569,11 +21979,6 @@
       </note>
     </measure>
     <measure number="229" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -22590,6 +21995,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="90" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="crescendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <pitch>
@@ -22807,6 +22217,11 @@
         <type>eighth</type>
         <dot />
       </note>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="stop" number="1" />
+        </direction-type>
+      </direction>
     </measure>
     <measure number="237" implicit="no">
       <note>
@@ -22843,11 +22258,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="241" implicit="no">
       <note>
@@ -24931,11 +24341,6 @@
       </note>
     </measure>
     <measure number="177" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -24997,6 +24402,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="50" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="crescendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <rest measure="no" />
@@ -25256,6 +24666,11 @@
         <voice>1</voice>
         <type>quarter</type>
       </note>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="stop" number="1" />
+        </direction-type>
+      </direction>
     </measure>
     <measure number="193" implicit="no">
       <note>
@@ -25292,11 +24707,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="197" implicit="no">
       <note>
@@ -27843,11 +27253,6 @@
         </direction-type>
         <sound dynamics="90" />
       </direction>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="diminuendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <pitch>
           <step>A</step>
@@ -27890,11 +27295,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="213" implicit="no">
       <note>
@@ -28245,11 +27645,6 @@
         </direction-type>
         <sound dynamics="90" />
       </direction>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="diminuendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <pitch>
           <step>A</step>
@@ -28310,11 +27705,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="255" implicit="no">
       <note>
@@ -30330,11 +29720,6 @@
         </direction-type>
         <sound dynamics="90" />
       </direction>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="diminuendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <pitch>
           <step>D</step>
@@ -30377,11 +29762,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="213" implicit="no">
       <note>
@@ -30732,11 +30112,6 @@
         </direction-type>
         <sound dynamics="90" />
       </direction>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="diminuendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <pitch>
           <step>D</step>
@@ -30797,11 +30172,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="255" implicit="no">
       <note>
@@ -38213,9 +37583,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -38225,9 +37592,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -38338,9 +37702,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -38350,9 +37711,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -38417,9 +37775,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -38429,9 +37784,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -38701,9 +38053,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -38713,9 +38062,6 @@
         <duration>48</duration>
         <voice>1</voice>
         <type>32nd</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39365,6 +38711,11 @@
         <type>eighth</type>
         <dot />
       </note>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="stop" number="1" />
+        </direction-type>
+      </direction>
     </measure>
     <measure number="30" implicit="no">
       <note>
@@ -39392,11 +38743,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
     <measure number="33" implicit="no">
       <direction placement="above">
@@ -39420,9 +38766,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39432,9 +38775,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39445,9 +38785,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39457,9 +38794,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39470,9 +38804,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39482,9 +38813,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="34" implicit="no">
@@ -39497,9 +38825,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39509,9 +38834,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39521,9 +38843,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39533,9 +38852,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39546,9 +38862,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39558,9 +38871,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="35" implicit="no">
@@ -39572,9 +38882,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39584,9 +38891,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39596,9 +38900,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39608,9 +38909,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39620,9 +38918,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39633,9 +38928,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="36" implicit="no">
@@ -39690,9 +38982,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39702,9 +38991,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39714,9 +39000,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -39727,7 +39010,6 @@
         <voice>1</voice>
         <type>eighth</type>
         <notations>
-          <slur type="stop" number="1" />
           <articulations>
             <tenuto />
           </articulations>
@@ -40425,11 +39707,6 @@
       </direction>
     </measure>
     <measure number="57" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -40556,6 +39833,11 @@
       </note>
     </measure>
     <measure number="71" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -41102,6 +40384,11 @@
       </note>
     </measure>
     <measure number="85" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -42237,9 +41524,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -42249,9 +41533,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -42261,9 +41542,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -42273,9 +41551,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -42285,9 +41560,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -42298,9 +41570,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="93" implicit="no">
@@ -42583,6 +41852,11 @@
       </note>
     </measure>
     <measure number="121" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">ripieno</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -43617,9 +42891,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -43629,9 +42900,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="130" implicit="no">
@@ -43662,9 +42930,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -43675,9 +42940,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="131" implicit="no">
@@ -43708,9 +42970,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -43720,9 +42979,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="132" implicit="no">
@@ -43735,9 +42991,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -43747,9 +43000,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -43951,9 +43201,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -43963,9 +43210,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -44019,9 +43263,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -44031,9 +43272,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="150" implicit="no">
@@ -44123,9 +43361,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -44135,9 +43370,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="151" implicit="no">
@@ -44155,9 +43387,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -44167,9 +43396,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -46313,16 +45539,6 @@
           <mode>minor</mode>
         </key>
       </attributes>
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="diminuendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -46332,6 +45548,11 @@
       </note>
     </measure>
     <measure number="210" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">ripieno</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -46339,6 +45560,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="90" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="diminuendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <rest measure="no" />
@@ -46562,9 +45788,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -46574,9 +45797,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <direction placement="below">
         <direction-type>
@@ -46928,9 +46148,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -46940,9 +46157,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -47098,6 +46312,11 @@
       </note>
     </measure>
     <measure number="227" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -48985,6 +48204,11 @@
       </note>
     </measure>
     <measure number="247" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -49868,7 +49092,7 @@
     <measure number="257" implicit="no">
       <direction placement="above">
         <direction-type>
-          <words font-style="italic">two-string unison</words>
+          <words font-style="italic">on two strings</words>
         </direction-type>
       </direction>
       <direction placement="below">
@@ -50044,9 +49268,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -50056,9 +49277,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -50563,11 +49781,6 @@
       </note>
     </measure>
     <measure number="33" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -50676,6 +49889,11 @@
       </note>
     </measure>
     <measure number="45" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -51259,11 +50477,6 @@
       </note>
     </measure>
     <measure number="53" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -51300,11 +50513,6 @@
       </note>
     </measure>
     <measure number="57" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -51341,6 +50549,11 @@
       </note>
     </measure>
     <measure number="61" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -51541,9 +50754,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -51553,9 +50763,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -51996,6 +51203,11 @@
       </note>
     </measure>
     <measure number="75" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -52536,6 +51748,11 @@
       </note>
     </measure>
     <measure number="81" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -53518,11 +52735,6 @@
       </note>
     </measure>
     <measure number="121" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -53568,6 +52780,11 @@
       </note>
     </measure>
     <measure number="126" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">ripieno</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -53575,6 +52792,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="62" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="crescendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <pitch>
@@ -53813,9 +53035,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -53825,9 +53044,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="135" implicit="no">
@@ -54011,9 +53227,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -54024,9 +53237,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -54160,6 +53370,11 @@
       </note>
     </measure>
     <measure number="157" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -54746,11 +53961,6 @@
       </note>
     </measure>
     <measure number="165" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -54787,11 +53997,6 @@
       </note>
     </measure>
     <measure number="169" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -54864,6 +54069,11 @@
       </note>
     </measure>
     <measure number="177" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -54919,9 +54129,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -54932,9 +54139,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -54944,9 +54148,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -54957,9 +54158,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="179" implicit="no">
@@ -54980,9 +54178,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -54992,9 +54187,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -55004,9 +54196,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -55017,9 +54206,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="180" implicit="no">
@@ -55055,9 +54241,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -55068,9 +54251,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
     </measure>
     <measure number="181" implicit="no">
@@ -55475,11 +54655,6 @@
       </direction>
     </measure>
     <measure number="213" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -55624,16 +54799,6 @@
       </note>
     </measure>
     <measure number="229" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -55683,6 +54848,11 @@
         </direction-type>
         <sound dynamics="90" />
       </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="crescendo" number="1" />
+        </direction-type>
+      </direction>
       <note>
         <pitch>
           <step>F</step>
@@ -55725,6 +54895,11 @@
       </note>
     </measure>
     <measure number="236" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -56246,11 +55421,6 @@
       </note>
     </measure>
     <measure number="249" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -56371,6 +55541,11 @@
         <voice>1</voice>
         <type>eighth</type>
       </note>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="stop" number="1" />
+        </direction-type>
+      </direction>
     </measure>
     <measure number="257" implicit="no">
       <note>
@@ -56380,11 +55555,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
   </part>
   <part id="P14">
@@ -57424,11 +56594,6 @@
       </direction>
     </measure>
     <measure number="33" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -57501,6 +56666,11 @@
       </note>
     </measure>
     <measure number="41" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -58116,11 +57286,6 @@
       </note>
     </measure>
     <measure number="53" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -58203,9 +57368,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -58215,9 +57377,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -58259,9 +57418,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -58271,9 +57427,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -58317,9 +57470,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -58329,9 +57479,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -58472,9 +57619,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -58484,9 +57628,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -58511,9 +57652,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -58523,9 +57661,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -59346,6 +58481,11 @@
       </note>
     </measure>
     <measure number="73" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -59804,6 +58944,11 @@
       </note>
     </measure>
     <measure number="77" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -60421,6 +59566,11 @@
     <measure number="89" implicit="no">
       <direction placement="above">
         <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
+      <direction placement="above">
+        <direction-type>
           <words font-style="italic">arpeggiate upward, together</words>
         </direction-type>
         <offset>384</offset>
@@ -60798,11 +59948,6 @@
       </note>
     </measure>
     <measure number="121" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -60848,6 +59993,11 @@
       </note>
     </measure>
     <measure number="126" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">ripieno</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -60855,6 +60005,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="62" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="crescendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <pitch>
@@ -61311,6 +60466,11 @@
       </note>
     </measure>
     <measure number="155" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -61632,6 +60792,11 @@
       </note>
     </measure>
     <measure number="161" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -61934,11 +61099,6 @@
       </note>
     </measure>
     <measure number="165" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -62008,9 +61168,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -62020,9 +61177,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -62052,9 +61206,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -62064,9 +61215,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -62181,6 +61329,11 @@
       </note>
     </measure>
     <measure number="176" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -62461,6 +61614,11 @@
       </note>
     </measure>
     <measure number="197" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -62792,9 +61950,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -62805,9 +61960,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -62829,9 +61981,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -62841,9 +61990,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -63138,6 +62284,11 @@
       </note>
     </measure>
     <measure number="221" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -64353,6 +63504,11 @@
       </note>
     </measure>
     <measure number="245" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -64942,11 +64098,6 @@
       </note>
     </measure>
     <measure number="249" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -65057,6 +64208,11 @@
         <voice>1</voice>
         <type>eighth</type>
       </note>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="stop" number="1" />
+        </direction-type>
+      </direction>
     </measure>
     <measure number="257" implicit="no">
       <note>
@@ -65066,11 +64222,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
   </part>
   <part id="P15">
@@ -65266,11 +64417,6 @@
       </note>
     </measure>
     <measure number="9" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -65287,6 +64433,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="50" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="crescendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <pitch>
@@ -65681,11 +64832,6 @@
       </note>
     </measure>
     <measure number="33" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -65830,6 +64976,11 @@
       </note>
     </measure>
     <measure number="49" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -66373,11 +65524,6 @@
       </direction>
     </measure>
     <measure number="53" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -66414,11 +65560,6 @@
       </note>
     </measure>
     <measure number="57" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -66734,6 +65875,11 @@
       </note>
     </measure>
     <measure number="92" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -67072,11 +66218,6 @@
       </note>
     </measure>
     <measure number="121" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -67122,6 +66263,11 @@
       </note>
     </measure>
     <measure number="126" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">ripieno</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -67129,6 +66275,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="62" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="crescendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <pitch>
@@ -67497,9 +66648,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -67509,9 +66657,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -67539,9 +66684,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -67552,9 +66694,6 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <rest measure="no" />
@@ -67706,11 +66845,6 @@
       </note>
     </measure>
     <measure number="165" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -67747,11 +66881,6 @@
       </note>
     </measure>
     <measure number="169" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -68233,11 +67362,6 @@
       </direction>
     </measure>
     <measure number="213" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -68312,9 +67436,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -68324,9 +67445,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -68460,11 +67578,6 @@
       </note>
     </measure>
     <measure number="229" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -68501,11 +67614,6 @@
       </note>
     </measure>
     <measure number="233" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -68542,6 +67650,11 @@
       </note>
     </measure>
     <measure number="237" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -68597,6 +67710,11 @@
       </note>
     </measure>
     <measure number="240" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -68707,11 +67825,6 @@
       </note>
     </measure>
     <measure number="249" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -68766,16 +67879,6 @@
       </note>
     </measure>
     <measure number="255" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="diminuendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -68785,6 +67888,11 @@
       </note>
     </measure>
     <measure number="256" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -68820,11 +67928,6 @@
         <type>half</type>
         <dot />
       </note>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="stop" number="1" />
-        </direction-type>
-      </direction>
     </measure>
   </part>
   <part id="P16">
@@ -69430,11 +68533,6 @@
       </note>
     </measure>
     <measure number="33" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -69615,11 +68713,6 @@
       </note>
     </measure>
     <measure number="53" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -69656,11 +68749,6 @@
       </note>
     </measure>
     <measure number="57" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -69987,12 +69075,7 @@
     <measure number="93" implicit="no">
       <direction placement="above">
         <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">fondamento, non pesante</words>
+          <words font-style="italic">non pesante</words>
         </direction-type>
       </direction>
       <direction placement="below">
@@ -70780,11 +69863,6 @@
       </note>
     </measure>
     <measure number="149" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -70929,11 +70007,6 @@
       </note>
     </measure>
     <measure number="165" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -70970,11 +70043,6 @@
       </note>
     </measure>
     <measure number="169" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -71103,7 +70171,7 @@
     <measure number="183" implicit="no">
       <direction placement="above">
         <direction-type>
-          <words font-style="italic">fondamento, non pesante</words>
+          <words font-style="italic">fondamento</words>
         </direction-type>
       </direction>
       <direction placement="below">
@@ -71400,11 +70468,6 @@
       </note>
     </measure>
     <measure number="197" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <wedge type="crescendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -71439,6 +70502,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="62" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="crescendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <rest measure="no" />
@@ -71658,9 +70726,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="start" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -71670,9 +70735,6 @@
         <duration>192</duration>
         <voice>1</voice>
         <type>eighth</type>
-        <notations>
-          <slur type="stop" number="1" />
-        </notations>
       </note>
       <note>
         <pitch>
@@ -71696,11 +70758,6 @@
           <mode>minor</mode>
         </key>
       </attributes>
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <direction placement="above">
         <direction-type>
           <words font-style="italic">arco, non pesante</words>
@@ -71806,11 +70863,6 @@
       </note>
     </measure>
     <measure number="213" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -71955,11 +71007,6 @@
       </note>
     </measure>
     <measure number="229" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -72055,11 +71102,6 @@
       </note>
     </measure>
     <measure number="233" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -72370,16 +71412,6 @@
       </note>
     </measure>
     <measure number="249" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">ripieno</words>
-        </direction-type>
-      </direction>
-      <direction placement="below">
-        <direction-type>
-          <wedge type="diminuendo" number="1" />
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
@@ -72396,6 +71428,11 @@
           </dynamics>
         </direction-type>
         <sound dynamics="90" />
+      </direction>
+      <direction placement="below">
+        <direction-type>
+          <wedge type="diminuendo" number="1" />
+        </direction-type>
       </direction>
       <note>
         <pitch>
@@ -72513,11 +71550,6 @@
       </direction>
     </measure>
     <measure number="255" implicit="no">
-      <direction placement="above">
-        <direction-type>
-          <words font-style="italic">solo</words>
-        </direction-type>
-      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>

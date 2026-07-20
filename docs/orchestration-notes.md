@@ -30,12 +30,12 @@ is useful for entries and architecture, but exaggerates hardness and cannot
 judge real blend.
 
 The generated edition now contains a complete first phrasing layer: dynamics
-and hairpins, beat-shaped slurs in rapid figuration, breath marks at wind-relay
-endings, tenuto releases for string relays, and accents reserved for structural
-brass/timpani attacks. Rehearsal should still test the density of the slurring,
-turn the string phrasing into practical section bowings, and adjust breath
-locations to individual players. The differentiated late brass voicings also
-remain rehearsal decisions rather than historical claims.
+and sounding-aligned hairpins, beat-shaped slurs only for runs of at least three
+rapid notes, breath marks at wind-relay endings, tenuto releases for string
+relays, and accents reserved for structural brass/timpani attacks. Rehearsal
+should still turn the string phrasing into practical section bowings and adjust
+breath locations to individual players. The differentiated late brass voicings
+also remain rehearsal decisions rather than historical claims.
 
 The source MIDI contains the sounding result of the violin score rather than
 semantic voice labels. The build separates its maximum four simultaneous
@@ -89,9 +89,11 @@ sixteenths in bars 157, 160, and 222–224.
 - Trumpets and timpani are withheld until bar 209 and occur only at 209, 229,
   and 249.
 - The written dynamic arc ranges from *pp* to *ff*. Prevailing dynamics are
-  restated when a player enters after a rest; 86 curated hairpins shape formal
-  transitions and the short relay cells.
-- Rapid wind and string figures are slurred within the beat. Nine wind-relay
+  restated when a player enters after a rest; 79 curated hairpins shape formal
+  transitions and the short relay cells. Wedges begin and end only in measures
+  where that player actually sounds.
+- Rapid wind and string runs of three or more notes are slurred within the
+  beat; automatic two-note slurs have been removed. Nine wind-relay
   endings carry breath marks, string-relay endings use tenuto, and the former
   blanket detached-legato layer has been removed. Short playback gates remain
   separate from the written rhythm.
@@ -101,6 +103,8 @@ sixteenths in bars 157, 160, and 222–224.
 - Source semantics absent from MIDI are restored explicitly: trills at bars
   73–74, coordinated arpeggiation at bars 89 and 201, the final fermata, and
   the two-string unison character of the last D.
+- The second chorale is distinguished from the first's *senza vibrato* color
+  by the direction *dolce, poco vibrato*.
 - Contrapuntal strands retain stable owners within each phrase; subordinate
   choir changes are staggered where practical.
 - Single-line figuration is relayed only at two- to four-bar boundaries. The
@@ -114,6 +118,8 @@ sixteenths in bars 157, 160, and 222–224.
 - Tempi range from quarter note = 52 to 72. These are sectional inflections,
   not tempo changes intended to dissolve the dance.
 - The score is in concert pitch.
+- The full score is formatted for 11×17-inch portrait pages so all sixteen
+  staves and their expressive directions remain visible.
 
 ## Instrumentation
 

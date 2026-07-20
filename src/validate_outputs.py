@@ -128,11 +128,27 @@ def validate_expressive_notation(root: ET.Element) -> None:
     assert len(root.findall(".//fermata")) == 1
     words = [node.text or "" for node in root.findall(".//direction-type/words")]
     assert words.count("arpeggiate upward, together") == 5
-    assert "two-string unison" in words
+    assert "on two strings" in words
     assert words.count("arco, lightly") == 1
-    assert words.count("fondamento, non pesante") == 2
+    assert words.count("non pesante") == 1
+    assert words.count("fondamento") == 1
     assert words.count("arco, non pesante") == 1
     assert words.count("sostenuto, non pesante") == 1
+    part_names = {
+        score_part.get("id"): score_part.findtext("part-name", "")
+        for score_part in root.findall("./part-list/score-part")
+    }
+    for part in root.findall("part"):
+        for measure in part.findall("measure"):
+            measure_words = [
+                node.text or "" for node in measure.findall(".//direction-type/words")
+            ]
+            has_pitch = measure.find("note/pitch") is not None
+            if any(word in {"solo", "ripieno"} for word in measure_words):
+                assert has_pitch
+                assert part_names.get(part.get("id")) != "Double Bass"
+            if measure.findall(".//wedge"):
+                assert has_pitch
     assert not root.findall(".//detached-legato")
 
 
@@ -159,6 +175,8 @@ def main() -> None:
     assert root.tag == "score-partwise"
     assert len(parts) == 16
     assert {len(part.findall("measure")) for part in parts} == {257}
+    assert root.findtext("./defaults/page-layout/page-width") == "1597"
+    assert root.findtext("./defaults/page-layout/page-height") == "2468"
     part_names = {
         score_part.get("id"): score_part.findtext("part-name", "")
         for score_part in root.findall("./part-list/score-part")
@@ -218,9 +236,9 @@ def main() -> None:
         assert mscx.count(b"<Ornament>") == len(root.findall(".//trill-mark"))
         assert mscx.count(b"<Fermata>") == len(root.findall(".//fermata"))
         assert mscx.count(b"arpeggiate upward, together") == 5
-        assert mscx.count(b"two-string unison") == 1
-        assert mscx.count(b"fondamento, non pesante") == 2
-        assert mscx.count(b"non pesante") == 4
+        assert mscx.count(b"on two strings") == 1
+        assert mscx.count(b"fondamento") == 1
+        assert mscx.count(b"non pesante") == 3
 
     midi = midi_path.read_bytes()
     assert midi[:4] == b"MThd"
