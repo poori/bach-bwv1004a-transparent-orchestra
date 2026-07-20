@@ -112,9 +112,11 @@ sixteenths in bars 157, 160, and 222–224.
   inside those gestures: Violin II owns them in 157–160 and viola in 222–224.
 - Flute I and II remain at or above C4, and Oboe I and II at or above B-flat3.
   The build validates these professional-range floors on every regeneration.
-- The native MuseScore file normalizes the historical D-horn and violone
-  catalog identities to French horn and contrabasses for sample assignment;
-  this does not alter the score's concert-pitch notation or sounding octaves.
+- The native MuseScore snapshot activates the Muse Sounds profile. The
+  retained track-assignment profile records the practical Horn in F and
+  Contrabasses sound substitutions for the historical D-horn and violone
+  catalog identities; this does not alter concert-pitch notation or sounding
+  octaves.
 - Tempi range from quarter note = 52 to 72. These are sectional inflections,
   not tempo changes intended to dissolve the dance.
 - The score is in concert pitch.

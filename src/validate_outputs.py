@@ -134,6 +134,7 @@ def validate_expressive_notation(root: ET.Element) -> None:
     assert words.count("fondamento") == 1
     assert words.count("arco, non pesante") == 1
     assert words.count("sostenuto, non pesante") == 1
+    assert "K · Second chorale — dolce, poco vibrato" in words
     part_names = {
         score_part.get("id"): score_part.findtext("part-name", "")
         for score_part in root.findall("./part-list/score-part")
@@ -195,6 +196,8 @@ def main() -> None:
         assert zf.read("score.musicxml") == xml_path.read_bytes()
     with zipfile.ZipFile(mscz_path) as zf:
         assert zf.testzip() is None
+        audio_settings = json.loads(zf.read("audiosettings.json"))
+        assert audio_settings["activeSoundProfile"] == "MuseSounds"
         mscx_names = [name for name in zf.namelist() if name.endswith(".mscx")]
         assert len(mscx_names) == 1
         mscx = zf.read(mscx_names[0])

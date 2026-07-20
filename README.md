@@ -23,14 +23,17 @@ Passion* than to a Romantic tone poem:
   trumpets; timpani; and strings;
 - four audible contrapuntal strands, normally owned by one instrument each;
 - winds inheriting complete lines rather than coloring a permanent string pad;
+- double bass reinforcing only Bach's real lowest contrapuntal strand, never
+  supplying a newly invented bass beneath single-line figuration;
 - brass and timpani reserved for formal pillars;
 - a bright but largely unbrassed D-major center;
 - a persistent dance pulse.
 
 The 257-bar score is complete. The current release is best understood as a
-public **v0.1 realization**: ranges, source-note identity, and file integrity
-are checked, but the orchestration has not yet been rehearsed by a live
-orchestra.
+public **v0.2 realization**: ranges, source-note identity, source ornaments,
+selective bass reinforcement, expressive notation, and file integrity are
+checked, but the orchestration has not yet been rehearsed by a live orchestra.
+The full conductor score is formatted for 11×17-inch portrait pages.
 
 The MuseScore file is a native import snapshot of the generated MusicXML,
 normalized so all sixteen orchestral parts resolve to installed Muse Sounds.
