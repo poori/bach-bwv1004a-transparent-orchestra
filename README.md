@@ -8,6 +8,9 @@ Chaconne for the Leipzig Collegium Musicum, with a modest modern orchestra at
 his disposal but a Baroque ear still governing the result?**
 
 [Listen to the MP3 mock-up](audio/Bach_BWV1004a_transparent_orchestra.mp3?raw=1)
+· [Listen to the pre-v0.2 Muse Sounds comparison](audio/Bach_BWV1004a_transparent_orchestra_MuseSounds.mp3?raw=1)
+· [Listen to the pre-v0.2 MuseScore Basic comparison](audio/Bach_BWV1004a_transparent_orchestra_MuseScore_Basic.mp3?raw=1)
+· [Open the native MuseScore score](score/Bach_BWV1004a_transparent_orchestra.mscz)
 · [Open the editable score](score/Bach_BWV1004a_transparent_orchestra.mxl)
 · [Read the orchestration notes](docs/orchestration-notes.md)
 
@@ -20,21 +23,37 @@ Passion* than to a Romantic tone poem:
   trumpets; timpani; and strings;
 - four audible contrapuntal strands, normally owned by one instrument each;
 - winds inheriting complete lines rather than coloring a permanent string pad;
+- double bass reinforcing only Bach's real lowest contrapuntal strand, never
+  supplying a newly invented bass beneath single-line figuration;
 - brass and timpani reserved for formal pillars;
 - a bright but largely unbrassed D-major center;
 - a persistent dance pulse.
 
 The 257-bar score is complete. The current release is best understood as a
-public **v0.1 realization**: ranges, source-note identity, and file integrity
-are checked, but the orchestration has not yet been rehearsed by a live
-orchestra.
+public **v0.2 realization**: ranges, source-note identity, source ornaments,
+selective bass reinforcement, expressive notation, and file integrity are
+checked, but the orchestration has not yet been rehearsed by a live orchestra.
+The full conductor score is formatted for 11×17-inch portrait pages.
+
+The MuseScore file is a native import snapshot of the generated MusicXML,
+normalized so all sixteen orchestral parts resolve to installed Muse Sounds.
+The pre-v0.2 Muse Sounds and MuseScore Basic renders are retained for broad
+comparison, not note-level auditing of the revised score.
+
+## Credits
+
+- Original music: Johann Sebastian Bach
+- Orchestral realization and build system: **Codex (OpenAI)**
+- Model: **GPT-5.6 Sol High**
+- Created in collaboration with the repository owner
+- Source engraving: Hajo Dezelski / Mutopia Project
 
 ## Repository layout
 
 ```text
 audio/   listening mock-up
 docs/    orchestration and editorial notes
-score/   MusicXML, compressed MXL, and MIDI
+score/   MusicXML, compressed MXL, native MuseScore, and MIDI
 source/  Mutopia LilyPond and MIDI source
 src/     reproducible orchestration/build script
 ```
