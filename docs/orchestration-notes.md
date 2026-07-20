@@ -72,11 +72,11 @@ sixteenths in bars 157, 160, and 222–224.
 - The double-bass line is displaced down an octave when it owns the fourth
   strand, preserving pitch class and giving the orchestral bass a credible
   register.
-- Horn sonorities occur only at bars 97, 113, 169, 177, 197, 209, 229, 249,
-  and 257. The former bar-241 sonority has been removed so the final pillars
-  retain their surprise.
+- Horn sonorities occur only at bars 97, 113, 169, 177, 197, 209, 229, and
+  249. The orchestra withdraws completely from Bach's final two-string unison
+  D rather than completing it as a brass triad.
 - Trumpets and timpani are withheld until bar 209 and occur only at 209, 229,
-  249, and 257.
+  and 249.
 - The written dynamic arc ranges from *pp* to *ff*. Prevailing dynamics are
   restated when a player enters after a rest; 86 curated hairpins shape formal
   transitions and the short relay cells.
@@ -85,8 +85,11 @@ sixteenths in bars 157, 160, and 222–224.
   blanket detached-legato layer has been removed. Short playback gates remain
   separate from the written rhythm.
 - At bar 209 the late brass opens from D into a D–A spacing. Bar 249 adds the
-  minor third in Trumpet II; the final bar places F in Horn I and A in Trumpet
-  II above D. Trumpet II releases before Trumpet I at all three pillars.
+  minor third in Trumpet II. Trumpet II releases before Trumpet I at both
+  pillars; bar 257 is left to the source's bare D and restored fermata.
+- Source semantics absent from MIDI are restored explicitly: trills at bars
+  73–74, coordinated arpeggiation at bars 89 and 201, the final fermata, and
+  the two-string unison character of the last D.
 - Contrapuntal strands retain stable owners within each phrase; subordinate
   choir changes are staggered where practical.
 - Single-line figuration is relayed only at two- to four-bar boundaries. The

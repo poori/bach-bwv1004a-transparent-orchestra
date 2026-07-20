@@ -123,7 +123,12 @@ def validate_expressive_notation(root: ET.Element) -> None:
     assert len(slur_starts) == len(slur_stops) >= 300
     assert len(root.findall(".//breath-mark")) >= 8
     assert len(root.findall(".//tenuto")) >= 16
-    assert len(root.findall(".//accent")) >= 16
+    assert len(root.findall(".//accent")) == 15
+    assert len(root.findall(".//trill-mark")) == 2
+    assert len(root.findall(".//fermata")) == 1
+    words = [node.text or "" for node in root.findall(".//direction-type/words")]
+    assert words.count("arpeggiate upward, together") == 5
+    assert "two-string unison" in words
     assert not root.findall(".//detached-legato")
 
 
@@ -198,6 +203,10 @@ def main() -> None:
         assert mscx.count(b"<HairPin>") == len(root.findall('.//wedge[@type="stop"]'))
         assert mscx.count(b"<Slur>") == len(root.findall('.//slur[@type="start"]'))
         assert mscx.count(b"<Breath>") == len(root.findall(".//breath-mark"))
+        assert mscx.count(b"<Ornament>") == len(root.findall(".//trill-mark"))
+        assert mscx.count(b"<Fermata>") == len(root.findall(".//fermata"))
+        assert mscx.count(b"arpeggiate upward, together") == 5
+        assert mscx.count(b"two-string unison") == 1
 
     midi = midi_path.read_bytes()
     assert midi[:4] == b"MThd"

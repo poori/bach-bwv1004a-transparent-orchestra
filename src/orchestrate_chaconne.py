@@ -306,8 +306,29 @@ STRING_TEXTURE_MARKS = {
     33: "solo", 53: "ripieno", 57: "solo", 93: "ripieno",
     149: "solo", 165: "ripieno", 169: "solo",
     209: "ripieno", 213: "solo", 229: "ripieno", 233: "solo",
-    249: "ripieno",
+    249: "ripieno", 255: "solo",
 }
+
+# Semantic notation that is not represented by the source MIDI.  The source
+# LilyPond engraving marks trills on these exact notes, arpeggiation at the
+# two distributed chords, and a fermata on the final D.  Keeping these events
+# separate from the automatic phrasing layer prevents a sounding MIDI event
+# list from silently replacing the notated musical text.
+SOURCE_TRILLS = {
+    (73, 960, 60),
+    (74, 960, 58),
+}
+SOURCE_FERMATAS = {
+    (257, 0, 62),
+}
+ARPEGGIO_DIRECTIONS = {
+    ("ob1", 89): (384, "arpeggiate upward, together"),
+    ("vln1", 89): (384, "arpeggiate upward, together"),
+    ("vla", 89): (384, "arpeggiate upward, together"),
+    ("fl1", 201): (0, "arpeggiate upward, together"),
+    ("vla", 201): (0, "arpeggiate upward, together"),
+}
+FINAL_UNISON_DIRECTION = "two-string unison"
 
 # A restrained but fully visible dynamic architecture.  Every player receives
 # the prevailing mark on entry after a rest, while these change bars restate
@@ -372,13 +393,12 @@ HAIRPIN_SPANS = (
     (255, 257, "diminuendo", ("vln1", "vln2", "vla", "vc")),
 )
 
-# The unison-D pillars at 209, 249, and 257 are opened into D-minor/fifth
-# spacings.  Trumpet II releases first, so the resonance clarifies rather than
-# ending as a single brass block.
+# The late pillars at 209 and 249 are opened into fifth/minor spacings.
+# Bar 257 is deliberately excluded: Bach's final two-string unison D is more
+# telling than a completed orchestral triad.
 PILLAR_VOICINGS = {
     209: {"hn1": 69, "hn2": 62, "tpt1": 74, "tpt2": 69},
     249: {"hn1": 69, "hn2": 62, "tpt1": 74, "tpt2": 65},
-    257: {"hn1": 65, "hn2": 62, "tpt1": 74, "tpt2": 69},
 }
 
 
@@ -496,9 +516,9 @@ def orchestrate(voices: list[list[Note]]) -> dict[str, list[Note]]:
                                       dynamic_velocity(bar, inst.family, n.velocity)))
 
     # Sustained brass sonorities exist only at large joints in the architecture.
-    horn_bars = [97, 113, 169, 177, 197, 209, 229, 249, 257]
-    trumpet_bars = [209, 229, 249, 257]
-    timpani_bars = [209, 229, 249, 257]
+    horn_bars = [97, 113, 169, 177, 197, 209, 229, 249]
+    trumpet_bars = [209, 229, 249]
+    timpani_bars = [209, 229, 249]
     source = [n for v in voices for n in v]
 
     def harmony_at(bar: int) -> list[int]:
@@ -528,12 +548,12 @@ def orchestrate(voices: list[list[Note]]) -> dict[str, list[Note]]:
     for bar in trumpet_bars:
         pcs = harmony_at(bar)
         start = bar_start(bar)
-        dur = TPQ * 2 if bar != 257 else BAR
+        dur = TPQ * 2
         voicing = PILLAR_VOICINGS.get(bar, {})
         parts["tpt1"].append(Note(start, start + dur,
                                    voicing.get("tpt1", place_in_range(pcs[-1], 62, 82, 74)),
                                    82 if bar < 249 else 88))
-        second_dur = TPQ * 3 // 2 if bar != 257 else TPQ * 2
+        second_dur = TPQ * 3 // 2
         parts["tpt2"].append(Note(start, start + second_dur,
                                    voicing.get("tpt2", place_in_range(pcs[0], 57, 76, 66)),
                                    78 if bar < 249 else 84))
@@ -542,8 +562,7 @@ def orchestrate(voices: list[list[Note]]) -> dict[str, list[Note]]:
         tonic = 38  # D2
         dominant = 45  # A2
         parts["timp"].append(Note(start, start + TPQ, tonic, 78 if bar < 249 else 90))
-        if bar != 257:
-            parts["timp"].append(Note(start + TPQ * 2, start + BAR, dominant, 68))
+        parts["timp"].append(Note(start + TPQ * 2, start + BAR, dominant, 68))
 
     for key in parts:
         parts[key].sort(key=lambda n: (n.start, n.end, n.pitch))
@@ -582,8 +601,6 @@ def performance_end(note: Note, inst: Instrument) -> int:
     # previous MusicXML encoded these tiny gaps literally (20/384 and 24/384
     # of a quarter), leaving importers to invent invalid note values.
     if inst.family == "horn":
-        return note.end - 24
-    if inst.family == "trumpet" and bar == 257:
         return note.end - 24
     if inst.family == "timpani":
         return note.end - 20
@@ -732,12 +749,20 @@ def append_rest_events(measure, ticks: int, *, measure_rest: bool = False) -> No
         append_written_duration(rest_el, value)
 
 
-def append_direction(measure, words: str, bpm: int | None = None, rehearsal: str | None = None):
+def append_direction(
+    measure,
+    words: str,
+    bpm: int | None = None,
+    rehearsal: str | None = None,
+    offset: int | None = None,
+):
     direction = ET.SubElement(measure, "direction", placement="above")
     dtype = ET.SubElement(direction, "direction-type")
     if rehearsal:
         add_text(dtype, "rehearsal", rehearsal, enclosure="rectangle")
     add_text(dtype, "words", words, **{"font-style": "italic"})
+    if offset:
+        add_text(direction, "offset", str(offset))
     if bpm:
         sound = ET.SubElement(direction, "sound", tempo=str(bpm))
         sound.set("dynamics", "70")
@@ -858,6 +883,12 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                 append_direction(measure, section[4], section[3], letter)
             if inst.family == "strings" and bar in STRING_TEXTURE_MARKS:
                 append_direction(measure, STRING_TEXTURE_MARKS[bar])
+            arpeggio = ARPEGGIO_DIRECTIONS.get((inst.key, bar))
+            if arpeggio:
+                offset, words = arpeggio
+                append_direction(measure, words, offset=offset)
+            if inst.key == "vln1" and bar == 257:
+                append_direction(measure, FINAL_UNISON_DIRECTION)
             bar_notes = sorted(by_bar.get(bar, []), key=lambda x: (x.start, x.pitch))
             previous_bar_sounds = bool(by_bar.get(bar - 1, []))
             if bar_notes and (bar in DYNAMIC_CHANGES or not previous_bar_sounds):
@@ -903,6 +934,12 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                     append_written_duration(note_el, value)
                     slur_start = id(n) in slur_starts and value_index == 0
                     slur_stop = id(n) in slur_stops and value_index == len(values) - 1
+                    source_event = (bar, n.start - bar_start(bar), n.pitch)
+                    source_trill = source_event in SOURCE_TRILLS and value_index == 0
+                    source_fermata = (
+                        source_event in SOURCE_FERMATAS
+                        and value_index == len(values) - 1
+                    )
                     phrase_end = (
                         relay_ending
                         and note_index == len(bar_notes) - 1
@@ -910,12 +947,13 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                         and not tie_start
                     )
                     structural_accent = (
-                        bar in {209, 229, 249, 257}
+                        bar in {209, 229, 249}
                         and note_index == 0
                         and value_index == 0
                         and inst.family in {"horn", "trumpet", "timpani"}
                     )
                     if (tie_start or tie_stop or slur_start or slur_stop
+                            or source_trill or source_fermata
                             or phrase_end or structural_accent):
                         notations = ET.SubElement(note_el, "notations")
                         if tie_stop:
@@ -926,6 +964,12 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                             ET.SubElement(notations, "slur", type="start", number="1")
                         if slur_stop:
                             ET.SubElement(notations, "slur", type="stop", number="1")
+                        if source_trill:
+                            ornaments = ET.SubElement(notations, "ornaments")
+                            ET.SubElement(ornaments, "trill-mark")
+                        if source_fermata:
+                            fermata = ET.SubElement(notations, "fermata", type="upright")
+                            fermata.text = "normal"
                         if phrase_end or structural_accent:
                             articulations = ET.SubElement(notations, "articulations")
                             if phrase_end and inst.family in {"flute", "oboe", "bassoon"}:
@@ -1112,6 +1156,16 @@ def validate(parts: dict[str, list[Note]], original: list[Note], voices: list[li
         for a, b in zip(notes, notes[1:]):
             if b.start < a.end:
                 raise AssertionError(f"Overlapping notes in {key} at {b.start}")
+    final_structural = [
+        (key, note.pitch)
+        for key in structural
+        for note in parts[key]
+        if score_bar(note.start) == 257
+    ]
+    if final_structural:
+        raise AssertionError(
+            f"Bach's final unison D must remain unbrassed: {final_structural}"
+        )
 
 
 def main() -> None:

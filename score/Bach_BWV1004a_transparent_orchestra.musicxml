@@ -3016,6 +3016,11 @@
       </note>
     </measure>
     <measure number="201" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">arpeggiate upward, together</words>
+        </direction-type>
+      </direction>
       <note>
         <pitch>
           <step>F</step>
@@ -9692,6 +9697,12 @@
       </note>
     </measure>
     <measure number="89" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">arpeggiate upward, together</words>
+        </direction-type>
+        <offset>384</offset>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -28324,28 +28335,12 @@
       </note>
     </measure>
     <measure number="257" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <dynamics>
-            <pp />
-          </dynamics>
-        </direction-type>
-        <sound dynamics="38" />
-      </direction>
       <note>
-        <pitch>
-          <step>F</step>
-          <octave>4</octave>
-        </pitch>
+        <rest measure="yes" />
         <duration>1152</duration>
         <voice>1</voice>
         <type>half</type>
         <dot />
-        <notations>
-          <articulations>
-            <accent />
-          </articulations>
-        </notations>
       </note>
     </measure>
   </part>
@@ -30827,28 +30822,12 @@
       </note>
     </measure>
     <measure number="257" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <dynamics>
-            <pp />
-          </dynamics>
-        </direction-type>
-        <sound dynamics="38" />
-      </direction>
       <note>
-        <pitch>
-          <step>D</step>
-          <octave>4</octave>
-        </pitch>
+        <rest measure="yes" />
         <duration>1152</duration>
         <voice>1</voice>
         <type>half</type>
         <dot />
-        <notations>
-          <articulations>
-            <accent />
-          </articulations>
-        </notations>
       </note>
     </measure>
   </part>
@@ -33247,28 +33226,12 @@
       </note>
     </measure>
     <measure number="257" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <dynamics>
-            <pp />
-          </dynamics>
-        </direction-type>
-        <sound dynamics="38" />
-      </direction>
       <note>
-        <pitch>
-          <step>D</step>
-          <octave>5</octave>
-        </pitch>
+        <rest measure="yes" />
         <duration>1152</duration>
         <voice>1</voice>
         <type>half</type>
         <dot />
-        <notations>
-          <articulations>
-            <accent />
-          </articulations>
-        </notations>
       </note>
     </measure>
   </part>
@@ -35673,33 +35636,12 @@
       </note>
     </measure>
     <measure number="257" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <dynamics>
-            <pp />
-          </dynamics>
-        </direction-type>
-        <sound dynamics="38" />
-      </direction>
       <note>
-        <pitch>
-          <step>A</step>
-          <octave>4</octave>
-        </pitch>
-        <duration>768</duration>
+        <rest measure="yes" />
+        <duration>1152</duration>
         <voice>1</voice>
         <type>half</type>
-        <notations>
-          <articulations>
-            <accent />
-          </articulations>
-        </notations>
-      </note>
-      <note>
-        <rest measure="no" />
-        <duration>384</duration>
-        <voice>1</voice>
-        <type>quarter</type>
+        <dot />
       </note>
     </measure>
   </part>
@@ -38125,33 +38067,12 @@
       </note>
     </measure>
     <measure number="257" implicit="no">
-      <direction placement="below">
-        <direction-type>
-          <dynamics>
-            <pp />
-          </dynamics>
-        </direction-type>
-        <sound dynamics="38" />
-      </direction>
       <note>
-        <pitch>
-          <step>D</step>
-          <octave>2</octave>
-        </pitch>
-        <duration>384</duration>
-        <voice>1</voice>
-        <type>quarter</type>
-        <notations>
-          <articulations>
-            <accent />
-          </articulations>
-        </notations>
-      </note>
-      <note>
-        <rest measure="no" />
-        <duration>768</duration>
+        <rest measure="yes" />
+        <duration>1152</duration>
         <voice>1</voice>
         <type>half</type>
+        <dot />
       </note>
     </measure>
   </part>
@@ -42155,6 +42076,12 @@
       </note>
     </measure>
     <measure number="89" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">arpeggiate upward, together</words>
+        </direction-type>
+        <offset>384</offset>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -49818,6 +49745,11 @@
       </direction>
     </measure>
     <measure number="255" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -49934,6 +49866,11 @@
       </note>
     </measure>
     <measure number="257" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">two-string unison</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -49951,6 +49888,9 @@
         <voice>1</voice>
         <type>half</type>
         <dot />
+        <notations>
+          <fermata type="upright">normal</fermata>
+        </notations>
       </note>
       <direction placement="below">
         <direction-type>
@@ -56365,6 +56305,11 @@
       </note>
     </measure>
     <measure number="255" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -59602,6 +59547,11 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
+        <notations>
+          <ornaments>
+            <trill-mark />
+          </ornaments>
+        </notations>
       </note>
       <note>
         <pitch>
@@ -59808,6 +59758,11 @@
         <duration>96</duration>
         <voice>1</voice>
         <type>16th</type>
+        <notations>
+          <ornaments>
+            <trill-mark />
+          </ornaments>
+        </notations>
       </note>
       <note>
         <pitch>
@@ -60464,6 +60419,12 @@
       </note>
     </measure>
     <measure number="89" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">arpeggiate upward, together</words>
+        </direction-type>
+        <offset>384</offset>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -62635,6 +62596,11 @@
       </note>
     </measure>
     <measure number="201" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">arpeggiate upward, together</words>
+        </direction-type>
+      </direction>
       <note>
         <pitch>
           <step>D</step>
@@ -65035,6 +65001,11 @@
       </note>
     </measure>
     <measure number="255" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <dynamics>
@@ -68795,6 +68766,11 @@
       </note>
     </measure>
     <measure number="255" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <direction placement="below">
         <direction-type>
           <wedge type="diminuendo" number="1" />
@@ -71491,6 +71467,11 @@
       </direction>
     </measure>
     <measure number="255" implicit="no">
+      <direction placement="above">
+        <direction-type>
+          <words font-style="italic">solo</words>
+        </direction-type>
+      </direction>
       <note>
         <rest measure="yes" />
         <duration>1152</duration>
