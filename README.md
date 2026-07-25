@@ -1,64 +1,55 @@
-# BWV 1004a: a transparent orchestral Chaconne
+# BWV 1004a: a Leipzig orchestral Chaconne
 
-An experimental full orchestral realization of J. S. Bach's *Ciaccona* from
-the Partita in D minor, BWV 1004.
+An experimental orchestral realization of J. S. Bach's *Ciaccona* from the
+Partita in D minor, BWV 1004.
 
-The premise is deliberately counterfactual: **what if Bach had written the
-Chaconne for the Leipzig Collegium Musicum, with a modest modern orchestra at
-his disposal but a Baroque ear still governing the result?**
+The counterfactual premise is specific: **what if Bach had rescored the
+Chaconne for the Leipzig Collegium Musicum around 1730?** The available
+ensemble is modestly modern, but the musical logic is Baroque: a continuous
+figured-bass foundation, recurring ripieno returns, functional wind doubling,
+and natural D brass reserved for the festive major-mode crown.
 
-[Listen to the MP3 mock-up](audio/Bach_BWV1004a_transparent_orchestra.mp3?raw=1)
-· [Listen to the pre-v0.2 Muse Sounds comparison](audio/Bach_BWV1004a_transparent_orchestra_MuseSounds.mp3?raw=1)
-· [Listen to the pre-v0.2 MuseScore Basic comparison](audio/Bach_BWV1004a_transparent_orchestra_MuseScore_Basic.mp3?raw=1)
-· [Open the native MuseScore score](score/Bach_BWV1004a_transparent_orchestra.mscz)
-· [Open the editable score](score/Bach_BWV1004a_transparent_orchestra.mxl)
+[Listen to the current mock-up](audio/Bach_BWV1004a_Leipzig_orchestral_realization.mp3?raw=1)
+· [Open the native MuseScore score](score/Bach_BWV1004a_Leipzig_orchestral_realization.mscz)
+· [Open the editable score](score/Bach_BWV1004a_Leipzig_orchestral_realization.mxl)
 · [Read the orchestration notes](docs/orchestration-notes.md)
 
-## The sound I was after
+## Scoring
 
-This is closer to *Brandenburg Concerto No. 6* meeting the *St. Matthew
-Passion* than to a Romantic tone poem:
+- Pairs of flutes, oboes, and bassoons; two natural horns in D; two natural
+  trumpets in D; timpani (D–A); and strings (suggested ripieno 4.4.3.2.1).
+- Double bass states the four-bar ground throughout; the bassoons alternate
+  four-bar units and cello joins selected variations. A keyboard continuo is
+  indicated but not assigned its own staff.
+- Sustained inner voices, explicitly notated divisi, and double stops keep the
+  ensemble texture harmonically complete through Bach's single-line figuration.
+- Winds primarily double complete string/source lines in overlapping two-bar
+  cells, with written breathing windows and a few independent color changes.
+- Horns, trumpets, and timpani play only in the D-major span, bars 133–208.
+  Every brass pitch is restricted to the notated D-natural harmonic series.
 
-- a modest orchestra: pairs of flutes, oboes, and bassoons; two horns; two
-  trumpets; timpani; and strings;
-- four audible contrapuntal strands, normally owned by one instrument each;
-- winds inheriting complete lines rather than coloring a permanent string pad;
-- double bass reinforcing only Bach's real lowest contrapuntal strand, never
-  supplying a newly invented bass beneath single-line figuration;
-- brass and timpani reserved for formal pillars;
-- a bright but largely unbrassed D-major center;
-- a persistent dance pulse.
+The 257-bar realization preserves all 3,083 source notes and their pitch
+classes, rhythms, ornaments, and final fermata. Added notes are explicitly
+tagged in the generator as continuo, ripieno harmony, wind doubling, or natural
+brass, so source identity remains mechanically auditable.
 
-The 257-bar score is complete. The current release is best understood as a
-public **v0.2 realization**: ranges, source-note identity, source ornaments,
-selective bass reinforcement, expressive notation, and file integrity are
-checked, but the orchestration has not yet been rehearsed by a live orchestra.
-The full conductor score is formatted for 11×17-inch portrait pages.
-
-The MuseScore file is a native import snapshot of the generated MusicXML,
-normalized so all sixteen orchestral parts resolve to installed Muse Sounds.
-The pre-v0.2 Muse Sounds and MuseScore Basic renders are retained for broad
-comparison, not note-level auditing of the revised score.
-
-## Credits
-
-- Original music: Johann Sebastian Bach
-- Orchestral realization and build system: **Codex (OpenAI)**
-- Model: **GPT-5.6 Sol High**
-- Created in collaboration with the repository owner
-- Source engraving: Hajo Dezelski / Mutopia Project
+The score includes actual rehearsal marks A–Q, two-bar *poco accel.*/*poco
+rit.* transitions between tempo plateaus, a first articulation/bowing layer,
+wind cues and breath points, continuo figures, and an 11×17-inch portrait
+conductor layout.
 
 ## Repository layout
 
 ```text
-audio/   listening mock-up
+audio/   current mock-up and retained comparison renders
+build/   WAV and generated musical-metrics report
 docs/    orchestration and editorial notes
-score/   MusicXML, compressed MXL, native MuseScore, and MIDI
+score/   MusicXML, compressed MXL, native MuseScore, PDF, and MIDI
 source/  Mutopia LilyPond and MIDI source
-src/     reproducible orchestration/build script
+src/     reproducible orchestration and validation scripts
 ```
 
-## Rebuilding
+## Rebuilding and checking
 
 Requirements: Python 3.11+, NumPy, and FFmpeg.
 
@@ -69,16 +60,20 @@ pip install -r requirements.txt
 make
 ```
 
-The build regenerates the MusicXML, MXL, MIDI, WAV, and MP3. Run `make check`
-for structural validation.
+`make check` validates file structure and musical properties. Its report covers
+simultaneous sounding staves per bar, continuo presence, active bars and longest
+continuous stretch per player, chord/divisi count, figured-bass coverage, and
+brass notes outside the natural D harmonic series. The machine-readable report
+is written to `build/musical_metrics.json`.
 
-## Source and license
+## Credits and license
 
-The note source is Hajo Dezelski's [Mutopia Project engraving of BWV
-1004](https://www.ibiblio.org/mutopia/cgibin/piece-info.cgi?id=1426), based on
-the Bach-Gesellschaft Edition (1879), published under Creative Commons
-Attribution-ShareAlike 3.0. The source files are retained in `source/` with
-their original attribution metadata.
+- Original music: Johann Sebastian Bach
+- Orchestral realization and build system: **Codex (OpenAI)**, created in
+  collaboration with the repository owner
+- Source engraving: Hajo Dezelski / Mutopia Project, based on the
+  Bach-Gesellschaft Edition (1879)
 
-Bach's composition is public domain. This realization and repository are
+The Mutopia source is published under Creative Commons Attribution-ShareAlike
+3.0. Bach's composition is public domain; this realization and repository are
 shared under [CC BY-SA 3.0](LICENSE).

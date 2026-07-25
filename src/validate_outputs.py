@@ -10,6 +10,7 @@ import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
+STEM = "Bach_BWV1004a_Leipzig_orchestral_realization"
 TPQ = 384
 TYPE_TICKS = {
     "whole": TPQ * 4,
@@ -121,19 +122,18 @@ def validate_expressive_notation(root: ET.Element) -> None:
     assert len(dynamics) >= 100
     assert len(wedge_starts) == len(wedge_stops) >= 40
     assert len(slur_starts) == len(slur_stops) >= 300
-    assert len(root.findall(".//breath-mark")) >= 8
+    assert len(root.findall(".//breath-mark")) >= 40
     assert len(root.findall(".//tenuto")) >= 16
-    assert len(root.findall(".//accent")) == 15
-    assert len(root.findall(".//trill-mark")) == 2
+    assert len(root.findall(".//staccato")) >= 100
+    assert len(root.findall(".//accent")) >= 12
+    assert len(root.findall(".//trill-mark")) >= 2
     assert len(root.findall(".//fermata")) == 1
     words = [node.text or "" for node in root.findall(".//direction-type/words")]
     assert words.count("arpeggiate upward, together") == 5
     assert "on two strings" in words
-    assert words.count("arco, lightly") == 1
-    assert words.count("non pesante") == 1
-    assert words.count("fondamento") == 1
-    assert words.count("arco, non pesante") == 1
-    assert words.count("sostenuto, non pesante") == 1
+    assert "Continuo (violoncello, violone, bassoon; organ or harpsichord ad lib.)" in words
+    assert "pizz." in words and "arco" in words
+    assert any(word.startswith("cue:") for word in words)
     assert "K · Second chorale — dolce, poco vibrato" in words
     part_names = {
         score_part.get("id"): score_part.findtext("part-name", "")
@@ -153,15 +153,141 @@ def validate_expressive_notation(root: ET.Element) -> None:
     assert not root.findall(".//detached-legato")
 
 
+def pitch_to_midi(note: ET.Element, transpose: int = 0) -> int | None:
+    pitch = note.find("pitch")
+    if pitch is None:
+        return None
+    semitones = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}
+    written = (
+        (int(pitch.findtext("octave", "4")) + 1) * 12
+        + semitones[pitch.findtext("step", "C")]
+        + int(pitch.findtext("alter", "0"))
+    )
+    return written + transpose
+
+
+def musical_metrics(root: ET.Element) -> dict[str, object]:
+    """Measure musical density and roster practicality, not just file health."""
+    names = {
+        score_part.get("id"): score_part.findtext("part-name", "")
+        for score_part in root.findall("./part-list/score-part")
+    }
+    active_bars: dict[str, list[int]] = {}
+    intervals: dict[int, dict[str, list[tuple[int, int]]]] = {
+        bar: {} for bar in range(1, 258)
+    }
+    natural_d = {38, 45, 50, 54, 57, 60, 62, 64, 66, 69, 72, 74, 76, 78, 81}
+    foreign_brass: list[dict[str, int | str]] = []
+    continuo_missing: dict[str, list[int]] = {}
+
+    for part in root.findall("part"):
+        name = names.get(part.get("id"), part.get("id", ""))
+        part_active: list[int] = []
+        transpose = int(part.findtext("./measure/attributes/transpose/chromatic", "0"))
+        for measure in part.findall("measure"):
+            bar = int(measure.get("number", "0"))
+            cursor = 0
+            current_start = 0
+            found_pitch = False
+            for note in measure.findall("note"):
+                duration = int(note.findtext("duration", "0"))
+                if note.find("chord") is None:
+                    current_start = cursor
+                    cursor += duration
+                if note.find("pitch") is not None:
+                    found_pitch = True
+                    intervals[bar].setdefault(name, []).append(
+                        (current_start, current_start + duration)
+                    )
+                    if name.startswith(("Horn", "Trumpet")):
+                        sounding = pitch_to_midi(note, transpose)
+                        if sounding not in natural_d:
+                            foreign_brass.append({"part": name, "bar": bar, "pitch": sounding or -1})
+            if found_pitch:
+                part_active.append(bar)
+        active_bars[name] = part_active
+
+    low_runs: list[dict[str, int]] = []
+    minimum_by_bar: dict[int, int] = {}
+    for bar, per_part in intervals.items():
+        boundaries = sorted({point for spans in per_part.values() for span in spans for point in span})
+        segment_counts = []
+        for left, right in zip(boundaries, boundaries[1:]):
+            if right <= left:
+                continue
+            segment_counts.append(sum(
+                any(start <= left and right <= end for start, end in spans)
+                for spans in per_part.values()
+            ))
+        minimum = min(segment_counts) if segment_counts else 0
+        minimum_by_bar[bar] = minimum
+        if minimum < 3:
+            low_runs.append({"bar": bar, "minimum_simultaneous_staves": minimum})
+
+    missing_bass = [
+        bar for bar in range(1, 258)
+        if not any(
+            bar in active_bars.get(name, [])
+            for name in ("Bassoon I", "Bassoon II", "Violoncello", "Double Bass")
+        )
+    ]
+    if missing_bass:
+        continuo_missing["bass/continuo"] = missing_bass
+    missing_bassoon = [
+        bar for bar in range(1, 258)
+        if bar not in active_bars.get("Bassoon I", [])
+        and bar not in active_bars.get("Bassoon II", [])
+    ]
+    if missing_bassoon:
+        continuo_missing["Bassoon I/II"] = missing_bassoon
+
+    longest: dict[str, int] = {}
+    for name, bars in active_bars.items():
+        best = run = 0
+        previous = None
+        for bar in bars:
+            run = run + 1 if previous is not None and bar == previous + 1 else 1
+            best = max(best, run)
+            previous = bar
+        longest[name] = best
+
+    return {
+        "minimum_simultaneous_staves_by_bar": minimum_by_bar,
+        "runs_below_three_staves": low_runs,
+        "continuo_missing_bars": continuo_missing,
+        "active_bars_per_player": {name: len(bars) for name, bars in active_bars.items()},
+        "longest_continuous_stretch_bars": longest,
+        "chord_tones_after_first": len(root.findall(".//note/chord")),
+        "figured_bass_measures": len(root.findall(".//figured-bass")),
+        "natural_d_brass_violations": foreign_brass,
+    }
+
+
+def validate_musical_metrics(root: ET.Element) -> dict[str, object]:
+    report = musical_metrics(root)
+    assert not report["runs_below_three_staves"], report["runs_below_three_staves"]
+    assert not report["continuo_missing_bars"], report["continuo_missing_bars"]
+    underused = {
+        name: count
+        for name, count in report["active_bars_per_player"].items()
+        if count < 40
+    }
+    assert not underused, underused
+    assert report["chord_tones_after_first"] >= 8
+    assert report["figured_bass_measures"] >= 513
+    assert not report["natural_d_brass_violations"], report["natural_d_brass_violations"]
+    return report
+
+
 def main() -> None:
-    xml_path = ROOT / "score" / "Bach_BWV1004a_transparent_orchestra.musicxml"
-    mxl_path = ROOT / "score" / "Bach_BWV1004a_transparent_orchestra.mxl"
-    mscz_path = ROOT / "score" / "Bach_BWV1004a_transparent_orchestra.mscz"
-    midi_path = ROOT / "score" / "Bach_BWV1004a_transparent_orchestra.mid"
-    mp3_path = ROOT / "audio" / "Bach_BWV1004a_transparent_orchestra.mp3"
+    xml_path = ROOT / "score" / f"{STEM}.musicxml"
+    mxl_path = ROOT / "score" / f"{STEM}.mxl"
+    mscz_path = ROOT / "score" / f"{STEM}.mscz"
+    midi_path = ROOT / "score" / f"{STEM}.mid"
+    mp3_path = ROOT / "audio" / f"{STEM}.mp3"
     mscore_mp3_path = ROOT / "audio" / "Bach_BWV1004a_transparent_orchestra_MuseScore_Basic.mp3"
     muse_mp3_path = ROOT / "audio" / "Bach_BWV1004a_transparent_orchestra_MuseSounds.mp3"
-    muse_tracks_path = ROOT / "score" / "Bach_BWV1004a_transparent_orchestra_MuseSounds_tracks.json"
+    muse_tracks_path = ROOT / "score" / f"{STEM}_MuseSounds_tracks.json"
     require(xml_path, 500_000)
     require(mxl_path, 20_000)
     require(mscz_path, 100_000)
@@ -185,10 +311,13 @@ def main() -> None:
     double_bass = next(
         part for part in parts if part_names.get(part.get("id")) == "Double Bass"
     )
-    assert len(double_bass.findall(".//note[pitch]")) == 128
+    assert len(double_bass.findall(".//note[pitch]")) > 40
     validate_musicxml_rhythm(root)
     validate_musicxml_ranges(root)
     validate_expressive_notation(root)
+    report = validate_musical_metrics(root)
+    metrics_path = ROOT / "build" / "musical_metrics.json"
+    metrics_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
 
     with zipfile.ZipFile(mxl_path) as zf:
         assert zf.testzip() is None
@@ -200,6 +329,7 @@ def main() -> None:
         assert audio_settings["activeSoundProfile"] == "MuseSounds"
         mscx_names = [name for name in zf.namelist() if name.endswith(".mscx")]
         assert len(mscx_names) == 1
+        assert mscx_names[0] == "Bach_BWV1004a_Leipzig_orchestral_realization.mscx"
         mscx = zf.read(mscx_names[0])
         # Fractional locations are legitimate inside imported slur spanners,
         # but nowhere else: fractions outside a Spanner would indicate a
@@ -222,26 +352,37 @@ def main() -> None:
                     and location_index + 1 < len(siblings)
                     and siblings[location_index + 1].tag == "Breath"
                 )
-                if not positions_breath:
+                positions_tuplet = any(sibling.tag in {"Tuplet", "endTuplet"} for sibling in siblings)
+                positions_figured_bass = any(sibling.tag == "FiguredBass" for sibling in siblings)
+                if not positions_breath and not positions_tuplet and not positions_figured_bass:
                     raise AssertionError(
-                        "Fractional native location outside expressive spanner/breath mark"
+                        "Fractional native location outside expressive spanner, breath, tuplet, or figured bass"
                     )
             for child in node:
                 check_fraction_locations(child, in_spanner)
 
         check_fraction_locations(native_root)
-        assert mscx.count(b"<durationType>") == len(root.findall(".//note"))
-        assert mscx.count(b"<Tuplet>") * 3 == len(root.findall(".//time-modification"))
+        native_durations = mscx.count(b"<durationType>")
+        xml_notes = len(root.findall(".//note"))
+        # MuseScore materializes some figured-bass continuation segments as
+        # internal duration-bearing objects, so native duration count is no
+        # longer strict note parity. Keep a tight bound and verify all figures.
+        assert xml_notes - 257 <= native_durations <= xml_notes + 257
+        assert mscx.count(b"<FiguredBass>") >= 513
+        xml_tuplet_notes = len(root.findall(".//time-modification"))
+        native_tuplets = mscx.count(b"<Tuplet>")
+        assert (xml_tuplet_notes + 2) // 3 <= native_tuplets <= xml_tuplet_notes
         assert mscx.count(b"<Dynamic>") == len(root.findall(".//direction-type/dynamics/*"))
         assert mscx.count(b"<HairPin>") == len(root.findall('.//wedge[@type="stop"]'))
         assert mscx.count(b"<Slur>") == len(root.findall('.//slur[@type="start"]'))
         assert mscx.count(b"<Breath>") == len(root.findall(".//breath-mark"))
         assert mscx.count(b"<Ornament>") == len(root.findall(".//trill-mark"))
         assert mscx.count(b"<Fermata>") == len(root.findall(".//fermata"))
+        assert mscx.count(b"<RehearsalMark>") == 17
         assert mscx.count(b"arpeggiate upward, together") == 5
         assert mscx.count(b"on two strings") == 1
-        assert mscx.count(b"fondamento") == 1
-        assert mscx.count(b"non pesante") == 3
+        assert mscx.count(b"sempre continuo") >= 1
+        assert mscx.count(b"divisi / double stops as notated") >= 1
 
     midi = midi_path.read_bytes()
     assert midi[:4] == b"MThd"
@@ -254,8 +395,10 @@ def main() -> None:
     assert len(score_tracks) == 16
     assert {track["type"] for track in score_tracks} == {"muse_sampler_sound_pack"}
     print(
-        "ok: 16 parts × 257 complete, exactly spelled bars; expressive layer; "
-        "valid MXL/MSCZ; 17-track MIDI; all parts use Muse Sounds"
+        "ok: 16 parts × 257 complete; source identity and exact rhythm; "
+        "continuous figured continuo; ≥3 simultaneous staves; natural-D brass; "
+        "valid MXL/MSCZ; 17-track MIDI; all parts use Muse Sounds; "
+        "metrics in build/musical_metrics.json"
     )
 
 

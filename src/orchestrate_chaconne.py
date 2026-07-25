@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Create a transparent orchestral realization of Bach's BWV 1004 Chaconne.
+"""Create a Leipzig-style orchestral realization of Bach's BWV 1004 Chaconne.
 
 The source is the Mutopia Project MIDI corresponding to Hajo Dezelski's
-LilyPond engraving (CC BY-SA 3.0).  This script separates its four sounding
-voices, hands complete strands between instrumental choirs, adds only a few
-structural brass/timpani pillars, and writes MusicXML, MIDI, and a simple audio
-mock-up.
+LilyPond engraving (CC BY-SA 3.0).  The source notes remain an auditable layer;
+continuo, ripieno harmony, wind doublings, and a natural-brass D-major crown are
+added around them.  The script writes MusicXML, MIDI, and a simple audio mock-up.
 """
 
 from __future__ import annotations
@@ -28,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE_MIDI = ROOT / "source" / "bwv-1004_5.mid"
 OUT = ROOT / "score"
 BUILD = ROOT / "build"
+STEM = "Bach_BWV1004a_Leipzig_orchestral_realization"
 TPQ = 384
 PICKUP = 2 * TPQ
 BAR = 3 * TPQ
@@ -42,6 +42,7 @@ class Note:
     tie_start: bool = False
     tie_stop: bool = False
     editorial: str | None = None
+    chord: bool = False
 
 
 @dataclass(frozen=True)
@@ -74,10 +75,10 @@ INSTRUMENTS = [
     Instrument("ob2", "Oboe II", "Ob. II", 68, 1, "G", 58, "oboe"),
     Instrument("bn1", "Bassoon I", "Bsn. I", 70, 2, "F", 52, "bassoon"),
     Instrument("bn2", "Bassoon II", "Bsn. II", 70, 2, "F", 66, "bassoon"),
-    Instrument("hn1", "Horn I in D (concert pitch)", "Hn. I", 60, 3, "G", 36, "horn"),
-    Instrument("hn2", "Horn II in D (concert pitch)", "Hn. II", 60, 3, "G", 70, "horn"),
-    Instrument("tpt1", "Trumpet I in D (concert pitch)", "Tpt. I", 56, 4, "G", 30, "trumpet"),
-    Instrument("tpt2", "Trumpet II in D (concert pitch)", "Tpt. II", 56, 4, "G", 76, "trumpet"),
+    Instrument("hn1", "Horn I in D", "Hn. I in D", 60, 3, "G", 36, "horn"),
+    Instrument("hn2", "Horn II in D", "Hn. II in D", 60, 3, "G", 70, "horn"),
+    Instrument("tpt1", "Trumpet I in D", "Tpt. I in D", 56, 4, "G", 30, "trumpet"),
+    Instrument("tpt2", "Trumpet II in D", "Tpt. II in D", 56, 4, "G", 76, "trumpet"),
     Instrument("timp", "Timpani (D–A)", "Timp.", 47, 5, "F", 64, "timpani"),
     Instrument("vln1", "Violin I", "Vln. I", 40, 6, "G", 28, "strings"),
     Instrument("vln2", "Violin II", "Vln. II", 40, 6, "G", 44, "strings"),
@@ -199,20 +200,20 @@ def separate_voices(notes: list[Note]) -> list[list[Note]]:
 SECTIONS = [
     (1, 16, ("vln1", "vln2", "vla", "vc"), 62, "A · Grave — strings alone"),
     (17, 32, ("ob1", "vln1", "vla", "bn1"), 64, "B · Oboe enters as a voice"),
-    (33, 56, ("vln1", "vln2", "vla", "vc"), 66, "C · Figuration — violin-led"),
+    (33, 56, ("vln1", "vln2", "vla", "vc"), 66, "C · Concertino I — over continuo"),
     (57, 76, ("fl1", "ob1", "vla", "bn1"), 68, "D · Flute-led dialogue"),
     (77, 96, ("vln1", "ob1", "vla", "vc"), 64, "E · Dialogue — gathering to strings"),
-    (97, 120, ("ob1", "ob2", "bn1", "bn2"), 60, "F · Chorale, senza vibrato"),
+    (97, 120, ("ob1", "ob2", "bn1", "vc"), 60, "F · Chorale, senza vibrato"),
     (121, 132, ("vln1", "vln2", "vla", "vc"), 66, "G · Gathering motion"),
-    (133, 148, ("fl1", "fl2", "ob1", "bn1"), 68, "H · D major — chiaro"),
+    (133, 148, ("vln1", "vln2", "vla", "vc"), 68, "H · D major — ripieno festivo"),
     (149, 168, ("vln1", "vln2", "vla", "vc"), 70, "I · D major — violin-led flow"),
-    (169, 176, ("vln1", "fl1", "vla", "vc"), 72, "J · Crown of the major section"),
-    (177, 196, ("ob1", "ob2", "bn1", "bn2"), 64, "K · Second chorale — dolce, poco vibrato"),
-    (197, 208, ("fl1", "ob1", "vla", "cb"), 68, "L · Major-mode cadence"),
-    (209, 228, ("vln1", "vln2", "vla", "vc"), 66, "M · D minor returns — ripieno, then relays"),
+    (169, 176, ("vln1", "fl1", "vla", "vc"), 72, "J · Clarino crown"),
+    (177, 196, ("ob1", "ob2", "bn1", "vc"), 64, "K · Second chorale — dolce, poco vibrato"),
+    (197, 208, ("fl1", "ob1", "vla", "vc"), 68, "L · Major-mode cadence — tutti"),
+    (209, 228, ("vln1", "vln2", "vla", "vc"), 66, "M · D minor returns — strings and winds"),
     (229, 240, ("vln1", "ob1", "vla", "bn1"), 72, "N · Contrapuntal summit — staggered colors"),
     (241, 248, ("fl1", "ob1", "vla", "vc"), 66, "O · Subsiding"),
-    (249, 254, ("ob1", "vln1", "bn1", "cb"), 60, "P · Final pillars"),
+    (249, 254, ("ob1", "vln1", "bn1", "vc"), 60, "P · Final ripieno"),
     (255, 257, ("vln1", "vln2", "vla", "vc"), 52, "Q · Coda — morendo"),
 ]
 
@@ -331,26 +332,52 @@ ARPEGGIO_DIRECTIONS = {
 }
 FINAL_UNISON_DIRECTION = "on two strings"
 
-# A 16-foot foundation belongs only where Bach supplies a real lowest
-# contrapuntal strand.  The double bass doubles that fourth voice at the
-# opening, the two chorales, the D-minor return, and the contrapuntal summit;
-# it remains silent through the single-line violinistic passagework.  Bars
-# 197--208 and 249--254 need no editorial doubling because the double bass
-# already owns Bach's fourth strand there.
-BASS_FOUNDATION_RANGES = (
-    (1, 16),
-    (93, 120),
-    (177, 212),
-    (229, 240),
+# Editorial layers are kept explicitly labelled so source-note parity can be
+# tested independently of the realization.  The repeating bass is the formal
+# engine: D-C#-B-flat-A in the minor and D-C#-B-A in the major.
+CONTINUO_LABEL = "continuo-ground"
+HARMONY_LABEL = "ripieno-harmony"
+WIND_DOUBLE_LABEL = "wind-double"
+BRASS_LABEL = "natural-brass"
+DOUBLE_STOP_LABEL = "notated-divisi"
+
+# Violone relief: the continuo function never drops out because a bassoon or
+# cello covers the ground, but the double bass returns for ripieno pillars and
+# larger string paragraphs rather than sounding mechanically in every bar.
+CB_RIPIENO_RANGES = (
+    (1, 16), (33, 56), (77, 96), (121, 176),
+    (197, 208), (209, 240), (249, 257),
 )
-BASS_FOUNDATION_MARKS = {
-    2: "arco, lightly",
-    93: "non pesante",
-    183: "fondamento",
-    209: "arco, non pesante",
-    230: "sostenuto, non pesante",
+
+CONTINUO_MARKS = {
+    1: "Continuo (violoncello, violone, bassoon; organ or harpsichord ad lib.)",
+    33: "sempre continuo, leggiero",
+    133: "continuo, non pesante",
+    209: "continuo, sostenuto",
 }
-BASS_FOUNDATION_LABEL = "bass-foundation"
+STRING_TECHNIQUE_MARKS = {
+    ("vln2", 33): "pizz.", ("vla", 33): "pizz.",
+    ("vln2", 53): "arco", ("vla", 53): "arco",
+}
+CUE_MARKS = {
+    ("fl1", 33): "cue: Violin I", ("fl2", 41): "cue: Oboe I",
+    ("ob1", 57): "cue: Violin I", ("ob2", 65): "cue: Oboe I",
+    ("bn1", 49): "cue: continuo",
+}
+
+# Explicit transition language supplements the sectional metronome marks.  The
+# MIDI/audio tempo map below realizes these as two-bar ramps.
+TEMPO_TRANSITIONS = {
+    start - 2: ("poco accel." if bpm > SECTIONS[index - 1][3] else "poco rit.")
+    for index, (start, _end, _owners, bpm, _label) in enumerate(SECTIONS)
+    if index and start > 2 and bpm != SECTIONS[index - 1][3]
+}
+
+# D-natural brass sounding pitches.  These are members of the practical
+# harmonic series used here; no chromatic valve notes are admitted.
+D_NATURAL_HARMONICS = {
+    38, 45, 50, 54, 57, 60, 62, 64, 66, 69, 72, 74, 78, 81,
+}
 
 # A restrained but fully visible dynamic architecture.  Every player receives
 # the prevailing mark on entry after a rest, while these change bars restate
@@ -415,13 +442,7 @@ HAIRPIN_SPANS = (
     (255, 257, "diminuendo", ("vln1", "vln2", "vla", "vc")),
 )
 
-# The late pillars at 209 and 249 are opened into fifth/minor spacings.
-# Bar 257 is deliberately excluded: Bach's final two-string unison D is more
-# telling than a completed orchestral triad.
-PILLAR_VOICINGS = {
-    209: {"hn1": 69, "hn2": 62, "tpt1": 74, "tpt2": 69},
-    249: {"hn1": 69, "hn2": 62, "tpt1": 74, "tpt2": 65},
-}
+BRASS_RITORNELLI = ((133, 176), (197, 208))
 
 
 def bar_in_ranges(bar: int, ranges: tuple[tuple[int, int], ...]) -> bool:
@@ -489,6 +510,45 @@ def monophonic_owner_for(bar: int) -> str:
     return ownership_for(bar)[0]
 
 
+def continuo_pattern(bar: int) -> tuple[tuple[int, int, int], ...]:
+    """Return (offset, duration, pitch) events for Bach's four-bar ground.
+
+    The pattern is read from the bass of the opening statement: D-C-sharp |
+    D-B-flat | G-A-C-sharp | D.  The D-major span raises B-flat to B-natural.
+    """
+    if bar == 1:
+        return ((0, PICKUP, 38),)
+    phase = (bar - 2) % 4
+    third_bar_bass = 47 if 133 <= bar < 209 else 46
+    return (
+        ((0, TPQ, 38), (TPQ, TPQ * 2, 37)),
+        ((0, TPQ, 38), (TPQ, TPQ * 2, third_bar_bass)),
+        ((0, TPQ, 43), (TPQ, TPQ, 45), (TPQ * 2, TPQ, 49)),
+        ((0, BAR, 38),),
+    )[phase]
+
+
+def harmony_tones(bar: int) -> tuple[int, int]:
+    """Return a compact pair of inner-voice pitches over the ground."""
+    phase = 0 if bar == 1 else (bar - 2) % 4
+    if 133 <= bar < 209:
+        return ((66, 69), (62, 66), (64, 67), (66, 69))[phase]
+    return ((65, 69), (62, 65), (64, 67), (65, 69))[phase]
+
+
+def part_is_free(parts: dict[str, list[Note]], key: str, start: int, end: int) -> bool:
+    return not any(note.start < end and start < note.end for note in parts[key])
+
+
+def add_editorial_note(
+    parts: dict[str, list[Note]], key: str, start: int, end: int, pitch: int,
+    velocity: int, label: str, *, chord: bool = False,
+) -> None:
+    parts[key].append(Note(
+        start, end, pitch, velocity, editorial=label, chord=chord,
+    ))
+
+
 def dynamic_velocity(bar: int, family: str, original: int) -> int:
     base = 67
     if 97 <= bar <= 120 or 177 <= bar <= 196:
@@ -549,75 +609,154 @@ def orchestrate(voices: list[list[Note]]) -> dict[str, list[Note]]:
             parts[target].append(Note(n.start, n.end, pitch,
                                       dynamic_velocity(bar, inst.family, n.velocity)))
 
-    # Reinforce only Bach's genuine lowest simultaneous strand.  Isolated
-    # single-line notes are deliberately excluded: octave-doubling those
-    # arpeggiations would manufacture a continuo part that is not in the
-    # violin text.
-    for n in voices[3]:
-        bar = score_bar(n.start)
-        if not bar_in_ranges(bar, BASS_FOUNDATION_RANGES):
-            continue
-        if id(n) in monophonic or ownership_for(bar)[3] == "cb":
-            continue
-        parts["cb"].append(Note(
-            n.start,
-            n.end,
-            n.pitch - 12,
-            max(36, dynamic_velocity(bar, "strings", n.velocity) - 10),
-            editorial=BASS_FOUNDATION_LABEL,
-        ))
+    # Notate the vertical writing Bach would actually have put on the page at
+    # the opening and coda. Every source-derived string event in these pillars
+    # gets a specific second pitch; the formal pillars are fully notated.
+    for key in ("vln1", "vln2", "vla", "vc"):
+        source_events = list(parts[key])
+        for note in source_events:
+            bar = score_bar(note.start)
+            if not (bar <= 8 or bar >= 249) or note.editorial is not None:
+                continue
+            if key == "vc":
+                chord_pitch = note.pitch + 4
+            else:
+                chord_pitch = note.pitch - 3 if note.pitch - 3 >= 40 else note.pitch + 4
+            add_editorial_note(
+                parts, key, note.start, note.end, chord_pitch,
+                max(36, note.velocity - 8), DOUBLE_STOP_LABEL, chord=True,
+            )
 
-    # Sustained brass sonorities exist only at large joints in the architecture.
-    horn_bars = [97, 113, 169, 177, 197, 209, 229, 249]
-    trumpet_bars = [209, 229, 249]
-    timpani_bars = [209, 229, 249]
-    source = [n for v in voices for n in v]
-
-    def harmony_at(bar: int) -> list[int]:
-        t = bar_start(bar)
-        near = [n.pitch for n in source if n.start <= t < n.end]
-        if not near:
-            near = [n.pitch for n in source if t <= n.start < t + TPQ // 2]
-        pcs = sorted(set(p % 12 for p in near))
-        return pcs or [2, 9]
-
-    def place_in_range(pc: int, low: int, high: int, prefer: int) -> int:
-        choices = [p for p in range(low, high + 1) if p % 12 == pc]
-        return min(choices, key=lambda p: abs(p - prefer))
-
-    for bar in horn_bars:
-        pcs = harmony_at(bar)
-        low_pc, high_pc = pcs[0], pcs[-1]
+    # The three late ripieno spans require an audible first-violin crown even
+    # when the automatic registral voice separation assigns Bach's top onset
+    # to another desk.
+    for bar in (209, 229, 249):
         start = bar_start(bar)
-        duration = BAR * (2 if bar in (97, 177) else 1)
-        voicing = PILLAR_VOICINGS.get(bar, {})
-        parts["hn1"].append(Note(start, start + duration,
-                                  voicing.get("hn1", place_in_range(high_pc, 55, 74, 67)),
-                                  64 if bar < 209 else 78))
-        parts["hn2"].append(Note(start, start + duration,
-                                  voicing.get("hn2", place_in_range(low_pc, 48, 67, 57)),
-                                  61 if bar < 209 else 75))
-    for bar in trumpet_bars:
-        pcs = harmony_at(bar)
+        end = start + BAR
+        if part_is_free(parts, "vln1", start, end):
+            by_onset: dict[int, list[Note]] = {}
+            for voice in voices:
+                for note in voice:
+                    if start <= note.start < end:
+                        by_onset.setdefault(note.start, []).append(note)
+            for onset in sorted(by_onset):
+                note = max(by_onset[onset], key=lambda item: item.pitch)
+                if part_is_free(parts, "vln1", note.start, note.end):
+                    add_editorial_note(
+                        parts, "vln1", note.start, note.end, note.pitch, 78,
+                        HARMONY_LABEL,
+                    )
+
+    # The bass never disappears. Double bass sustains the ground while the two
+    # bassoons alternate four-bar units; cello joins selected variations when
+    # it is not carrying one of Bach's source-derived strands.
+    for bar in range(1, 258):
         start = bar_start(bar)
-        dur = TPQ * 2
-        voicing = PILLAR_VOICINGS.get(bar, {})
-        parts["tpt1"].append(Note(start, start + dur,
-                                   voicing.get("tpt1", place_in_range(pcs[-1], 62, 82, 74)),
-                                   82 if bar < 249 else 88))
-        second_dur = TPQ * 3 // 2
-        parts["tpt2"].append(Note(start, start + second_dur,
-                                   voicing.get("tpt2", place_in_range(pcs[0], 57, 76, 66)),
-                                   78 if bar < 249 else 84))
-    for bar in timpani_bars:
-        start = bar_start(bar)
-        tonic = 38  # D2
-        dominant = 45  # A2
-        parts["timp"].append(Note(start, start + TPQ, tonic, 78 if bar < 249 else 90))
-        parts["timp"].append(Note(start + TPQ * 2, start + BAR, dominant, 68))
+        duration = PICKUP if bar == 1 else BAR
+        end = start + duration
+        preferred_bassoon = "bn1" if ((bar - 1) // 4) % 2 == 0 else "bn2"
+        bassoon = (
+            preferred_bassoon
+            if part_is_free(parts, preferred_bassoon, start, end)
+            else "bn2"
+        )
+        cello_joins = bar % 4 in {0, 1} and part_is_free(parts, "vc", start, end)
+        for offset, event_duration, root in continuo_pattern(bar):
+            event_start = start + offset
+            event_end = event_start + event_duration
+            if bar_in_ranges(bar, CB_RIPIENO_RANGES):
+                add_editorial_note(parts, "cb", event_start, event_end, root, 54, CONTINUO_LABEL)
+            add_editorial_note(parts, bassoon, event_start, event_end, root + 12, 52, CONTINUO_LABEL)
+            if cello_joins:
+                add_editorial_note(parts, "vc", event_start, event_end, root + 12, 58, CONTINUO_LABEL)
+
+        # A real inner-voice floor replaces the former melody-plus-rests
+        # texture.  Formal returns receive a compact double stop/divisi; other
+        # variations receive one sustained harmonic voice when a desk is free.
+        tones = harmony_tones(bar)
+        desks = ("vla", "vln2", "vc")
+        rotation = bar % len(desks)
+        candidates = desks[rotation:] + desks[:rotation]
+        target = next((key for key in candidates if part_is_free(parts, key, start, end)), None)
+        if target:
+            add_editorial_note(parts, target, start, end, tones[0], 50, HARMONY_LABEL)
+            if bar <= 8 or 133 <= bar <= 136 or 249 <= bar <= 256:
+                add_editorial_note(
+                    parts, target, start, end, tones[1], 48, HARMONY_LABEL, chord=True,
+                )
+
+    # Bach's ensemble rescoring practice normally lets winds reinforce a full
+    # line.  These doublings overlap in two-bar cells and leave regular breath
+    # windows; source ownership remains unchanged and separately auditable.
+    wind_cycles = {
+        "ob1": ((1, 48), (57, 112), (121, 176), (193, 224), (233, 256)),
+        "ob2": ((17, 40), (65, 104), (121, 160), (177, 216), (241, 256)),
+        "fl1": ((33, 72), (121, 176), (193, 224), (241, 256)),
+        "fl2": ((41, 88), (133, 184), (201, 240)),
+        "bn1": ((1, 32), (49, 96), (121, 160), (169, 208), (225, 256)),
+    }
+    source_for_winds = {
+        "ob1": voices[0], "ob2": voices[1] + voices[0],
+        "fl1": voices[0], "fl2": voices[1] + voices[0], "bn1": voices[3],
+    }
+    for key, ranges in wind_cycles.items():
+        low, high = PROFESSIONAL_RANGES.get(key, (34, 81))
+        for note in source_for_winds[key]:
+            bar = score_bar(note.start)
+            if not any(first <= bar <= last for first, last in ranges):
+                continue
+            # Alternating two bars on/two bars off creates breathing and lets
+            # overlapping pairs hand the line over within four-bar variations.
+            if key in {"ob2", "fl2"} and not (133 <= bar <= 208) and (bar - 1) % 4 < 2:
+                continue
+            if key in {"ob1", "fl1"} and not (133 <= bar <= 208) and (bar - 1) % 4 >= 2:
+                continue
+            if not part_is_free(parts, key, note.start, note.end):
+                continue
+            pitch = note.pitch
+            while pitch < low:
+                pitch += 12
+            while pitch > high:
+                pitch -= 12
+            if low <= pitch <= high:
+                add_editorial_note(
+                    parts, key, note.start, note.end, pitch,
+                    dynamic_velocity(bar, INST[key].family, note.velocity) - 6,
+                    WIND_DOUBLE_LABEL,
+                )
+
+    # Natural horns, trumpets, and D-A timpani crown only the D-major span.
+    # The clarino rhythm is active but deliberately limited to harmonic-series
+    # pitches; all brass withdraws before the return to D minor at bar 209.
+    for first, last in BRASS_RITORNELLI:
+        for bar in range(first, last + 1):
+            start = bar_start(bar)
+            phase = (bar - 133) % 4
+            horn1_pattern = ((66, 69, 66), (69, 66, 69), (66, 62, 66), (69, 66, 69))[phase]
+            horn2_pattern = ((62, 57, 62), (57, 62, 57), (62, 57, 62), (57, 62, 57))[phase]
+            for index, pitch in enumerate(horn1_pattern):
+                add_editorial_note(
+                    parts, "hn1", start + index * TPQ, start + (index + 1) * TPQ,
+                    pitch, 68, BRASS_LABEL,
+                )
+            for index, pitch in enumerate(horn2_pattern):
+                add_editorial_note(
+                    parts, "hn2", start + index * TPQ, start + (index + 1) * TPQ,
+                    pitch, 64, BRASS_LABEL,
+                )
+            tpt1_pattern = (74, 78, 81, 78, 78, 74)
+            tpt2_pattern = (69, 69, 74)
+            for index, pitch in enumerate(tpt1_pattern):
+                onset = start + index * (TPQ // 2)
+                add_editorial_note(parts, "tpt1", onset, onset + TPQ // 2, pitch, 82, BRASS_LABEL)
+            for index, pitch in enumerate(tpt2_pattern):
+                onset = start + index * TPQ
+                add_editorial_note(parts, "tpt2", onset, onset + TPQ, pitch, 76, BRASS_LABEL)
+            for onset, pitch in ((start, 38), (start + TPQ * 2, 45)):
+                add_editorial_note(parts, "timp", onset, onset + TPQ, pitch, 72, BRASS_LABEL)
 
     for key in parts:
-        parts[key].sort(key=lambda n: (n.start, n.end, n.pitch))
+        parts[key].sort(key=lambda n: (n.start, n.chord, n.end, n.pitch))
     return parts
 
 
@@ -673,10 +812,10 @@ def write_midi(parts: dict[str, list[Note]], path: Path) -> None:
         (bar_start(133), 0, meta(0x59, bytes([2, 0]))),
         (bar_start(209), 0, meta(0x59, bytes([0xFF, 0]))),
     ]
-    for start, _end, _mapping, bpm, label in SECTIONS:
-        use_bpm = bpm
-        mpqn = round(60_000_000 / use_bpm)
-        tempo_events.append((bar_start(start), 0, meta(0x51, mpqn.to_bytes(3, "big"))))
+    for tick, bpm in tempo_map():
+        mpqn = round(60_000_000 / bpm)
+        tempo_events.append((tick, 0, meta(0x51, mpqn.to_bytes(3, "big"))))
+    for start, _end, _mapping, _bpm, label in SECTIONS:
         tempo_events.append((bar_start(start), 0, meta(0x06, label.encode("utf-8"))))
     tracks = [midi_track(tempo_events)]
     for inst in INSTRUMENTS:
@@ -820,6 +959,29 @@ def append_direction(
         sound.set("dynamics", "70")
 
 
+def append_rehearsal_mark(measure, mark: str) -> None:
+    """Emit a standalone rehearsal direction so MuseScore imports it natively."""
+    direction = ET.SubElement(measure, "direction", placement="above")
+    dtype = ET.SubElement(direction, "direction-type")
+    add_text(dtype, "rehearsal", mark, enclosure="rectangle")
+
+
+def append_figured_bass(measure, bar: int) -> None:
+    """Write a compact, editorial realization cue over the continuo bass."""
+    phase = 0 if bar == 1 else (bar - 2) % 4
+    figures = (("5", "3"), ("6", "5"), ("6",), ("6", "4", "3"))[phase]
+    # One group per bass event, not one generic label per measure. This keeps
+    # cadential beat changes visible and gives the keyboard player 513 groups.
+    events = continuo_pattern(bar)
+    for event_index, (_offset, duration, _pitch) in enumerate(events):
+        figured = ET.SubElement(measure, "figured-bass", parentheses="yes")
+        event_figures = figures if event_index == 0 else ("6", "5")
+        for number in event_figures:
+            figure = ET.SubElement(figured, "figure")
+            add_text(figure, "figure-number", number)
+        add_text(figured, "duration", str(duration))
+
+
 def append_dynamic(measure, mark: str) -> None:
     direction = ET.SubElement(measure, "direction", placement="below")
     dtype = ET.SubElement(direction, "direction-type")
@@ -872,7 +1034,8 @@ def split_at_barlines(notes: list[Note]) -> list[Note]:
             result.append(Note(cursor, end, note.pitch, note.velocity,
                                tie_start=end < note.end,
                                tie_stop=not first,
-                               editorial=note.editorial))
+                               editorial=note.editorial,
+                               chord=note.chord))
             cursor = end
             first = False
     return result
@@ -881,14 +1044,14 @@ def split_at_barlines(notes: list[Note]) -> list[Note]:
 def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
     root = ET.Element("score-partwise", version="4.0")
     work = ET.SubElement(root, "work")
-    add_text(work, "work-title", "Chaconne in D minor, BWV 1004a (imaginary orchestral version)")
+    add_text(work, "work-title", "Chaconne in D minor, BWV 1004a (Leipzig orchestral realization)")
     identification = ET.SubElement(root, "identification")
     add_text(identification, "creator", "Johann Sebastian Bach", type="composer")
     add_text(identification, "creator", "Codex (OpenAI; GPT-5.6 Sol High)", type="arranger")
     add_text(identification, "creator", "Created in collaboration with the repository owner", type="other")
     add_text(identification, "rights", "Source engraving: Hajo Dezelski / Mutopia Project, CC BY-SA 3.0. Arrangement shared under CC BY-SA 3.0.")
     encoding = ET.SubElement(identification, "encoding")
-    add_text(encoding, "software", "Codex transparent-orchestra generator")
+    add_text(encoding, "software", "Codex BWV 1004a orchestral generator")
     defaults = ET.SubElement(root, "defaults")
     scaling = ET.SubElement(defaults, "scaling")
     add_text(scaling, "millimeters", "7.0")
@@ -928,7 +1091,10 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
         hairpin_edges = hairpin_edges_for_part(inst.key, by_bar)
         for bar in range(1, 258):
             measure = ET.SubElement(part, "measure", number=str(bar), implicit="yes" if bar == 1 else "no")
-            bar_notes = sorted(by_bar.get(bar, []), key=lambda x: (x.start, x.pitch))
+            bar_notes = sorted(
+                by_bar.get(bar, []),
+                key=lambda x: (x.start, x.chord, x.end, x.pitch),
+            )
             previous_bar_sounds = bool(by_bar.get(bar - 1, []))
             recently_sounded = any(
                 by_bar.get(previous)
@@ -939,7 +1105,14 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                 if bar == 1:
                     add_text(attrs, "divisions", str(TPQ))
                 key = ET.SubElement(attrs, "key")
-                add_text(key, "fifths", "2" if 133 <= bar < 209 else "-1")
+                transposing_d = inst.family in {"horn", "trumpet"}
+                fifths = (
+                    "0" if transposing_d and 133 <= bar < 209
+                    else "1" if transposing_d
+                    else "2" if 133 <= bar < 209
+                    else "-1"
+                )
+                add_text(key, "fifths", fifths)
                 add_text(key, "mode", "major" if 133 <= bar < 209 else "minor")
                 if bar == 1:
                     time = ET.SubElement(attrs, "time")
@@ -948,10 +1121,22 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                     clef = ET.SubElement(attrs, "clef")
                     add_text(clef, "sign", inst.clef)
                     add_text(clef, "line", "3" if inst.clef == "C" else ("4" if inst.clef == "F" else "2"))
+                    if transposing_d:
+                        transpose = ET.SubElement(attrs, "transpose")
+                        add_text(transpose, "diatonic", "1")
+                        add_text(transpose, "chromatic", "2")
             if idx == 1 and bar in section_starts:
                 section = section_starts[bar]
                 letter = letters[list(section_starts).index(bar)]
-                append_direction(measure, section[4], section[3], letter)
+                append_rehearsal_mark(measure, letter)
+                append_direction(measure, section[4], section[3])
+            if idx == 1 and bar == 1:
+                append_direction(
+                    measure,
+                    "Ripieno strings 4.4.3.2.1; concertino one player per part",
+                )
+            if idx == 1 and bar in TEMPO_TRANSITIONS:
+                append_direction(measure, TEMPO_TRANSITIONS[bar])
             texture = prevailing_string_texture(bar)
             if (
                 inst.family == "strings"
@@ -961,8 +1146,18 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                 and (bar in STRING_TEXTURE_MARKS or not recently_sounded)
             ):
                 append_direction(measure, texture)
-            if inst.key == "cb" and bar_notes and bar in BASS_FOUNDATION_MARKS:
-                append_direction(measure, BASS_FOUNDATION_MARKS[bar])
+            if inst.key == "cb" and bar in CONTINUO_MARKS:
+                append_direction(measure, CONTINUO_MARKS[bar])
+            if inst.key == "vc":
+                append_figured_bass(measure, bar)
+            if inst.family == "strings" and bar in {133, 249}:
+                append_direction(measure, "divisi / double stops as notated")
+            technique = STRING_TECHNIQUE_MARKS.get((inst.key, bar))
+            if technique:
+                append_direction(measure, technique)
+            cue = CUE_MARKS.get((inst.key, bar))
+            if cue:
+                append_direction(measure, cue)
             arpeggio = ARPEGGIO_DIRECTIONS.get((inst.key, bar))
             if arpeggio:
                 offset, words = arpeggio
@@ -986,21 +1181,28 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
             cursor = bar_start(bar)
             end_bar = PICKUP if bar == 1 else cursor + BAR
             for note_index, n in enumerate(bar_notes):
-                if n.start > cursor:
+                if not n.chord and n.start > cursor:
                     append_rest_events(measure, n.start - cursor)
-                if n.start < cursor:
+                if not n.chord and n.start < cursor:
                     # Should not occur in the separated monophonic material.
                     continue
                 values = spell_duration(n.end - n.start)
                 for value_index, value in enumerate(values):
                     note_el = ET.SubElement(measure, "note")
+                    if n.chord:
+                        ET.SubElement(note_el, "chord")
                     pitch = ET.SubElement(note_el, "pitch")
+                    written_pitch = (
+                        n.pitch - 2
+                        if inst.family in {"horn", "trumpet"}
+                        else n.pitch
+                    )
                     names = MAJOR_NAMES if 133 <= bar < 209 else MINOR_NAMES
-                    step, alter = names[n.pitch % 12]
+                    step, alter = names[written_pitch % 12]
                     add_text(pitch, "step", step)
                     if alter:
                         add_text(pitch, "alter", str(alter))
-                    add_text(pitch, "octave", str(n.pitch // 12 - 1))
+                    add_text(pitch, "octave", str(written_pitch // 12 - 1))
                     add_text(note_el, "duration", str(value.ticks))
                     tie_stop = n.tie_stop or value_index > 0
                     tie_start = n.tie_start or value_index < len(values) - 1
@@ -1024,15 +1226,31 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                         and value_index == len(values) - 1
                         and not tie_start
                     )
+                    wind_breath = (
+                        inst.family in {"flute", "oboe", "bassoon"}
+                        and inst.key != "bn2"
+                        and note_index == len(bar_notes) - 1
+                        and value_index == len(values) - 1
+                        and bar % 4 in {0, 2}
+                        and not tie_start
+                    )
+                    baroque_staccato = (
+                        inst.family in {"flute", "oboe", "bassoon", "strings"}
+                        and inst.key not in {"bn2", "cb"}
+                        and value.ticks <= TPQ // 2
+                        and not slur_start and not slur_stop
+                        and note_index % 4 == 3
+                    )
                     structural_accent = (
-                        bar in {209, 229, 249}
+                        bar in {133, 149, 165, 197}
                         and note_index == 0
                         and value_index == 0
                         and inst.family in {"horn", "trumpet", "timpani"}
                     )
                     if (tie_start or tie_stop or slur_start or slur_stop
                             or source_trill or source_fermata
-                            or phrase_end or structural_accent):
+                            or phrase_end or wind_breath or baroque_staccato
+                            or structural_accent):
                         notations = ET.SubElement(note_el, "notations")
                         if tie_stop:
                             ET.SubElement(notations, "tied", type="stop")
@@ -1048,15 +1266,18 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                         if source_fermata:
                             fermata = ET.SubElement(notations, "fermata", type="upright")
                             fermata.text = "normal"
-                        if phrase_end or structural_accent:
+                        if phrase_end or wind_breath or baroque_staccato or structural_accent:
                             articulations = ET.SubElement(notations, "articulations")
-                            if phrase_end and inst.family in {"flute", "oboe", "bassoon"}:
+                            if (phrase_end or wind_breath) and inst.family in {"flute", "oboe", "bassoon"}:
                                 ET.SubElement(articulations, "breath-mark")
                             elif phrase_end:
                                 ET.SubElement(articulations, "tenuto")
+                            if baroque_staccato:
+                                ET.SubElement(articulations, "staccato")
                             if structural_accent:
                                 ET.SubElement(articulations, "accent")
-                cursor = n.end
+                if not n.chord:
+                    cursor = n.end
             if cursor < end_bar:
                 append_rest_events(
                     measure,
@@ -1088,7 +1309,15 @@ def write_mxl(xml_path: Path, mxl_path: Path) -> None:
 
 
 def tempo_map():
-    return [(bar_start(s[0]), s[3]) for s in SECTIONS]
+    points: dict[int, float] = {bar_start(SECTIONS[0][0]): SECTIONS[0][3]}
+    for index, section in enumerate(SECTIONS[1:], 1):
+        start, _end, _owners, bpm, _label = section
+        previous_bpm = SECTIONS[index - 1][3]
+        if start > 2 and bpm != previous_bpm:
+            points[bar_start(start - 2)] = previous_bpm + (bpm - previous_bpm) / 3
+            points[bar_start(start - 1)] = previous_bpm + 2 * (bpm - previous_bpm) / 3
+        points[bar_start(start)] = bpm
+    return sorted(points.items())
 
 
 def tick_to_seconds(tick: int) -> float:
@@ -1194,29 +1423,16 @@ def validate(parts: dict[str, list[Note]], original: list[Note], voices: list[li
     arranged_identity = sorted((n.start, n.end, n.pitch % 12) for n in owned_notes)
     if arranged_identity != source_identity:
         raise AssertionError("The orchestration altered source rhythms or pitch classes")
-    monophonic = monophonic_note_ids(voices)
-    expected_bass_foundation = sorted(
-        (n.start, n.end, n.pitch - 12)
-        for n in voices[3]
-        if bar_in_ranges(score_bar(n.start), BASS_FOUNDATION_RANGES)
-        and id(n) not in monophonic
-        and ownership_for(score_bar(n.start))[3] != "cb"
-    )
-    actual_bass_foundation = sorted(
-        (n.start, n.end, n.pitch)
-        for key, notes in parts.items()
-        for n in notes
-        if n.editorial == BASS_FOUNDATION_LABEL
-        and key == "cb"
-    )
-    if actual_bass_foundation != expected_bass_foundation:
-        raise AssertionError("The selective double-bass foundation is incomplete")
+    editorial_labels = {
+        CONTINUO_LABEL, HARMONY_LABEL, WIND_DOUBLE_LABEL, BRASS_LABEL,
+        DOUBLE_STOP_LABEL,
+    }
     unexpected_editorial = [
         (key, n.editorial, score_bar(n.start))
         for key, notes in parts.items()
         for n in notes
         if n.editorial is not None
-        and (key != "cb" or n.editorial != BASS_FOUNDATION_LABEL)
+        and n.editorial not in editorial_labels
     ]
     if unexpected_editorial:
         raise AssertionError(f"Unexpected editorial notes: {unexpected_editorial}")
@@ -1228,54 +1444,63 @@ def validate(parts: dict[str, list[Note]], original: list[Note], voices: list[li
                 f"{INST[key].name} outside professional range {low}-{high} "
                 f"in bars {bars}"
             )
-    for bar, voicing in PILLAR_VOICINGS.items():
-        for key, expected_pitch in voicing.items():
-            notes = [n for n in parts[key] if score_bar(n.start) == bar]
-            if len(notes) != 1 or notes[0].pitch != expected_pitch:
-                raise AssertionError(
-                    f"Unexpected {key} voicing at bar {bar}: {notes}"
-                )
-        trumpet_one = next(n for n in parts["tpt1"] if score_bar(n.start) == bar)
-        trumpet_two = next(n for n in parts["tpt2"] if score_bar(n.start) == bar)
-        if trumpet_two.end >= trumpet_one.end:
-            raise AssertionError(f"Trumpet II must release first at bar {bar}")
-    # The exposed violinistic spans may remain transparent, but no one player
-    # should carry more than a four-bar unaccompanied cell there.
-    relay_ranges = ((31, 89), (153, 168), (217, 228), (241, 248))
     sounding_by_bar = {bar: set() for bar in range(1, 258)}
     for key, notes in parts.items():
-        if key in structural:
-            continue
         for note in notes:
-            sounding_by_bar[score_bar(note.start)].add(key)
-    for first, last in relay_ranges:
-        previous_owner = None
-        run = 0
-        for bar in range(first, last + 1):
-            owners = sounding_by_bar[bar]
-            sole_owner = next(iter(owners)) if len(owners) == 1 else None
-            run = run + 1 if sole_owner == previous_owner and sole_owner else int(bool(sole_owner))
-            previous_owner = sole_owner
-            if run > 4:
-                raise AssertionError(
-                    f"Unaccompanied {sole_owner} phrase exceeds four bars at bar {bar}"
-                )
+            for bar in range(score_bar(note.start), score_bar(note.end - 1) + 1):
+                sounding_by_bar[bar].add(key)
+    thin = [bar for bar, active in sounding_by_bar.items() if len(active) < 3]
+    if thin:
+        raise AssertionError(f"Fewer than three active staves in bars {thin}")
+    missing_bass = [
+        bar for bar in range(1, 258)
+        if not ({"cb", "vc", "bn1", "bn2"} & sounding_by_bar[bar])
+    ]
+    missing_bassoon = [
+        bar for bar in range(1, 258)
+        if not ({"bn1", "bn2"} & sounding_by_bar[bar])
+    ]
+    if missing_bass or missing_bassoon:
+        raise AssertionError(
+            f"Continuo missing: bass={missing_bass}, bassoon={missing_bassoon}"
+        )
+    for key in ("hn1", "hn2", "tpt1", "tpt2", "timp"):
+        outside_major = [
+            score_bar(note.start) for note in parts[key]
+            if not 133 <= score_bar(note.start) <= 208
+        ]
+        if outside_major:
+            raise AssertionError(f"{key} enters outside D major: {outside_major}")
+    for key in ("hn1", "hn2", "tpt1", "tpt2"):
+        foreign = [note.pitch for note in parts[key] if note.pitch not in D_NATURAL_HARMONICS]
+        if foreign:
+            raise AssertionError(f"{key} uses non-natural-D pitches: {foreign}")
+    active_counts = {
+        key: len({
+            bar
+            for note in notes
+            for bar in range(score_bar(note.start), score_bar(note.end - 1) + 1)
+        })
+        for key, notes in parts.items()
+    }
+    underused = {key: count for key, count in active_counts.items() if count < 40}
+    if underused:
+        raise AssertionError(f"Players with fewer than 40 active bars: {underused}")
+    if sum(1 for notes in parts.values() for n in notes if n.chord) < 8:
+        raise AssertionError("Too few notated double-stop/divisi chord tones")
     for key, notes in parts.items():
         if key in {"hn1", "hn2", "tpt1", "tpt2", "timp"}:
             continue
         for a, b in zip(notes, notes[1:]):
-            if b.start < a.end:
+            if b.start < a.end and not (
+                b.chord and b.start == a.start and b.end == a.end
+            ):
                 raise AssertionError(f"Overlapping notes in {key} at {b.start}")
-    final_structural = [
-        (key, note.pitch)
-        for key in structural
-        for note in parts[key]
-        if score_bar(note.start) == 257
-    ]
-    if final_structural:
-        raise AssertionError(
-            f"Bach's final unison D must remain unbrassed: {final_structural}"
-        )
+    for bar in (209, 229, 249):
+        required = {"vln1", "vc", "cb"}
+        missing = required - sounding_by_bar[bar]
+        if missing:
+            raise AssertionError(f"Climax {bar} lacks {sorted(missing)}")
 
 
 def main() -> None:
@@ -1285,10 +1510,10 @@ def main() -> None:
     voices = separate_voices(original)
     parts = orchestrate(voices)
     validate(parts, original, voices)
-    midi_path = OUT / "Bach_BWV1004a_transparent_orchestra.mid"
-    xml_path = OUT / "Bach_BWV1004a_transparent_orchestra.musicxml"
-    mxl_path = OUT / "Bach_BWV1004a_transparent_orchestra.mxl"
-    wav_path = BUILD / "Bach_BWV1004a_transparent_orchestra.wav"
+    midi_path = OUT / f"{STEM}.mid"
+    xml_path = OUT / f"{STEM}.musicxml"
+    mxl_path = OUT / f"{STEM}.mxl"
+    wav_path = BUILD / f"{STEM}.wav"
     write_midi(parts, midi_path)
     write_musicxml(parts, xml_path)
     write_mxl(xml_path, mxl_path)
