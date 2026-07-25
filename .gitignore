@@ -4,4 +4,6 @@ __pycache__/
 *.pyc
 build/*.dat
 build/*.wav
+build/render/
+build/proposals/**/*.wav
 *.mscz.autosave

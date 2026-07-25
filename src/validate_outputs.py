@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fast structural checks for generated score, MIDI, and audio artifacts."""
+"""Validate the authoritative score and, optionally, its published artifacts."""
 
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -42,10 +42,29 @@ def validate_musicxml_rhythm(root: ET.Element) -> None:
         for measure in part.findall("measure"):
             measure_number = int(measure.get("number", "0"))
             expected = TPQ * 2 if measure_number == 1 else TPQ * 3
-            found = 0
-            for note in measure.findall("note"):
+            cursor = 0
+            furthest = 0
+            last_onset = 0
+            for event in measure:
+                if event.tag == "backup":
+                    cursor -= int(event.findtext("duration", "0"))
+                    if cursor < 0:
+                        raise AssertionError(
+                            f"Backup before bar start in {part.get('id')} "
+                            f"measure {measure_number}"
+                        )
+                    continue
+                if event.tag == "forward":
+                    cursor += int(event.findtext("duration", "0"))
+                    furthest = max(furthest, cursor)
+                    continue
+                if event.tag != "note":
+                    continue
+                note = event
                 duration_el = note.find("duration")
                 type_el = note.find("type")
+                if note.find("grace") is not None and duration_el is None:
+                    continue
                 if duration_el is None or duration_el.text is None:
                     raise AssertionError(
                         f"Missing duration in {part.get('id')} measure {measure_number}"
@@ -74,11 +93,13 @@ def validate_musicxml_rhythm(root: ET.Element) -> None:
                         f"{measure_number}: written={written}, duration={duration}"
                     )
                 if note.find("chord") is None:
-                    found += duration
-            if found != expected:
+                    last_onset = cursor
+                    cursor += duration
+                furthest = max(furthest, last_onset + duration)
+            if furthest != expected:
                 raise AssertionError(
                     f"Incomplete measure in {part.get('id')} measure {measure_number}: "
-                    f"found {found} ticks, expected {expected}"
+                    f"found {furthest} ticks, expected {expected}"
                 )
 
 
@@ -189,7 +210,16 @@ def musical_metrics(root: ET.Element) -> dict[str, object]:
             cursor = 0
             current_start = 0
             found_pitch = False
-            for note in measure.findall("note"):
+            for event in measure:
+                if event.tag == "backup":
+                    cursor -= int(event.findtext("duration", "0"))
+                    continue
+                if event.tag == "forward":
+                    cursor += int(event.findtext("duration", "0"))
+                    continue
+                if event.tag != "note":
+                    continue
+                note = event
                 duration = int(note.findtext("duration", "0"))
                 if note.find("chord") is None:
                     current_start = cursor
@@ -265,8 +295,8 @@ def musical_metrics(root: ET.Element) -> dict[str, object]:
 
 def validate_musical_metrics(root: ET.Element) -> dict[str, object]:
     report = musical_metrics(root)
-    assert not report["runs_below_three_staves"], report["runs_below_three_staves"]
-    assert not report["continuo_missing_bars"], report["continuo_missing_bars"]
+    validate_simultaneity(report)
+    validate_natural_brass(report)
     underused = {
         name: count
         for name, count in report["active_bars_per_player"].items()
@@ -275,11 +305,24 @@ def validate_musical_metrics(root: ET.Element) -> dict[str, object]:
     assert not underused, underused
     assert report["chord_tones_after_first"] >= 8
     assert report["figured_bass_measures"] >= 513
-    assert not report["natural_d_brass_violations"], report["natural_d_brass_violations"]
     return report
 
 
+def validate_simultaneity(report: dict[str, object]) -> None:
+    """Reject holes in the intended melody/harmony/continuo texture."""
+    assert not report["runs_below_three_staves"], report["runs_below_three_staves"]
+    assert not report["continuo_missing_bars"], report["continuo_missing_bars"]
+
+
+def validate_natural_brass(report: dict[str, object]) -> None:
+    """Reject horn or trumpet pitches outside the natural D harmonic series."""
+    assert not report["natural_d_brass_violations"], report["natural_d_brass_violations"]
+
+
 def main() -> None:
+    source_only = sys.argv[1:] == ["--source-only"]
+    if sys.argv[1:] not in ([], ["--source-only"]):
+        raise SystemExit("usage: validate_outputs.py [--source-only]")
     xml_path = ROOT / "score" / f"{STEM}.musicxml"
     mxl_path = ROOT / "score" / f"{STEM}.mxl"
     mscz_path = ROOT / "score" / f"{STEM}.mscz"
@@ -289,13 +332,14 @@ def main() -> None:
     muse_mp3_path = ROOT / "audio" / "Bach_BWV1004a_transparent_orchestra_MuseSounds.mp3"
     muse_tracks_path = ROOT / "score" / f"{STEM}_MuseSounds_tracks.json"
     require(xml_path, 500_000)
-    require(mxl_path, 20_000)
-    require(mscz_path, 100_000)
-    require(midi_path, 20_000)
-    require(mp3_path, 1_000_000)
-    require(mscore_mp3_path, 10_000_000)
-    require(muse_mp3_path, 10_000_000)
-    require(muse_tracks_path, 1_000)
+    if not source_only:
+        require(mxl_path, 20_000)
+        require(mscz_path, 100_000)
+        require(midi_path, 20_000)
+        require(mp3_path, 1_000_000)
+        require(mscore_mp3_path, 10_000_000)
+        require(muse_mp3_path, 10_000_000)
+        require(muse_tracks_path, 1_000)
 
     root = ET.parse(xml_path).getroot()
     parts = root.findall("part")
@@ -319,8 +363,18 @@ def main() -> None:
     metrics_path = ROOT / "build" / "musical_metrics.json"
     metrics_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
 
+    if source_only:
+        print(
+            "ok: authoritative MusicXML; 16 parts × 257 complete; exact rhythm; "
+            "continuous figured continuo; ≥3 simultaneous staves; natural-D brass; "
+            "metrics in build/musical_metrics.json"
+        )
+        return
+
     with zipfile.ZipFile(mxl_path) as zf:
         assert zf.testzip() is None
+        assert zf.namelist()[0] == "mimetype"
+        assert zf.read("mimetype") == b"application/vnd.recordare.musicxml"
         assert "score.musicxml" in zf.namelist()
         assert zf.read("score.musicxml") == xml_path.read_bytes()
     with zipfile.ZipFile(mscz_path) as zf:
@@ -395,7 +449,7 @@ def main() -> None:
     assert len(score_tracks) == 16
     assert {track["type"] for track in score_tracks} == {"muse_sampler_sound_pack"}
     print(
-        "ok: 16 parts × 257 complete; source identity and exact rhythm; "
+        "ok: authoritative score and exact rhythm; 16 parts × 257 complete; "
         "continuous figured continuo; ≥3 simultaneous staves; natural-D brass; "
         "valid MXL/MSCZ; 17-track MIDI; all parts use Muse Sounds; "
         "metrics in build/musical_metrics.json"

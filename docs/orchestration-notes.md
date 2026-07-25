@@ -54,12 +54,20 @@ climaxes.
 
 ## Audit boundaries
 
-Added notes carry one of four generator labels: `continuo-ground`,
-`ripieno-harmony`, `wind-double`, or `natural-brass`. Validation compares every
-unlabelled event against the Mutopia MIDI by onset, duration, and pitch class.
-It also rejects bars with fewer than three simultaneous staves, missing
-continuo bars, underused chairs, absent climax voices, insufficient chord
-writing, minor-mode brass, and brass notes outside the D-natural series.
+The MusicXML score is now the checked-in editorial master, not a generated
+build artifact. The rule-based orchestrator that established the initial
+continuo, ripieno, wind-doubling, and natural-brass layers remains available
+only as a one-shot proposal tool. Its output is isolated under `build/` and
+cannot replace the master.
+
+Validation deliberately checks constraints rather than recomposing the piece.
+It rejects incomplete bars, professional-range violations, bars with fewer
+than three simultaneous staves, missing continuo bars, underused chairs,
+insufficient chord writing, and horn or trumpet notes outside the D-natural
+harmonic series. Published MXL, MuseScore, MIDI, and audio files have a separate
+structural-integrity check, while MXL is checked byte-for-byte against the
+master. A musician can therefore validate a MusicXML edit before refreshing the
+other derivatives.
 
 The mock-up remains a synthetic proof of entries and architecture, not a
 substitute for rehearsal. A live reading should refine continuo registration,

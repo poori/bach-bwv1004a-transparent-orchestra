@@ -10,8 +10,9 @@ figured-bass foundation, recurring ripieno returns, functional wind doubling,
 and natural D brass reserved for the festive major-mode crown.
 
 [Listen to the current mock-up](audio/Bach_BWV1004a_Leipzig_orchestral_realization.mp3?raw=1)
-· [Open the native MuseScore score](score/Bach_BWV1004a_Leipzig_orchestral_realization.mscz)
-· [Open the editable score](score/Bach_BWV1004a_Leipzig_orchestral_realization.mxl)
+· [Edit the authoritative MusicXML](score/Bach_BWV1004a_Leipzig_orchestral_realization.musicxml)
+· [Open the packaged MXL](score/Bach_BWV1004a_Leipzig_orchestral_realization.mxl)
+· [Open the current MuseScore snapshot](score/Bach_BWV1004a_Leipzig_orchestral_realization.mscz)
 · [Read the orchestration notes](docs/orchestration-notes.md)
 
 ## Scoring
@@ -28,10 +29,10 @@ and natural D brass reserved for the festive major-mode crown.
 - Horns, trumpets, and timpani play only in the D-major span, bars 133–208.
   Every brass pitch is restricted to the notated D-natural harmonic series.
 
-The 257-bar realization preserves all 3,083 source notes and their pitch
-classes, rhythms, ornaments, and final fermata. Added notes are explicitly
-tagged in the generator as continuo, ripieno harmony, wind doubling, or natural
-brass, so source identity remains mechanically auditable.
+The frozen 257-bar realization was produced from an audited layer containing
+all 3,083 source notes and their pitch classes, rhythms, ornaments, and final
+fermata. From this revision forward, note-level changes are editorial decisions
+made directly in the score and reviewed as ordinary diffs.
 
 The score includes actual rehearsal marks A–Q, two-bar *poco accel.*/*poco
 rit.* transitions between tempo plateaus, a first articulation/bowing layer,
@@ -42,29 +43,43 @@ conductor layout.
 
 ```text
 audio/   current mock-up and retained comparison renders
-build/   WAV and generated musical-metrics report
+build/   validation reports, review renders, and one-shot proposals
 docs/    orchestration and editorial notes
-score/   MusicXML, compressed MXL, native MuseScore, PDF, and MIDI
+score/   authoritative MusicXML plus published MXL, MuseScore, PDF, and MIDI
 source/  Mutopia LilyPond and MIDI source
-src/     reproducible orchestration and validation scripts
+src/     validation, packaging, and opt-in proposal tools
 ```
 
-## Rebuilding and checking
+## Editing, checking, and packaging
 
-Requirements: Python 3.11+, NumPy, and FFmpeg.
+The checked-in `.musicxml` file is the source of truth. Open that file in
+MuseScore, make musical corrections there, and export back to the same
+MusicXML path. The `.mxl`, `.mscz`, `.pdf`, `.mid`, and `.mp3` files are
+published derivatives; editing one of them does not update the master.
+
+The default build never composes or replaces notes:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
 make
 ```
 
-`make check` validates file structure and musical properties. Its report covers
-simultaneous sounding staves per bar, continuo presence, active bars and longest
-continuous stretch per player, chord/divisi count, figured-bass coverage, and
-brass notes outside the natural D harmonic series. The machine-readable report
-is written to `build/musical_metrics.json`.
+That validates the master and packages its exact bytes as deterministic MXL.
+`make check` checks the editable master alone, so it is useful immediately
+after a hand edit. `make check-artifacts` additionally checks the published
+MuseScore, MIDI, audio, and track-profile snapshots for structural integrity;
+the MXL package is also checked byte-for-byte against the master.
+
+Validation covers exact bar duration, instrument ranges, simultaneous sounding
+staves, continuo presence, active bars and longest continuous stretch per
+player, chord/divisi count, figured-bass coverage, and every horn/trumpet pitch
+against the natural D harmonic series. The machine-readable report is written
+to `build/musical_metrics.json`.
+
+`make render MUSESCORE=/path/to/mscore` creates review-only MuseScore, PDF,
+MIDI, and MP3 exports under `build/render/`; it does not replace published
+artifacts. `make proposal` runs the former rule-based orchestrator once and
+writes its complete proposal under `build/proposals/`. NumPy is required only
+for that opt-in proposal tool. Neither target can overwrite the master.
 
 ## Credits and license
 

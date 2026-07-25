@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Create a Leipzig-style orchestral realization of Bach's BWV 1004 Chaconne.
+"""Propose a Leipzig-style orchestral realization of Bach's BWV 1004 Chaconne.
 
 The source is the Mutopia Project MIDI corresponding to Hajo Dezelski's
 LilyPond engraving (CC BY-SA 3.0).  The source notes remain an auditable layer;
 continuo, ripieno harmony, wind doublings, and a natural-brass D-major crown are
-added around them.  The script writes MusicXML, MIDI, and a simple audio mock-up.
+added around them.
+
+This is an opt-in, one-shot proposal tool, not part of the build. It writes to
+``build/proposals/`` and never replaces the hand-editable master in ``score/``.
 """
 
 from __future__ import annotations
@@ -25,9 +28,9 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_MIDI = ROOT / "source" / "bwv-1004_5.mid"
-OUT = ROOT / "score"
-BUILD = ROOT / "build"
 STEM = "Bach_BWV1004a_Leipzig_orchestral_realization"
+OUT = ROOT / "build" / "proposals" / STEM
+BUILD = OUT
 TPQ = 384
 PICKUP = 2 * TPQ
 BAR = 3 * TPQ
