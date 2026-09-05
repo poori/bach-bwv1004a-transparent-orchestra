@@ -3,10 +3,10 @@ title: "BWV 1004a: a Leipzig orchestral Chaconne"
 message: "Please cite this repository and the Mutopia source engraving."
 type: software
 authors:
-  - name: "Codex (OpenAI; GPT-5.6 Sol High)"
+  - name: "Codex (OpenAI)"
     website: "https://openai.com/"
-version: 0.3.0
-date-released: 2026-07-25
+version: 0.4.0
+date-released: 2026-09-04
 license: CC-BY-SA-3.0
 keywords:
   - Johann Sebastian Bach

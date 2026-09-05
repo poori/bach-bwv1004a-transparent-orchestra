@@ -7,3 +7,7 @@ build/*.wav
 build/render/
 build/proposals/**/*.wav
 *.mscz.autosave
+
+# Local comparison copies and score-preview images.
+build/revision-*/before/
+build/revision-*/qa/

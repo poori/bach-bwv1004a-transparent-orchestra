@@ -15,18 +15,32 @@ and natural D brass reserved for the festive major-mode crown.
 · [Open the current MuseScore snapshot](score/Bach_BWV1004a_Leipzig_orchestral_realization.mscz)
 · [Read the orchestration notes](docs/orchestration-notes.md)
 
+## September 2026 revision
+
+The D-major opening now unfolds without brass. Staged horn, trumpet, and
+timpani entries give the two crowns a stronger sense of arrival; lighter
+continuo dynamics and 44 fewer bars of exact wind doubling expose the
+concertino lines. The final return is marked *nobile, come un ricordo*, with
+a gentler dynamic than the preceding summit. All distinct non-brass sounding
+pitch/rhythm events in the previous master are preserved.
+
+The pre-revision files are retained locally in
+`build/revision-2026-09-04/before/`; the editorial audit and one-time revision
+script sit beside them. They are not part of the default build.
+
 ## Scoring
 
 - Pairs of flutes, oboes, and bassoons; two natural horns in D; two natural
   trumpets in D; timpani (D–A); and strings (suggested ripieno 4.4.3.2.1).
-- Double bass states the four-bar ground throughout; the bassoons alternate
+- Double bass reinforces the ripieno pillars; the bassoons alternate
   four-bar units and cello joins selected variations. A keyboard continuo is
   indicated but not assigned its own staff.
-- Sustained inner voices, explicitly notated divisi, and double stops keep the
-  ensemble texture harmonically complete through Bach's single-line figuration.
+- Sustained inner voices support Bach's single-line figuration where they do
+  not contradict its chromatic motion; sparse passages are left sparse.
 - Winds primarily double complete string/source lines in overlapping two-bar
   cells, with written breathing windows and a few independent color changes.
-- Horns, trumpets, and timpani play only in the D-major span, bars 133–208.
+- Horns enter at bar 157, trumpets at 165, and timpani at 169; their second
+  entries are staggered at 197, 201, and 205. All withdraw before D minor.
   Every brass pitch is restricted to the notated D-natural harmonic series.
 
 The frozen 257-bar realization was produced from an audited layer containing
@@ -69,17 +83,22 @@ after a hand edit. `make check-artifacts` additionally checks the published
 MuseScore, MIDI, audio, and track-profile snapshots for structural integrity;
 the MXL package is also checked byte-for-byte against the master.
 
-Validation covers exact bar duration, instrument ranges, simultaneous sounding
-staves, continuo presence, active bars and longest continuous stretch per
-player, chord/divisi count, figured-bass coverage, and every horn/trumpet pitch
-against the natural D harmonic series. The machine-readable report is written
-to `build/musical_metrics.json`.
+Validation covers exact filled duration on every staff, instrument ranges,
+continuo presence, active bars and longest continuous stretch per player,
+figured-bass coverage, every horn/trumpet pitch against the natural D harmonic
+series, and simultaneous natural/altered forms of the same concert-pitch
+letter. Density remains a report metric, not a pass condition. The
+machine-readable report is written to `build/musical_metrics.json`.
 
 `make render MUSESCORE=/path/to/mscore` creates review-only MuseScore, PDF,
 MIDI, and MP3 exports under `build/render/`; it does not replace published
 artifacts. `make proposal` runs the former rule-based orchestrator once and
 writes its complete proposal under `build/proposals/`. NumPy is required only
 for that opt-in proposal tool. Neither target can overwrite the master.
+
+The current listening render uses MuseSounds with MS Basic fallback for the
+two natural-D horns and violone; see the exported track report and editorial
+notes for the exact assignments.
 
 ## Credits and license
 

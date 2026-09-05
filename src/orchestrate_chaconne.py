@@ -45,7 +45,6 @@ class Note:
     tie_start: bool = False
     tie_stop: bool = False
     editorial: str | None = None
-    chord: bool = False
 
 
 @dataclass(frozen=True)
@@ -215,7 +214,7 @@ SECTIONS = [
     (197, 208, ("fl1", "ob1", "vla", "vc"), 68, "L · Major-mode cadence — tutti"),
     (209, 228, ("vln1", "vln2", "vla", "vc"), 66, "M · D minor returns — strings and winds"),
     (229, 240, ("vln1", "ob1", "vla", "bn1"), 72, "N · Contrapuntal summit — staggered colors"),
-    (241, 248, ("fl1", "ob1", "vla", "vc"), 66, "O · Subsiding"),
+    (241, 248, ("vln1", "vln2", "vla", "vc"), 66, "O · Subsiding — strings"),
     (249, 254, ("ob1", "vln1", "bn1", "vc"), 60, "P · Final ripieno"),
     (255, 257, ("vln1", "vln2", "vla", "vc"), 52, "Q · Coda — morendo"),
 ]
@@ -292,8 +291,8 @@ MONOPHONIC_RELAYS = (
     (221, 224, "vla"),
     (225, 226, "ob1"),
     (227, 228, "vln1"),
-    (241, 242, "fl1"),
-    (243, 244, "ob1"),
+    (241, 242, "vln1"),
+    (243, 244, "vln2"),
     (245, 246, "vla"),
     (247, 248, "vln1"),
 )
@@ -342,7 +341,6 @@ CONTINUO_LABEL = "continuo-ground"
 HARMONY_LABEL = "ripieno-harmony"
 WIND_DOUBLE_LABEL = "wind-double"
 BRASS_LABEL = "natural-brass"
-DOUBLE_STOP_LABEL = "notated-divisi"
 
 # Violone relief: the continuo function never drops out because a bassoon or
 # cello covers the ground, but the double bass returns for ripieno pillars and
@@ -531,12 +529,12 @@ def continuo_pattern(bar: int) -> tuple[tuple[int, int, int], ...]:
     )[phase]
 
 
-def harmony_tones(bar: int) -> tuple[int, int]:
-    """Return a compact pair of inner-voice pitches over the ground."""
+def harmony_tone(bar: int) -> int:
+    """Return one sustained inner-voice pitch over the ground."""
     phase = 0 if bar == 1 else (bar - 2) % 4
     if 133 <= bar < 209:
-        return ((66, 69), (62, 66), (64, 67), (66, 69))[phase]
-    return ((65, 69), (62, 65), (64, 67), (65, 69))[phase]
+        return (66, 62, 64, 66)[phase]
+    return (65, 62, 64, 65)[phase]
 
 
 def part_is_free(parts: dict[str, list[Note]], key: str, start: int, end: int) -> bool:
@@ -545,11 +543,68 @@ def part_is_free(parts: dict[str, list[Note]], key: str, start: int, end: int) -
 
 def add_editorial_note(
     parts: dict[str, list[Note]], key: str, start: int, end: int, pitch: int,
-    velocity: int, label: str, *, chord: bool = False,
+    velocity: int, label: str,
 ) -> None:
     parts[key].append(Note(
-        start, end, pitch, velocity, editorial=label, chord=chord,
+        start, end, pitch, velocity, editorial=label,
     ))
+
+
+def remove_editorial_cross_relations(parts: dict[str, list[Note]]) -> int:
+    """Drop added notes that contradict a simultaneous source-note spelling."""
+    by_bar: dict[int, list[tuple[str, Note, int, int, str, int]]] = {}
+    for key, notes in parts.items():
+        for note in notes:
+            for bar in range(score_bar(note.start), score_bar(note.end - 1) + 1):
+                start = max(note.start, bar_start(bar)) - bar_start(bar)
+                end = min(note.end, bar_start(bar) + (PICKUP if bar == 1 else BAR))
+                end -= bar_start(bar)
+                names = MAJOR_NAMES if 133 <= bar < 209 else MINOR_NAMES
+                step, alter = names[note.pitch % 12]
+                by_bar.setdefault(bar, []).append((key, note, start, end, step, alter))
+
+    remove: set[int] = set()
+    label_priority = {
+        WIND_DOUBLE_LABEL: 4,
+        BRASS_LABEL: 3,
+        CONTINUO_LABEL: 2,
+        HARMONY_LABEL: 1,
+    }
+    for events in by_bar.values():
+        boundaries = sorted({point for _, _, start, end, _, _ in events for point in (start, end)})
+        for left, right in zip(boundaries, boundaries[1:]):
+            active = [event for event in events if event[2] <= left and right <= event[3]]
+            for step in "CDEFGAB":
+                matching = [event for event in active if event[4] == step]
+                if len({event[0] for event in matching}) < 2:
+                    continue
+                alterations = {event[5] for event in matching}
+                if len(alterations) < 2:
+                    continue
+                source_alterations = {
+                    event[5] for event in matching if event[1].editorial is None
+                }
+                if len(source_alterations) > 1:
+                    continue
+                if source_alterations:
+                    keep = next(iter(source_alterations))
+                else:
+                    keep = max(
+                        alterations,
+                        key=lambda alter: sum(
+                            label_priority.get(event[1].editorial, 0)
+                            for event in matching if event[5] == alter
+                        ),
+                    )
+                remove.update(
+                    id(event[1])
+                    for event in matching
+                    if event[5] != keep and event[1].editorial is not None
+                )
+
+    for key in parts:
+        parts[key] = [note for note in parts[key] if id(note) not in remove]
+    return len(remove)
 
 
 def dynamic_velocity(bar: int, family: str, original: int) -> int:
@@ -612,24 +667,6 @@ def orchestrate(voices: list[list[Note]]) -> dict[str, list[Note]]:
             parts[target].append(Note(n.start, n.end, pitch,
                                       dynamic_velocity(bar, inst.family, n.velocity)))
 
-    # Notate the vertical writing Bach would actually have put on the page at
-    # the opening and coda. Every source-derived string event in these pillars
-    # gets a specific second pitch; the formal pillars are fully notated.
-    for key in ("vln1", "vln2", "vla", "vc"):
-        source_events = list(parts[key])
-        for note in source_events:
-            bar = score_bar(note.start)
-            if not (bar <= 8 or bar >= 249) or note.editorial is not None:
-                continue
-            if key == "vc":
-                chord_pitch = note.pitch + 4
-            else:
-                chord_pitch = note.pitch - 3 if note.pitch - 3 >= 40 else note.pitch + 4
-            add_editorial_note(
-                parts, key, note.start, note.end, chord_pitch,
-                max(36, note.velocity - 8), DOUBLE_STOP_LABEL, chord=True,
-            )
-
     # The three late ripieno spans require an audible first-violin crown even
     # when the automatic registral voice separation assigns Bach's top onset
     # to another desk.
@@ -673,28 +710,24 @@ def orchestrate(voices: list[list[Note]]) -> dict[str, list[Note]]:
             if cello_joins:
                 add_editorial_note(parts, "vc", event_start, event_end, root + 12, 58, CONTINUO_LABEL)
 
-        # A real inner-voice floor replaces the former melody-plus-rests
-        # texture.  Formal returns receive a compact double stop/divisi; other
-        # variations receive one sustained harmonic voice when a desk is free.
-        tones = harmony_tones(bar)
+        # A sustained inner voice replaces the former melody-plus-rests texture
+        # when a desk is free. No pitch is inferred from a fixed interval above
+        # or below a melodic note.
+        tone = harmony_tone(bar)
         desks = ("vla", "vln2", "vc")
         rotation = bar % len(desks)
         candidates = desks[rotation:] + desks[:rotation]
         target = next((key for key in candidates if part_is_free(parts, key, start, end)), None)
         if target:
-            add_editorial_note(parts, target, start, end, tones[0], 50, HARMONY_LABEL)
-            if bar <= 8 or 133 <= bar <= 136 or 249 <= bar <= 256:
-                add_editorial_note(
-                    parts, target, start, end, tones[1], 48, HARMONY_LABEL, chord=True,
-                )
+            add_editorial_note(parts, target, start, end, tone, 50, HARMONY_LABEL)
 
     # Bach's ensemble rescoring practice normally lets winds reinforce a full
     # line.  These doublings overlap in two-bar cells and leave regular breath
     # windows; source ownership remains unchanged and separately auditable.
     wind_cycles = {
-        "ob1": ((1, 48), (57, 112), (121, 176), (193, 224), (233, 256)),
-        "ob2": ((17, 40), (65, 104), (121, 160), (177, 216), (241, 256)),
-        "fl1": ((33, 72), (121, 176), (193, 224), (241, 256)),
+        "ob1": ((1, 48), (57, 112), (121, 176), (193, 224), (233, 240)),
+        "ob2": ((17, 40), (65, 104), (121, 160), (177, 216)),
+        "fl1": ((33, 72), (121, 176), (193, 224)),
         "fl2": ((41, 88), (133, 184), (201, 240)),
         "bn1": ((1, 32), (49, 96), (121, 160), (169, 208), (225, 256)),
     }
@@ -758,8 +791,10 @@ def orchestrate(voices: list[list[Note]]) -> dict[str, list[Note]]:
             for onset, pitch in ((start, 38), (start + TPQ * 2, 45)):
                 add_editorial_note(parts, "timp", onset, onset + TPQ, pitch, 72, BRASS_LABEL)
 
+    remove_editorial_cross_relations(parts)
+
     for key in parts:
-        parts[key].sort(key=lambda n: (n.start, n.chord, n.end, n.pitch))
+        parts[key].sort(key=lambda n: (n.start, n.end, n.pitch))
     return parts
 
 
@@ -931,8 +966,16 @@ def append_written_duration(note_el, value: WrittenDuration) -> None:
         add_text(modification, "normal-type", value.note_type)
 
 
-def append_rest_events(measure, ticks: int, *, measure_rest: bool = False) -> None:
-    values = spell_duration(ticks)
+def append_rest_events(
+    measure, ticks: int, *, measure_rest: bool = False,
+    triplet_sixteenth_grid: bool = False,
+) -> None:
+    if triplet_sixteenth_grid and not measure_rest and ticks % (TPQ // 6) == 0:
+        values = (WrittenDuration(TPQ // 6, "16th", actual_notes=3, normal_notes=2),) * (
+            ticks // (TPQ // 6)
+        )
+    else:
+        values = spell_duration(ticks)
     if measure_rest and len(values) != 1:
         raise ValueError(f"Full-measure rest unexpectedly needs {len(values)} values")
     for value in values:
@@ -941,6 +984,47 @@ def append_rest_events(measure, ticks: int, *, measure_rest: bool = False) -> No
         add_text(rest_el, "duration", str(value.ticks))
         add_text(rest_el, "voice", "1")
         append_written_duration(rest_el, value)
+
+
+def annotate_complete_tuplets(measure: ET.Element) -> None:
+    """Mark complete same-value tuplet groups so importers preserve bar length."""
+    notes = measure.findall("note")
+    index = 0
+    while index < len(notes):
+        modification = notes[index].find("time-modification")
+        if modification is None:
+            index += 1
+            continue
+        key = (
+            modification.findtext("actual-notes"),
+            modification.findtext("normal-notes"),
+            notes[index].findtext("type"),
+        )
+        actual = int(key[0] or "0")
+        end = index
+        while end < len(notes):
+            candidate = notes[end].find("time-modification")
+            candidate_key = (
+                candidate.findtext("actual-notes") if candidate is not None else None,
+                candidate.findtext("normal-notes") if candidate is not None else None,
+                notes[end].findtext("type"),
+            )
+            if candidate_key != key:
+                break
+            end += 1
+        for start in range(index, end - actual + 1, actual):
+            group = notes[start : start + actual]
+            for note, tuplet_type in ((group[0], "start"), (group[-1], "stop")):
+                notations = note.find("notations")
+                if notations is None:
+                    notations = ET.SubElement(note, "notations")
+                attributes = {"type": tuplet_type, "number": "1"}
+                if tuplet_type == "start" and all(
+                    member.find("rest") is not None for member in group
+                ):
+                    attributes.update({"bracket": "no", "show-number": "none"})
+                ET.SubElement(notations, "tuplet", **attributes)
+        index = end
 
 
 def append_direction(
@@ -1037,8 +1121,7 @@ def split_at_barlines(notes: list[Note]) -> list[Note]:
             result.append(Note(cursor, end, note.pitch, note.velocity,
                                tie_start=end < note.end,
                                tie_stop=not first,
-                               editorial=note.editorial,
-                               chord=note.chord))
+                               editorial=note.editorial))
             cursor = end
             first = False
     return result
@@ -1096,7 +1179,7 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
             measure = ET.SubElement(part, "measure", number=str(bar), implicit="yes" if bar == 1 else "no")
             bar_notes = sorted(
                 by_bar.get(bar, []),
-                key=lambda x: (x.start, x.chord, x.end, x.pitch),
+                key=lambda x: (x.start, x.end, x.pitch),
             )
             previous_bar_sounds = bool(by_bar.get(bar - 1, []))
             recently_sounded = any(
@@ -1153,8 +1236,6 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                 append_direction(measure, CONTINUO_MARKS[bar])
             if inst.key == "vc":
                 append_figured_bass(measure, bar)
-            if inst.family == "strings" and bar in {133, 249}:
-                append_direction(measure, "divisi / double stops as notated")
             technique = STRING_TECHNIQUE_MARKS.get((inst.key, bar))
             if technique:
                 append_direction(measure, technique)
@@ -1184,16 +1265,17 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
             cursor = bar_start(bar)
             end_bar = PICKUP if bar == 1 else cursor + BAR
             for note_index, n in enumerate(bar_notes):
-                if not n.chord and n.start > cursor:
-                    append_rest_events(measure, n.start - cursor)
-                if not n.chord and n.start < cursor:
+                if n.start > cursor:
+                    append_rest_events(
+                        measure, n.start - cursor,
+                        triplet_sixteenth_grid=241 <= bar <= 247,
+                    )
+                if n.start < cursor:
                     # Should not occur in the separated monophonic material.
                     continue
                 values = spell_duration(n.end - n.start)
                 for value_index, value in enumerate(values):
                     note_el = ET.SubElement(measure, "note")
-                    if n.chord:
-                        ET.SubElement(note_el, "chord")
                     pitch = ET.SubElement(note_el, "pitch")
                     written_pitch = (
                         n.pitch - 2
@@ -1279,14 +1361,15 @@ def write_musicxml(parts: dict[str, list[Note]], path: Path) -> None:
                                 ET.SubElement(articulations, "staccato")
                             if structural_accent:
                                 ET.SubElement(articulations, "accent")
-                if not n.chord:
-                    cursor = n.end
+                cursor = n.end
             if cursor < end_bar:
                 append_rest_events(
                     measure,
                     end_bar - cursor,
                     measure_rest=cursor == bar_start(bar),
+                    triplet_sixteenth_grid=241 <= bar <= 247,
                 )
+            annotate_complete_tuplets(measure)
             for wedge_number, wedge_type in enumerate(
                 hairpin_edges.get((bar, "stop"), []), 1
             ):
@@ -1428,7 +1511,6 @@ def validate(parts: dict[str, list[Note]], original: list[Note], voices: list[li
         raise AssertionError("The orchestration altered source rhythms or pitch classes")
     editorial_labels = {
         CONTINUO_LABEL, HARMONY_LABEL, WIND_DOUBLE_LABEL, BRASS_LABEL,
-        DOUBLE_STOP_LABEL,
     }
     unexpected_editorial = [
         (key, n.editorial, score_bar(n.start))
@@ -1452,9 +1534,6 @@ def validate(parts: dict[str, list[Note]], original: list[Note], voices: list[li
         for note in notes:
             for bar in range(score_bar(note.start), score_bar(note.end - 1) + 1):
                 sounding_by_bar[bar].add(key)
-    thin = [bar for bar, active in sounding_by_bar.items() if len(active) < 3]
-    if thin:
-        raise AssertionError(f"Fewer than three active staves in bars {thin}")
     missing_bass = [
         bar for bar in range(1, 258)
         if not ({"cb", "vc", "bn1", "bn2"} & sounding_by_bar[bar])
@@ -1478,26 +1557,11 @@ def validate(parts: dict[str, list[Note]], original: list[Note], voices: list[li
         foreign = [note.pitch for note in parts[key] if note.pitch not in D_NATURAL_HARMONICS]
         if foreign:
             raise AssertionError(f"{key} uses non-natural-D pitches: {foreign}")
-    active_counts = {
-        key: len({
-            bar
-            for note in notes
-            for bar in range(score_bar(note.start), score_bar(note.end - 1) + 1)
-        })
-        for key, notes in parts.items()
-    }
-    underused = {key: count for key, count in active_counts.items() if count < 40}
-    if underused:
-        raise AssertionError(f"Players with fewer than 40 active bars: {underused}")
-    if sum(1 for notes in parts.values() for n in notes if n.chord) < 8:
-        raise AssertionError("Too few notated double-stop/divisi chord tones")
     for key, notes in parts.items():
         if key in {"hn1", "hn2", "tpt1", "tpt2", "timp"}:
             continue
         for a, b in zip(notes, notes[1:]):
-            if b.start < a.end and not (
-                b.chord and b.start == a.start and b.end == a.end
-            ):
+            if b.start < a.end:
                 raise AssertionError(f"Overlapping notes in {key} at {b.start}")
     for bar in (209, 229, 249):
         required = {"vln1", "vc", "cb"}
