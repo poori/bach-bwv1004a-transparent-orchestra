@@ -5,7 +5,7 @@ MASTER := score/$(STEM).musicxml
 PACKAGE := score/$(STEM).mxl
 RENDER_DIR := build/render
 
-.PHONY: all score package check check-artifacts render proposal normalize-native clean
+.PHONY: all score package check test check-artifacts render proposal normalize-native clean
 
 all: check package
 
@@ -18,16 +18,15 @@ package:
 check:
 	$(PYTHON) src/validate_outputs.py --source-only
 
+test:
+	$(PYTHON) -m unittest discover -s src -p 'test_*.py'
+
 check-artifacts: package
 	$(PYTHON) src/validate_outputs.py
 
 # Review exports only. Promote them to score/ and audio/ deliberately after QA.
 render: check package
-	mkdir -p $(RENDER_DIR)
-	"$(MUSESCORE)" -o $(RENDER_DIR)/$(STEM).mscz $(MASTER)
-	"$(MUSESCORE)" -o $(RENDER_DIR)/$(STEM).pdf $(RENDER_DIR)/$(STEM).mscz
-	"$(MUSESCORE)" -o $(RENDER_DIR)/$(STEM).mid $(RENDER_DIR)/$(STEM).mscz
-	"$(MUSESCORE)" -o $(RENDER_DIR)/$(STEM).mp3 $(RENDER_DIR)/$(STEM).mscz
+	$(PYTHON) src/render_score.py --mscore "$(MUSESCORE)" --stem "$(STEM)"
 
 # One-shot algorithmic proposal. Output is isolated under build/proposals/.
 proposal:

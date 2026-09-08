@@ -1,0 +1,28 @@
+{
+  "source_notes_covered": 3083,
+  "source_phrase_windows": [
+    [
+      1,
+      8,
+      "Violin I"
+    ],
+    [
+      133,
+      140,
+      "Violin II"
+    ],
+    [
+      249,
+      257,
+      "Violin I"
+    ]
+  ],
+  "roundtrip_all_16_parts_exact": true,
+  "regression_tests_passed": 11,
+  "pdf_pages": 53,
+  "audio_duration_seconds": 711.75825,
+  "decoded_audio_peak_dbfs": -2.4,
+  "layout_review": "All-page overview and detailed checks of opening, major-mode entry, brass entries, recollection, and coda. Fixed clipped final-page staff headers and title margin.",
+  "listening_limitation": "Audio decoded and level-checked; no subjective listening assessment was performed by the agent.",
+  "export_runtime": "Installed MuseScore sometimes aborts during shutdown after writing complete notation files. Fresh outputs were structurally checked and note round-trip matched. Audio export completed normally."
+}

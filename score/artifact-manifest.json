@@ -1,0 +1,12 @@
+{
+  "artifacts": {
+    "audio/Bach_BWV1004a_Leipzig_orchestral_realization.mp3": "16585877f8e7aedbbf94ee803f6891b898aeab81ba5aecf427d975082ebf4507",
+    "audio/Bach_BWV1004a_transparent_orchestra_MuseSounds.mp3": "16585877f8e7aedbbf94ee803f6891b898aeab81ba5aecf427d975082ebf4507",
+    "score/Bach_BWV1004a_Leipzig_orchestral_realization.mid": "c7f786469563400a0e4ecb54dc230998ce0914069f2d33118ad687c0362951ba",
+    "score/Bach_BWV1004a_Leipzig_orchestral_realization.mscz": "4b98d17b25a0e35b30bdfedca052f1d69fabaf91d5cad57b072267f6f6acfe2b",
+    "score/Bach_BWV1004a_Leipzig_orchestral_realization.mxl": "5894601142f24b463dbae1ee313ce9de615c853540e8cc2499dbfc212ad207fd",
+    "score/Bach_BWV1004a_Leipzig_orchestral_realization.pdf": "50c38af29a0442b607b44ddfbd9cd22a7aee61b764872e548df83a45b3209db8",
+    "score/Bach_BWV1004a_Leipzig_orchestral_realization_MuseSounds_tracks.json": "819d1afaaaeb9ad3a5125f1124ec3b30f58f7d587d53d35474391e68ce66eec8"
+  },
+  "master_sha256": "776da3f26ed0c42735e02c1ef176f81178f16f9c597df5facfe09eed038a6ed7"
+}

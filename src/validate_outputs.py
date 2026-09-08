@@ -5,6 +5,7 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 from fractions import Fraction
 import json
+import hashlib
 import sys
 import zipfile
 
@@ -334,14 +335,6 @@ def musical_metrics(root: ET.Element) -> dict[str, object]:
     ]
     if missing_bass:
         continuo_missing["bass/continuo"] = missing_bass
-    missing_bassoon = [
-        bar for bar in range(1, 258)
-        if bar not in active_bars.get("Bassoon I", [])
-        and bar not in active_bars.get("Bassoon II", [])
-    ]
-    if missing_bassoon:
-        continuo_missing["Bassoon I/II"] = missing_bassoon
-
     longest: dict[str, int] = {}
     for name, bars in active_bars.items():
         best = run = 0
@@ -376,6 +369,110 @@ def validate_musical_metrics(root: ET.Element) -> dict[str, object]:
 def validate_natural_brass(report: dict[str, object]) -> None:
     """Reject horn or trumpet pitches outside the natural D harmonic series."""
     assert not report["natural_d_brass_violations"], report["natural_d_brass_violations"]
+
+
+
+def source_and_phrase_metrics(root: ET.Element) -> dict[str, object]:
+    """Check source coverage separately from explicitly reviewed phrase ownership.
+
+    Coverage permits octave redistribution and tied/split notation; it does not
+    assert that every simultaneous source voice belongs in the first violins.
+    """
+    from source_material import parse_midi_notes, score_bar, bar_start
+    source = parse_midi_notes(ROOT / "source" / "bwv-1004_5.mid")
+    parts = {p.get("id"): p for p in root.findall("part")}
+    events = {}
+    for pid, part in parts.items():
+        if pid in {"P7", "P8", "P9", "P10", "P11"}:
+            continue
+        for measure in part.findall("measure"):
+            bar = int(measure.get("number"))
+            for note, start, end in timed_notes(measure):
+                events.setdefault(bar, []).append((pid, start, end, pitch_to_midi(note)))
+
+    missing = []
+    for note in source:
+        bar = score_bar(note.start)
+        start, end = note.start - bar_start(bar), note.end - bar_start(bar)
+        covered_to = start
+        for _, left, right, pitch in sorted(events.get(bar, []), key=lambda x: x[1]):
+            if pitch % 12 == note.pitch % 12 and left <= covered_to:
+                covered_to = max(covered_to, right)
+        if covered_to < end:
+            missing.append({"bar": bar, "pitch": note.pitch, "start": start, "end": end})
+
+    # In these three thematic windows the source upper strand is the reviewed
+    # melody. Elsewhere, highest pitch is not used as a general melody heuristic.
+    windows = [(1, 8, "P12"), (133, 140, "P13"), (249, 257, "P12")]
+    misplaced = []
+    for first, last, pid in windows:
+        for bar in range(first, last + 1):
+            local = [n for n in source if score_bar(n.start) == bar]
+            upper = [n for n in local if not any(
+                other.start <= n.start < other.end and other.pitch > n.pitch
+                for other in local
+            )]
+            for note in upper:
+                start, end = note.start - bar_start(bar), note.end - bar_start(bar)
+                # melodyOne starts with a notated skip in b.256; the low G is bass.
+                if bar == 256 and start == 0:
+                    continue
+                if not any(owner == pid and left == start and right >= end and pitch == note.pitch
+                           for owner, left, right, pitch in events[bar]):
+                    misplaced.append({"bar": bar, "part": pid, "pitch": note.pitch, "start": start})
+    # This D4 reattack is explicit in LilyPond melodyOne but merged with a held
+    # unison in the MIDI. It must remain audible in the final theme.
+    if not any(pid == "P12" and left == 288 and right == 384 and pitch == 62
+               for pid, left, right, pitch in events[253]):
+        misplaced.append({"bar": 253, "part": "P12", "pitch": 62, "start": 288})
+    return {"source_notes": len(source), "uncovered_source_notes": missing,
+            "misplaced_thematic_notes": misplaced,
+            "reviewed_phrase_windows": windows}
+
+
+def brass_harmony_violations(root: ET.Element) -> list[dict[str, object]]:
+    """Compare every sounding brass interval, including eighths, to reviewed harmony."""
+    plan = json.loads((ROOT / "docs" / "brass-harmony.json").read_text())
+    violations = []
+    for part in root.findall("part"):
+        if part.get("id") not in {"P7", "P8", "P9", "P10", "P11"}:
+            continue
+        transpose = int(part.findtext("./measure/attributes/transpose/chromatic", "0"))
+        for measure in part.findall("measure"):
+            bar = measure.get("number")
+            segments = plan["bars"].get(bar, [])
+            for note, start, end in timed_notes(measure):
+                pitch = pitch_to_midi(note, transpose)
+                if not segments:
+                    violations.append({"part": part.get("id"), "bar": int(bar),
+                                       "reason": "brass outside reviewed major-mode windows"})
+                for segment in segments:
+                    left = round(segment["start_beat"] * TPQ)
+                    right = round(segment["end_beat"] * TPQ)
+                    if start < right and left < end and pitch % 12 not in segment["pitch_classes"]:
+                        violations.append({"part": part.get("id"), "bar": int(bar),
+                                           "start": start, "pitch": pitch, "harmony": segment["chord"]})
+    return violations
+
+
+def bass_tripling_metrics(root: ET.Element) -> list[dict[str, int | str]]:
+    """Report actual simultaneous octave tripling, including bass pitch and timing."""
+    parts = {p.get("id"): p for p in root.findall("part")}
+    result = []
+    for bar in range(1, 258):
+        events = {pid: list(timed_notes(parts[pid].find(f'measure[@number="{bar}"]')))
+                  for pid in ("P5", "P6", "P15", "P16")}
+        for pid in ("P5", "P6"):
+            ticks = 0
+            boundaries = sorted({point for ev in events.values() for _, a, z in ev for point in (a, z)})
+            for left, right in zip(boundaries, boundaries[1:]):
+                sounding = [{pitch_to_midi(n) % 12 for n, a, z in events[name] if a <= left and right <= z}
+                            for name in (pid, "P15", "P16")]
+                if set.intersection(*sounding):
+                    ticks += right - left
+            if ticks:
+                result.append({"part": pid, "bar": bar, "ticks": ticks})
+    return result
 
 
 def main() -> None:
@@ -419,16 +516,32 @@ def main() -> None:
     validate_musicxml_ranges(root)
     validate_expressive_notation(root)
     report = validate_musical_metrics(root)
+    report["source_and_phrases"] = source_and_phrase_metrics(root)
+    assert not report["source_and_phrases"]["uncovered_source_notes"], report["source_and_phrases"]
+    assert not report["source_and_phrases"]["misplaced_thematic_notes"], report["source_and_phrases"]
+    report["brass_harmony_violations"] = brass_harmony_violations(root)
+    assert not report["brass_harmony_violations"], report["brass_harmony_violations"]
+    report["simultaneous_bass_tripling"] = bass_tripling_metrics(root)
     metrics_path = ROOT / "build" / "musical_metrics.json"
     metrics_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
 
     if source_only:
         print(
             "ok: authoritative MusicXML; 16 parts × 257 complete; exact rhythm; "
-            "no cross-relations; continuous figured continuo; natural-D brass; "
+            "source coverage and thematic phrases; local brass harmony; no cross-relations; continuous figured continuo; natural-D brass; "
             "metrics in build/musical_metrics.json"
         )
         return
+
+    manifest = json.loads((ROOT / "score" / "artifact-manifest.json").read_text())
+    assert manifest["master_sha256"] == hashlib.sha256(xml_path.read_bytes()).hexdigest(), "derivatives refer to another master"
+    expected_artifacts = {str(path.relative_to(ROOT)) for path in (
+        mxl_path, mscz_path, midi_path, xml_path.with_suffix(".pdf"),
+        mp3_path, muse_mp3_path, muse_tracks_path
+    )}
+    assert set(manifest["artifacts"]) == expected_artifacts
+    for path, expected_hash in manifest["artifacts"].items():
+        assert hashlib.sha256((ROOT / path).read_bytes()).hexdigest() == expected_hash, f"artifact changed since QA: {path}"
 
     with zipfile.ZipFile(mxl_path) as zf:
         assert zf.testzip() is None

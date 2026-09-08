@@ -1,117 +1,129 @@
 # Orchestration and editorial notes
 
-This revision takes Bach's own rescoring habits—not modern timbre-painting—as
-its premise. In the transformations of solo material associated with BWV 1006,
-1001, and related works, Bach retains the source line while supplying bass,
-inner voices, and continuously participating ensemble parts. The orchestral
-Chaconne follows that model.
+This is an experimental orchestral realization of the Chaconne, imagined
+for a Leipzig ensemble around 1730. It is an editorial interpretation, not
+a reconstruction of a lost Bach score. The aim is to make the dance, bass
+motion, and changing scale of Bach's writing audible through contrasting
+instrumental groups.
 
 ## Musical architecture
 
-The realization retains the 257-bar form. Its initial source layer was audited
-against 3,083 Bach notes; the September revision preserves all distinct
-non-brass pitch/rhythm events of the preceding master. Four editorial layers
-surround the source material:
+The 257-bar form, minor–major–minor trajectory, sectional tempo map, and
+final fermata are retained. Strings, winds, and continuo exchange foreground
+roles; a quiet major-mode opening precedes two staged brass crowns.
 
-1. **Continuo.** The repeating ground is read from Bach's opening bass:
-   D–C-sharp | D–B-flat | G–A–C-sharp | D; B-flat rises to B-natural in the
-   major. Double bass reinforces the ripieno pillars; Bassoons I and II alternate
-   four-bar units, and cello joins selected variations. Parenthesized figures
-   make the keyboard realization explicit.
-2. **Ripieno harmony.** Sustained string inner voices support the source line
-   only where they remain compatible with its chromatic motion.
-3. **Wind doubling.** Oboes principally reinforce the upper string/source
-   lines; flutes double at pitch or octave; Bassoon I reinforces the lower
-   strand. Two-bar overlaps provide imitation and breathing windows rather than
-   six isolated four-bar solos.
-4. **D-major brass.** The opening, bars 133–156, has no brass or timpani.
-   Horns enter at 157, trumpets at 165, and timpani at 169, gathering toward
-   the crown at 169–176. The second ascent introduces horns at 197, trumpets
-   at 201, and timpani at 205. The existing natural-D pitches are retained.
-   Brass is absent from every D-minor bar.
+Violin I carries the opening theme (1–8) and its final recollection (249–257).
+Violin II carries the opening major-mode phrase (133–140), with a light wind
+color around it. Elsewhere, the established phrase relays remain. These are
+local decisions about thematic identity, not a requirement that the first
+violins play continuously.
 
-The formal plan is concerto-grosso-like: recurring four-bar ripieno statements
-alternate with concertino figuration, while continuo prevents the single-line
-source passages from becoming unaccompanied orchestral solos. Bars 209–228,
-229–248, and 249–256 retain Violin I and a full bass foundation at their
-climaxes.
+The continuo is shared by cello and bassoons. Violone reinforces the larger
+returns and withdraws for complete concertino units at 33–52, 77–92,
+133–156, and 213–228. Every removed violone interval remains covered in
+pitch class and duration by the remaining bass instruments. An additional
+79 bassoon bar-parts lose exact simultaneous octave tripling with cello and
+violone; independent bassoon material remains.
+
+Horns enter at 157 and 197, trumpets at 165 and 201, and timpani at 169 and
+205. The brass are written as local statements and answers, with space for
+the string figuration. Their harmony is reviewed against the source within
+each bar, including the more varied progressions of 197–208. They do not
+repeat a four-bar harmonic template.
+
+In bar 176, the brass acknowledge the D/F-sharp resolution on beat two and
+move to dominant support on beat three. In 208, the dominant gives way to
+an open D at the end of the bar, softened to mp before the minor return.
+Cadence bars are therefore not categorically silent. Timpani mark selected
+arrivals and dominant preparations rather than repeating D–A every bar.
+No brass or timpani sound in the minor sections.
+
+## Selective review, 5 September 2026
+
+The browser-produced proposal correctly drew attention to repetitive brass,
+bass weight, and the difference between source-note coverage and audible
+phrase continuity. It informed the revision, but was not promoted wholesale.
+
+- The 136 blanket Violin I additions were discarded. Source strands were
+  instead exchanged in the three thematic windows above. Violin I remains
+  active in 123 bars, rather than being required to play in all 257.
+- The brass were rewritten against local source harmony, retaining the idea
+  of staged entries and phrase-shaped writing.
+- Bass thinning uses simultaneous pitches and durations, not just equal
+  numbers of notes or the fact that three instruments are active.
+- The proposed inner-voice extensions were discarded. In the source,
+  melodyTwo itself has A followed by a skip in bar 3. Extending every
+  interrupted inner voice can obscure intentional releases; the proposal's
+  extended F-natural in bar 215 also collided with the melody's F-sharp.
+- The closing theme includes melodyOne's D4 sixteenth-note reattack in bar
+  253, which the source MIDI merges with another voice's sustained unison.
+- The first bowing layer is rebuilt only in bars whose source ownership
+  changes. It remains a starting point for a player's bowing decisions.
+- Tool credits are kept in repository documentation and encoding metadata,
+  rather than on the performance title page.
+
+Both the previous master and the uploaded proposal are preserved locally in
+`build/revision-2026-09-05/before/`. The one-time replay script and change
+audit remain beside them.
 
 ## Notation and performance
 
-- Rehearsal marks A–Q are native MusicXML rehearsal marks.
-- Sectional tempo levels are approached with written *poco accel.* or *poco
-  rit.* indications and two-bar ramps in MIDI/audio playback.
-- Rapid gestures are slurred by beat; recurring light staccatos clarify the
-  dance; relay endings receive tenuto releases or wind breath marks.
-- Pizzicato inner strings at the first concertino return to arco at the first
-  ripieno. Wind re-entries after longer gaps include cue labels.
-- Suggested ripieno strings are 4.4.3.2.1, with one player per concertino part.
-- Horn and trumpet parts are genuinely transposing parts in D. This edition
-  chooses the practical D-alto convention used by its modern natural-horn
-  mock-up: written C sounds concert D (+2 semitones). The generated MIDI/audio
-  retain concert pitch, while MusicXML stores written pitch with that explicit
-  +2-semitone declaration; a D-basso historical edition would require a
-  different written register and is intentionally not mixed into this file.
-- The full score uses 11×17-inch portrait pages.
+Rehearsal marks A–Q, the two-bar tempo transitions, ornaments, and the final
+fermata remain. The suggested string complement is 4.4.3.2.1, with one player
+per concertino part. A notional organ or harpsichord may realize the
+parenthesized continuo figures; it has no dedicated playback staff.
 
-## Audit boundaries
+Natural horns and trumpets are notated in D using this edition's D-alto
+convention: written C sounds concert D, two semitones higher. MIDI and audio
+use sounding pitch. This convention is consistent within the edition;
+another historical horn register would require a separate transposition
+decision.
 
-The MusicXML score is now the checked-in editorial master, not a generated
-build artifact. The rule-based orchestrator that established the initial
-continuo, ripieno, wind-doubling, and natural-brass layers remains available
-only as a one-shot proposal tool. Its output is isolated under `build/` and
-cannot replace the master.
+The conductor score uses 11×17-inch portrait pages. Listen for the quiet
+second-violin phrase at the major entrance, the answering brass rather than
+a continuously busy fanfare, and the opening theme returning in Violin I.
+The mock-up is useful for timing and balance decisions; breath placement,
+bowing, and live continuo registration still benefit from rehearsal.
 
-Validation deliberately checks constraints rather than recomposing the piece.
-It rejects incomplete bars, professional-range violations, missing continuo
-bars, simultaneous natural/altered forms of the same sounding letter, and horn
-or trumpet notes outside the D-natural harmonic series. Density and chair use
-remain report metrics rather than targets that force invented notes. Published
-MXL, MuseScore, MIDI, and audio files have a separate structural-integrity
-check, while MXL is checked byte-for-byte against the master. A musician can
-therefore validate a MusicXML edit before refreshing the other derivatives.
+## Validation and reproducibility
 
-The mock-up remains a synthetic proof of entries and architecture, not a
-substitute for rehearsal. A live reading should refine continuo registration,
-wind breath placement, desk-level bowings, and the balance of the staged brass
-entries.
+MusicXML is the editorial master. The proposal generator is opt-in and
+cannot overwrite it. MXL packages the master's exact bytes; MuseScore, PDF,
+MIDI, and the current MP3 are regenerated derivatives.
 
-## Instrumentation
+The validator checks bar duration and written rhythm, selected instrumental
+ranges, continuo presence, natural-D brass pitches, and simultaneous
+natural/altered forms of the same sounding letter. It also checks:
 
-2 flutes, 2 oboes, 2 bassoons, 2 natural horns in D, 2 natural trumpets in D,
-timpani (D–A), Violin I, Violin II, viola, violoncello, double bass, and a
-notional organ or harpsichord continuo.
+- Coverage of all 3,083 source MIDI notes by the non-brass ensemble, allowing
+  octave redistribution and split notation.
+- The reviewed source melody assignments in the three thematic windows.
+- Every brass interval against `brass-harmony.json`, including short notes
+  and changes of harmony within a bar.
+- Actual simultaneous bass tripling as a report metric.
+- Current derivative checksums against the exported master.
 
-## Editorial revision, 4 September 2026
+The harmony map is an explicit editorial analysis, not an automatic proof of
+all harmony or counterpoint in the score. Source-note coverage does not
+certify balance, phrasing, or the correctness of every added inner voice.
+Regression tests demonstrate that the checks catch a missing source note,
+an active violin playing accompaniment instead of the theme, a short brass
+tonic over the dominant, the bar 215 collision, and a three-beat pickup.
 
-The compositional aim is a longer dramatic arc: a luminous major-mode
-opening, a delayed ceremonial crown, and a final return heard as recollection.
-The notes were edited in the authoritative MusicXML, without regenerating
-the original arrangement.
+The revised conductor PDF has 53 pages. The full recording is approximately
+11:52, with a decoded peak of -2.4 dBFS after reserving headroom before export.
+The current full-length listening copy uses MuseSounds with explicit
+MS Basic fallback for the two natural-D horns and violone. The exported
+track report records those assignments. The separately named MuseScore
+Basic recording and bars 125–156 performance-preview study are earlier
+comparisons; they are not current-score exports.
 
-- Horns now sound in 32 bars each, trumpets in 20, timpani in 12 (previously
-  56 each). New entry accents and separate dynamics articulate those arrivals.
-- Flute II loses 18 bars of exact doubling, Oboe II 26, around the major-mode
-  threshold, the minor return, and the subsiding passage. A bar was removed
-  only when all its pitch, onset, and duration events remained in another
-  non-brass part, and it carried no protected words, ties, wedges, or ornaments.
-- Double bass and the accompanying second bassoon receive lower dynamics.
-  Existing four-bar melodic relays have explicit foreground dynamics.
-- Bars 249–254 return at mf/mp, with *nobile, come un ricordo* in Violin I;
-  the final continuo is pp. The existing tempo map and final fermata remain.
+## Credits and source
 
-The revision audit verifies equality of the distinct non-brass pitch/onset/
-duration event sets before and after editing. This verifies the specific
-subtractions; it is not a new note-by-note provenance audit against Mutopia.
-The complete pre-revision artifacts are preserved under
-`build/revision-2026-09-04/before/`.
+Original music: Johann Sebastian Bach. Source engraving: Hajo Dezelski /
+Mutopia Project, based on the Bach-Gesellschaft Edition. Orchestral
+realization and build system: Codex (OpenAI), in collaboration with the
+repository owner. Editorial feedback and provisional revisions: Claude
+(Anthropic). Selective integration and source review: Codex (OpenAI).
 
-The current listening copy uses the MuseSounds profile: 13 staves use Muse
-samples; the two natural-D horns and violone use MuseScore's MS Basic fallback.
-The freshly exported track report records those assignments. The native
-notation and transposition remain unchanged by the audio fallback. The MP3
-is 11:53; a decode check measured a peak of -0.4 dBFS.
-
-Final review: the opening cue is now *Grave — sostenuto*, reflecting the
-participating oboe and continuo. The title page credits the orchestration to
-Codex (OpenAI), with Johann Sebastian Bach retained as composer.
+The source engraving and this project are shared under CC BY-SA 3.0.

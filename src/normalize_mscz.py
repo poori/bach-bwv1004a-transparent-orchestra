@@ -3,6 +3,8 @@
 
 from pathlib import Path
 import os
+import sys
+import json
 import tempfile
 import zipfile
 
@@ -13,13 +15,16 @@ INTERNAL = "Bach_BWV1004a_Leipzig_orchestral_realization.mscx"
 
 
 def main() -> None:
-    with zipfile.ZipFile(MSCZ) as source:
+    if len(sys.argv) > 2:
+        raise SystemExit("usage: normalize_mscz.py [score.mscz]")
+    path = Path(sys.argv[1]).resolve() if len(sys.argv) == 2 else MSCZ
+    with zipfile.ZipFile(path) as source:
         old_names = [name for name in source.namelist() if name.endswith(".mscx")]
         if len(old_names) != 1:
             raise ValueError(f"Expected one internal MSCX, found {old_names}")
         old = old_names[0]
         fd, temporary_name = tempfile.mkstemp(
-            prefix="bwv1004a-", suffix=".mscz", dir=MSCZ.parent
+            prefix="bwv1004a-", suffix=".mscz", dir=path.parent
         )
         os.close(fd)
         temporary = Path(temporary_name)
@@ -37,8 +42,21 @@ def main() -> None:
                             b"<enableVerticalSpread>1</enableVerticalSpread>",
                             b"<enableVerticalSpread>0</enableVerticalSpread>",
                         )
+                        # The imported title frame can place its text on the trim
+                        # edge despite MusicXML's top margin. Keep it inside the frame.
+                        data = data.replace(
+                            b'<titleOffset x="0" y="0"/>',
+                            b'<titleOffset x="0" y="5"/>',
+                        )
+                        data = data.replace(b'<titleOffset x="0" y="10"/>', b'<titleOffset x="0" y="5"/>')
+                    if info.filename == "audiosettings.json":
+                        settings = json.loads(data)
+                        settings["activeSoundProfile"] = "MuseSounds"
+                        # Leave summing headroom before encoding, not after clipping.
+                        settings.setdefault("master", {})["volumeDb"] = -4
+                        data = json.dumps(settings).encode()
                     target.writestr(name, data)
-            os.replace(temporary, MSCZ)
+            os.replace(temporary, path)
         finally:
             temporary.unlink(missing_ok=True)
     print(f"normalized internal score name: {INTERNAL}")

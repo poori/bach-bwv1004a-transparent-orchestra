@@ -11,3 +11,6 @@ build/proposals/**/*.wav
 # Local comparison copies and score-preview images.
 build/revision-*/before/
 build/revision-*/qa/
+
+# Local DAW trial, stems, and preview production sessions.
+build/performance-preview/

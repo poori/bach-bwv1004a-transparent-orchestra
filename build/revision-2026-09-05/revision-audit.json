@@ -1,0 +1,2398 @@
+{
+  "changes": [
+    {
+      "part": "P12",
+      "bar": 4,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P13",
+      "bar": 4,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P12",
+      "bar": 5,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P13",
+      "bar": 5,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P13",
+      "bar": 133,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P1",
+      "bar": 133,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P13",
+      "bar": 135,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P3",
+      "bar": 135,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P13",
+      "bar": 136,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P3",
+      "bar": 136,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P13",
+      "bar": 137,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P12",
+      "bar": 137,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P13",
+      "bar": 139,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P14",
+      "bar": 139,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P13",
+      "bar": 140,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P12",
+      "bar": 140,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P13",
+      "bar": 140,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P14",
+      "bar": 140,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P12",
+      "bar": 249,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P3",
+      "bar": 249,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P12",
+      "bar": 250,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P3",
+      "bar": 250,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P12",
+      "bar": 251,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P3",
+      "bar": 251,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P12",
+      "bar": 254,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P3",
+      "bar": 254,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P12",
+      "bar": 253,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P3",
+      "bar": 253,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P12",
+      "bar": 255,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P13",
+      "bar": 255,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P12",
+      "bar": 256,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P13",
+      "bar": 256,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P12",
+      "bar": 256,
+      "reason": "join a source phrase in one string voice"
+    },
+    {
+      "part": "P14",
+      "bar": 256,
+      "reason": "exchange source strand without adding a doubling"
+    },
+    {
+      "part": "P12",
+      "bar": 253,
+      "reason": "restore melodyOne D4 reattack from LilyPond bar 253"
+    },
+    {
+      "part": "P5",
+      "bar": 1,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 2,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 3,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 6,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 7,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 8,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 9,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 14,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 15,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 33,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 36,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 41,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 44,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 81,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 84,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 89,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 121,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 124,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 126,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 127,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 137,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 145,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 148,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 149,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 153,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 156,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 161,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 164,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 169,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 172,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 217,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 220,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 225,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 228,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 233,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 237,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 240,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 249,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P5",
+      "bar": 257,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 5,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 6,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 7,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 13,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 37,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 40,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 45,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 48,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 53,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 56,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 77,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 80,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 85,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 88,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 96,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 125,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 126,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 127,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 133,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 136,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 141,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 157,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 160,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 165,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 168,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 173,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 176,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 197,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 205,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 213,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 221,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 224,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 229,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 232,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 236,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 239,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 249,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 250,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 251,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P6",
+      "bar": 253,
+      "reason": "remove simultaneous bassoon/cello/violone octave tripling"
+    },
+    {
+      "part": "P16",
+      "bar": 33,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 34,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 35,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 36,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 37,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 38,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 39,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 40,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 41,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 42,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 43,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 44,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 45,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 46,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 47,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 48,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 49,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 50,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 51,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 52,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 77,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 78,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 79,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 80,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 81,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 82,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 83,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 84,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 85,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 86,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 87,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 88,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 89,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 90,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 91,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 92,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 133,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 134,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 135,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 136,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 137,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 138,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 139,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 140,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 141,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 142,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 143,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 144,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 145,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 146,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 147,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 148,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 149,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 150,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 151,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 152,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 153,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 154,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 155,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 156,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 213,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 214,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 215,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 216,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 217,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 218,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 219,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 220,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 221,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 222,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 223,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 224,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 225,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 226,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 227,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P16",
+      "bar": 228,
+      "reason": "release violone for a complete supported concertino unit"
+    },
+    {
+      "part": "P7",
+      "bar": 157,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 158,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 159,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 160,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 161,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 162,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 163,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 164,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 165,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 166,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 167,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 168,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 169,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 170,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 171,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 172,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 173,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 174,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 175,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 176,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 197,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 198,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 199,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 200,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 201,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 202,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 203,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 204,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 205,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 206,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 207,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P7",
+      "bar": 208,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 157,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 158,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 159,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 160,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 161,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 162,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 163,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 164,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 165,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 166,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 167,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 168,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 169,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 170,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 171,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 172,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 173,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 174,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 175,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 176,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 197,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 198,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 199,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 200,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 201,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 202,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 203,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 204,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 205,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 206,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 207,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P8",
+      "bar": 208,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 165,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 166,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 167,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 168,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 169,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 170,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 171,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 172,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 173,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 174,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 175,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 176,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 201,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 202,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 203,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 204,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 205,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 206,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 207,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P9",
+      "bar": 208,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 165,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 166,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 167,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 168,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 169,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 170,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 171,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 172,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 173,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 174,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 175,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 176,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 201,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 202,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 203,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 204,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 205,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 206,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 207,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P10",
+      "bar": 208,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 169,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 170,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 171,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 172,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 173,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 174,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 175,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 176,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 205,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 206,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 207,
+      "reason": "compose brass against local source harmony"
+    },
+    {
+      "part": "P11",
+      "bar": 208,
+      "reason": "compose brass against local source harmony"
+    }
+  ],
+  "before": {
+    "minimum_simultaneous_staves_by_bar": {
+      "1": 7,
+      "2": 7,
+      "3": 5,
+      "4": 4,
+      "5": 4,
+      "6": 8,
+      "7": 6,
+      "8": 3,
+      "9": 4,
+      "10": 3,
+      "11": 3,
+      "12": 3,
+      "13": 4,
+      "14": 3,
+      "15": 3,
+      "16": 6,
+      "17": 4,
+      "18": 1,
+      "19": 4,
+      "20": 6,
+      "21": 4,
+      "22": 1,
+      "23": 4,
+      "24": 5,
+      "25": 4,
+      "26": 3,
+      "27": 3,
+      "28": 5,
+      "29": 4,
+      "30": 2,
+      "31": 3,
+      "32": 4,
+      "33": 5,
+      "34": 1,
+      "35": 4,
+      "36": 5,
+      "37": 5,
+      "38": 1,
+      "39": 4,
+      "40": 2,
+      "41": 5,
+      "42": 1,
+      "43": 4,
+      "44": 5,
+      "45": 5,
+      "46": 1,
+      "47": 4,
+      "48": 2,
+      "49": 4,
+      "50": 2,
+      "51": 4,
+      "52": 4,
+      "53": 5,
+      "54": 2,
+      "55": 4,
+      "56": 6,
+      "57": 4,
+      "58": 2,
+      "59": 3,
+      "60": 4,
+      "61": 4,
+      "62": 2,
+      "63": 2,
+      "64": 4,
+      "65": 3,
+      "66": 2,
+      "67": 3,
+      "68": 4,
+      "69": 4,
+      "70": 2,
+      "71": 3,
+      "72": 4,
+      "73": 4,
+      "74": 1,
+      "75": 3,
+      "76": 4,
+      "77": 5,
+      "78": 1,
+      "79": 4,
+      "80": 5,
+      "81": 5,
+      "82": 1,
+      "83": 4,
+      "84": 5,
+      "85": 5,
+      "86": 2,
+      "87": 6,
+      "88": 7,
+      "89": 5,
+      "90": 6,
+      "91": 6,
+      "92": 7,
+      "93": 6,
+      "94": 6,
+      "95": 6,
+      "96": 7,
+      "97": 6,
+      "98": 4,
+      "99": 5,
+      "100": 6,
+      "101": 6,
+      "102": 4,
+      "103": 5,
+      "104": 5,
+      "105": 5,
+      "106": 5,
+      "107": 5,
+      "108": 6,
+      "109": 4,
+      "110": 5,
+      "111": 4,
+      "112": 6,
+      "113": 5,
+      "114": 5,
+      "115": 4,
+      "116": 6,
+      "117": 4,
+      "118": 5,
+      "119": 5,
+      "120": 5,
+      "121": 5,
+      "122": 2,
+      "123": 4,
+      "124": 5,
+      "125": 5,
+      "126": 9,
+      "127": 6,
+      "128": 7,
+      "129": 3,
+      "130": 1,
+      "131": 4,
+      "132": 3,
+      "133": 7,
+      "134": 5,
+      "135": 5,
+      "136": 6,
+      "137": 5,
+      "138": 4,
+      "139": 4,
+      "140": 4,
+      "141": 4,
+      "142": 6,
+      "143": 6,
+      "144": 6,
+      "145": 7,
+      "146": 7,
+      "147": 7,
+      "148": 9,
+      "149": 5,
+      "150": 3,
+      "151": 3,
+      "152": 5,
+      "153": 5,
+      "154": 4,
+      "155": 4,
+      "156": 5,
+      "157": 7,
+      "158": 10,
+      "159": 8,
+      "160": 7,
+      "161": 7,
+      "162": 6,
+      "163": 6,
+      "164": 8,
+      "165": 9,
+      "166": 8,
+      "167": 8,
+      "168": 9,
+      "169": 9,
+      "170": 8,
+      "171": 8,
+      "172": 9,
+      "173": 9,
+      "174": 6,
+      "175": 8,
+      "176": 12,
+      "177": 7,
+      "178": 6,
+      "179": 6,
+      "180": 6,
+      "181": 7,
+      "182": 6,
+      "183": 5,
+      "184": 6,
+      "185": 5,
+      "186": 4,
+      "187": 5,
+      "188": 5,
+      "189": 5,
+      "190": 5,
+      "191": 6,
+      "192": 4,
+      "193": 7,
+      "194": 6,
+      "195": 6,
+      "196": 7,
+      "197": 10,
+      "198": 7,
+      "199": 9,
+      "200": 9,
+      "201": 12,
+      "202": 13,
+      "203": 12,
+      "204": 11,
+      "205": 13,
+      "206": 14,
+      "207": 14,
+      "208": 13,
+      "209": 5,
+      "210": 1,
+      "211": 3,
+      "212": 3,
+      "213": 5,
+      "214": 2,
+      "215": 4,
+      "216": 4,
+      "217": 5,
+      "218": 4,
+      "219": 4,
+      "220": 5,
+      "221": 5,
+      "222": 2,
+      "223": 4,
+      "224": 5,
+      "225": 5,
+      "226": 2,
+      "227": 4,
+      "228": 5,
+      "229": 5,
+      "230": 4,
+      "231": 4,
+      "232": 5,
+      "233": 4,
+      "234": 3,
+      "235": 4,
+      "236": 5,
+      "237": 3,
+      "238": 2,
+      "239": 3,
+      "240": 4,
+      "241": 3,
+      "242": 2,
+      "243": 3,
+      "244": 2,
+      "245": 4,
+      "246": 2,
+      "247": 2,
+      "248": 4,
+      "249": 4,
+      "250": 7,
+      "251": 6,
+      "252": 5,
+      "253": 4,
+      "254": 4,
+      "255": 4,
+      "256": 4,
+      "257": 5
+    },
+    "runs_below_three_staves": [
+      {
+        "bar": 18,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 22,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 30,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 34,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 38,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 40,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 42,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 46,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 48,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 50,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 54,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 58,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 62,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 63,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 66,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 70,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 74,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 78,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 82,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 86,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 122,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 130,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 210,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 214,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 222,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 226,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 238,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 242,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 244,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 246,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 247,
+        "minimum_simultaneous_staves": 2
+      }
+    ],
+    "continuo_missing_bars": {},
+    "active_bars_per_player": {
+      "Flute I": 82,
+      "Flute II": 84,
+      "Oboe I": 167,
+      "Oboe II": 99,
+      "Bassoon I": 199,
+      "Bassoon II": 159,
+      "Horn I in D": 32,
+      "Horn II in D": 32,
+      "Trumpet I in D": 20,
+      "Trumpet II in D": 20,
+      "Timpani (D\u2013A)": 12,
+      "Violin I": 121,
+      "Violin II": 177,
+      "Viola": 195,
+      "Violoncello": 204,
+      "Double Bass": 169
+    },
+    "longest_continuous_stretch_bars": {
+      "Flute I": 20,
+      "Flute II": 37,
+      "Oboe I": 29,
+      "Oboe II": 32,
+      "Bassoon I": 20,
+      "Bassoon II": 28,
+      "Horn I in D": 20,
+      "Horn II in D": 20,
+      "Trumpet I in D": 12,
+      "Trumpet II in D": 12,
+      "Timpani (D\u2013A)": 8,
+      "Violin I": 25,
+      "Violin II": 27,
+      "Viola": 20,
+      "Violoncello": 19,
+      "Double Bass": 56
+    },
+    "figured_bass_measures": 513,
+    "natural_d_brass_violations": []
+  },
+  "after": {
+    "minimum_simultaneous_staves_by_bar": {
+      "1": 6,
+      "2": 6,
+      "3": 4,
+      "4": 4,
+      "5": 3,
+      "6": 6,
+      "7": 4,
+      "8": 3,
+      "9": 3,
+      "10": 3,
+      "11": 3,
+      "12": 3,
+      "13": 3,
+      "14": 3,
+      "15": 3,
+      "16": 6,
+      "17": 4,
+      "18": 1,
+      "19": 4,
+      "20": 6,
+      "21": 4,
+      "22": 1,
+      "23": 4,
+      "24": 5,
+      "25": 4,
+      "26": 3,
+      "27": 3,
+      "28": 5,
+      "29": 4,
+      "30": 2,
+      "31": 3,
+      "32": 4,
+      "33": 3,
+      "34": 1,
+      "35": 3,
+      "36": 3,
+      "37": 3,
+      "38": 1,
+      "39": 3,
+      "40": 2,
+      "41": 3,
+      "42": 1,
+      "43": 3,
+      "44": 3,
+      "45": 3,
+      "46": 1,
+      "47": 3,
+      "48": 2,
+      "49": 3,
+      "50": 2,
+      "51": 3,
+      "52": 3,
+      "53": 4,
+      "54": 2,
+      "55": 4,
+      "56": 5,
+      "57": 4,
+      "58": 2,
+      "59": 3,
+      "60": 4,
+      "61": 4,
+      "62": 2,
+      "63": 2,
+      "64": 4,
+      "65": 3,
+      "66": 2,
+      "67": 3,
+      "68": 4,
+      "69": 4,
+      "70": 2,
+      "71": 3,
+      "72": 4,
+      "73": 4,
+      "74": 1,
+      "75": 3,
+      "76": 4,
+      "77": 3,
+      "78": 1,
+      "79": 3,
+      "80": 3,
+      "81": 3,
+      "82": 1,
+      "83": 3,
+      "84": 3,
+      "85": 3,
+      "86": 2,
+      "87": 5,
+      "88": 5,
+      "89": 3,
+      "90": 5,
+      "91": 5,
+      "92": 6,
+      "93": 6,
+      "94": 6,
+      "95": 6,
+      "96": 6,
+      "97": 6,
+      "98": 4,
+      "99": 5,
+      "100": 6,
+      "101": 6,
+      "102": 4,
+      "103": 5,
+      "104": 5,
+      "105": 5,
+      "106": 5,
+      "107": 5,
+      "108": 6,
+      "109": 4,
+      "110": 5,
+      "111": 4,
+      "112": 6,
+      "113": 5,
+      "114": 5,
+      "115": 4,
+      "116": 6,
+      "117": 4,
+      "118": 5,
+      "119": 5,
+      "120": 5,
+      "121": 4,
+      "122": 2,
+      "123": 4,
+      "124": 4,
+      "125": 4,
+      "126": 7,
+      "127": 4,
+      "128": 7,
+      "129": 3,
+      "130": 1,
+      "131": 4,
+      "132": 3,
+      "133": 5,
+      "134": 4,
+      "135": 4,
+      "136": 4,
+      "137": 3,
+      "138": 3,
+      "139": 3,
+      "140": 3,
+      "141": 2,
+      "142": 5,
+      "143": 5,
+      "144": 5,
+      "145": 5,
+      "146": 6,
+      "147": 6,
+      "148": 7,
+      "149": 4,
+      "150": 2,
+      "151": 2,
+      "152": 4,
+      "153": 3,
+      "154": 3,
+      "155": 3,
+      "156": 3,
+      "157": 6,
+      "158": 8,
+      "159": 6,
+      "160": 5,
+      "161": 4,
+      "162": 4,
+      "163": 6,
+      "164": 6,
+      "165": 4,
+      "166": 4,
+      "167": 5,
+      "168": 4,
+      "169": 7,
+      "170": 4,
+      "171": 6,
+      "172": 4,
+      "173": 5,
+      "174": 4,
+      "175": 4,
+      "176": 8,
+      "177": 7,
+      "178": 6,
+      "179": 6,
+      "180": 6,
+      "181": 7,
+      "182": 6,
+      "183": 5,
+      "184": 6,
+      "185": 5,
+      "186": 4,
+      "187": 5,
+      "188": 5,
+      "189": 5,
+      "190": 5,
+      "191": 6,
+      "192": 4,
+      "193": 7,
+      "194": 6,
+      "195": 6,
+      "196": 7,
+      "197": 7,
+      "198": 5,
+      "199": 7,
+      "200": 7,
+      "201": 10,
+      "202": 11,
+      "203": 10,
+      "204": 7,
+      "205": 12,
+      "206": 11,
+      "207": 10,
+      "208": 9,
+      "209": 5,
+      "210": 1,
+      "211": 3,
+      "212": 3,
+      "213": 3,
+      "214": 2,
+      "215": 3,
+      "216": 3,
+      "217": 3,
+      "218": 3,
+      "219": 3,
+      "220": 3,
+      "221": 3,
+      "222": 2,
+      "223": 3,
+      "224": 3,
+      "225": 3,
+      "226": 2,
+      "227": 3,
+      "228": 3,
+      "229": 4,
+      "230": 4,
+      "231": 4,
+      "232": 4,
+      "233": 3,
+      "234": 3,
+      "235": 4,
+      "236": 4,
+      "237": 3,
+      "238": 2,
+      "239": 3,
+      "240": 4,
+      "241": 3,
+      "242": 2,
+      "243": 3,
+      "244": 2,
+      "245": 4,
+      "246": 2,
+      "247": 2,
+      "248": 4,
+      "249": 3,
+      "250": 6,
+      "251": 5,
+      "252": 5,
+      "253": 4,
+      "254": 4,
+      "255": 4,
+      "256": 4,
+      "257": 4
+    },
+    "runs_below_three_staves": [
+      {
+        "bar": 18,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 22,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 30,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 34,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 38,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 40,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 42,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 46,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 48,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 50,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 54,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 58,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 62,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 63,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 66,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 70,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 74,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 78,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 82,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 86,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 122,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 130,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 141,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 150,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 151,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 210,
+        "minimum_simultaneous_staves": 1
+      },
+      {
+        "bar": 214,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 222,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 226,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 238,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 242,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 244,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 246,
+        "minimum_simultaneous_staves": 2
+      },
+      {
+        "bar": 247,
+        "minimum_simultaneous_staves": 2
+      }
+    ],
+    "continuo_missing_bars": {},
+    "active_bars_per_player": {
+      "Flute I": 81,
+      "Flute II": 84,
+      "Oboe I": 166,
+      "Oboe II": 99,
+      "Bassoon I": 160,
+      "Bassoon II": 119,
+      "Horn I in D": 32,
+      "Horn II in D": 29,
+      "Trumpet I in D": 18,
+      "Trumpet II in D": 15,
+      "Timpani (D\u2013A)": 7,
+      "Violin I": 123,
+      "Violin II": 174,
+      "Viola": 193,
+      "Violoncello": 204,
+      "Double Bass": 93
+    },
+    "longest_continuous_stretch_bars": {
+      "Flute I": 20,
+      "Flute II": 37,
+      "Oboe I": 29,
+      "Oboe II": 32,
+      "Bassoon I": 20,
+      "Bassoon II": 24,
+      "Horn I in D": 20,
+      "Horn II in D": 12,
+      "Trumpet I in D": 8,
+      "Trumpet II in D": 5,
+      "Timpani (D\u2013A)": 2,
+      "Violin I": 29,
+      "Violin II": 27,
+      "Viola": 20,
+      "Violoncello": 19,
+      "Double Bass": 20
+    },
+    "figured_bass_measures": 513,
+    "natural_d_brass_violations": []
+  }
+}

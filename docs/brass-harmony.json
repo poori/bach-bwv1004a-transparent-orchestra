@@ -1,0 +1,625 @@
+{
+  "description": "Editorial brass-support map, reviewed against the local Mutopia source. Pitch classes authorize supporting brass, not every melodic passing note. This is not a general harmonic analysis engine.",
+  "ticks_per_quarter": 384,
+  "bars": {
+    "157": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "D",
+        "pitch_classes": [
+          2,
+          6,
+          9
+        ]
+      }
+    ],
+    "161": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "D",
+        "pitch_classes": [
+          2,
+          6,
+          9
+        ]
+      }
+    ],
+    "165": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "D",
+        "pitch_classes": [
+          2,
+          6,
+          9
+        ]
+      }
+    ],
+    "169": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "D",
+        "pitch_classes": [
+          2,
+          6,
+          9
+        ]
+      }
+    ],
+    "197": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "D",
+        "pitch_classes": [
+          2,
+          6,
+          9
+        ]
+      }
+    ],
+    "158": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "A",
+        "pitch_classes": [
+          9,
+          1,
+          4
+        ]
+      }
+    ],
+    "162": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "A",
+        "pitch_classes": [
+          9,
+          1,
+          4
+        ]
+      }
+    ],
+    "166": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "A",
+        "pitch_classes": [
+          9,
+          1,
+          4
+        ]
+      }
+    ],
+    "170": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "A",
+        "pitch_classes": [
+          9,
+          1,
+          4
+        ]
+      }
+    ],
+    "159": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "B minor; C-sharp passing tone",
+        "pitch_classes": [
+          11,
+          2,
+          6
+        ]
+      }
+    ],
+    "160": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "A7, with source suspensions/figuration",
+        "pitch_classes": [
+          9,
+          1,
+          4,
+          7
+        ]
+      }
+    ],
+    "164": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "A7, with source suspensions/figuration",
+        "pitch_classes": [
+          9,
+          1,
+          4,
+          7
+        ]
+      }
+    ],
+    "168": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "A7, with source suspensions/figuration",
+        "pitch_classes": [
+          9,
+          1,
+          4,
+          7
+        ]
+      }
+    ],
+    "172": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "A7, with source suspensions/figuration",
+        "pitch_classes": [
+          9,
+          1,
+          4,
+          7
+        ]
+      }
+    ],
+    "200": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "A7, with source suspensions/figuration",
+        "pitch_classes": [
+          9,
+          1,
+          4,
+          7
+        ]
+      }
+    ],
+    "163": [
+      {
+        "start_beat": 0,
+        "end_beat": 2,
+        "chord": "B minor",
+        "pitch_classes": [
+          11,
+          2,
+          6
+        ]
+      },
+      {
+        "start_beat": 2,
+        "end_beat": 3,
+        "chord": "E7/G-sharp",
+        "pitch_classes": [
+          4,
+          8,
+          11,
+          2
+        ]
+      }
+    ],
+    "167": [
+      {
+        "start_beat": 0,
+        "end_beat": 2,
+        "chord": "B minor",
+        "pitch_classes": [
+          11,
+          2,
+          6
+        ]
+      },
+      {
+        "start_beat": 2,
+        "end_beat": 3,
+        "chord": "E7/G-sharp",
+        "pitch_classes": [
+          4,
+          8,
+          11,
+          2
+        ]
+      }
+    ],
+    "171": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "E7 above the repeated A pedal figure",
+        "pitch_classes": [
+          4,
+          8,
+          11,
+          2
+        ]
+      }
+    ],
+    "173": [
+      {
+        "start_beat": 0,
+        "end_beat": 2,
+        "chord": "D",
+        "pitch_classes": [
+          2,
+          6,
+          9
+        ]
+      },
+      {
+        "start_beat": 2,
+        "end_beat": 3,
+        "chord": "dominant preparation; B then C-sharp above G",
+        "pitch_classes": [
+          9,
+          1,
+          4,
+          7,
+          11
+        ]
+      }
+    ],
+    "174": [
+      {
+        "start_beat": 0,
+        "end_beat": 3,
+        "chord": "D7",
+        "pitch_classes": [
+          2,
+          6,
+          9,
+          0
+        ]
+      }
+    ],
+    "175": [
+      {
+        "start_beat": 0,
+        "end_beat": 2,
+        "chord": "G with F-sharp",
+        "pitch_classes": [
+          7,
+          11,
+          2,
+          6
+        ]
+      },
+      {
+        "start_beat": 2,
+        "end_beat": 2.25,
+        "chord": "C-sharp/G preparation",
+        "pitch_classes": [
+          1,
+          7
+        ]
+      },
+      {
+        "start_beat": 2.25,
+        "end_beat": 3,
+        "chord": "D/F-sharp",
+        "pitch_classes": [
+          2,
+          6,
+          9
+        ]
+      }
+    ],
+    "176": [
+      {
+        "start_beat": 0,
+        "end_beat": 1,
+        "chord": "E/G, with F-sharp resolving to E",
+        "pitch_classes": [
+          4,
+          7,
+          11
+        ]
+      },
+      {
+        "start_beat": 1,
+        "end_beat": 2,
+        "chord": "D/F-sharp",
+        "pitch_classes": [
+          2,
+          6,
+          9
+        ]
+      },
+      {
+        "start_beat": 2,
+        "end_beat": 3,
+        "chord": "A7, with D suspension",
+        "pitch_classes": [
+          9,
+          1,
+          4,
+          7
+        ]
+      }
+    ],
+    "198": [
+      {
+        "start_beat": 0,
+        "end_beat": 1,
+        "chord": "A",
+        "pitch_classes": [
+          9,
+          1,
+          4
+        ]
+      },
+      {
+        "start_beat": 1,
+        "end_beat": 3,
+        "chord": "D7",
+        "pitch_classes": [
+          2,
+          6,
+          9,
+          0
+        ]
+      }
+    ],
+    "199": [
+      {
+        "start_beat": 0,
+        "end_beat": 1,
+        "chord": "G",
+        "pitch_classes": [
+          7,
+          11,
+          2
+        ]
+      },
+      {
+        "start_beat": 1,
+        "end_beat": 3,
+        "chord": "E7/G-sharp",
+        "pitch_classes": [
+          4,
+          8,
+          11,
+          2
+        ]
+      }
+    ],
+    "201": [
+      {
+        "start_beat": 0,
+        "end_beat": 2,
+        "chord": "D",
+        "pitch_classes": [
+          2,
+          6,
+          9
+        ]
+      },
+      {
+        "start_beat": 2,
+        "end_beat": 3,
+        "chord": "D over descending C-sharp",
+        "pitch_classes": [
+          2,
+          6,
+          9
+        ]
+      }
+    ],
+    "202": [
+      {
+        "start_beat": 0,
+        "end_beat": 2,
+        "chord": "B minor",
+        "pitch_classes": [
+          11,
+          2,
+          6
+        ]
+      },
+      {
+        "start_beat": 2,
+        "end_beat": 3,
+        "chord": "B minor over A",
+        "pitch_classes": [
+          11,
+          2,
+          6,
+          9
+        ]
+      }
+    ],
+    "203": [
+      {
+        "start_beat": 0,
+        "end_beat": 1,
+        "chord": "E minor seventh over G",
+        "pitch_classes": [
+          4,
+          7,
+          11,
+          2
+        ]
+      },
+      {
+        "start_beat": 1,
+        "end_beat": 3,
+        "chord": "A7/G",
+        "pitch_classes": [
+          9,
+          1,
+          4,
+          7
+        ]
+      }
+    ],
+    "204": [
+      {
+        "start_beat": 0,
+        "end_beat": 1,
+        "chord": "E7/G-sharp",
+        "pitch_classes": [
+          4,
+          8,
+          11,
+          2
+        ]
+      },
+      {
+        "start_beat": 1,
+        "end_beat": 3,
+        "chord": "A7",
+        "pitch_classes": [
+          9,
+          1,
+          4,
+          7
+        ]
+      }
+    ],
+    "205": [
+      {
+        "start_beat": 0,
+        "end_beat": 1,
+        "chord": "D with suspended G",
+        "pitch_classes": [
+          2,
+          7,
+          9
+        ]
+      },
+      {
+        "start_beat": 1,
+        "end_beat": 2,
+        "chord": "D",
+        "pitch_classes": [
+          2,
+          6,
+          9
+        ]
+      },
+      {
+        "start_beat": 2,
+        "end_beat": 3,
+        "chord": "D7",
+        "pitch_classes": [
+          2,
+          6,
+          9,
+          0
+        ]
+      }
+    ],
+    "206": [
+      {
+        "start_beat": 0,
+        "end_beat": 1,
+        "chord": "E minor with D and F-sharp",
+        "pitch_classes": [
+          4,
+          7,
+          11,
+          2,
+          6
+        ]
+      },
+      {
+        "start_beat": 1,
+        "end_beat": 2,
+        "chord": "E minor",
+        "pitch_classes": [
+          4,
+          7,
+          11
+        ]
+      },
+      {
+        "start_beat": 2,
+        "end_beat": 3,
+        "chord": "E7/G-sharp",
+        "pitch_classes": [
+          4,
+          8,
+          11,
+          2
+        ]
+      }
+    ],
+    "207": [
+      {
+        "start_beat": 0,
+        "end_beat": 2,
+        "chord": "A7",
+        "pitch_classes": [
+          9,
+          1,
+          4,
+          7
+        ]
+      },
+      {
+        "start_beat": 2,
+        "end_beat": 3,
+        "chord": "B-flat diminished seventh",
+        "pitch_classes": [
+          10,
+          1,
+          4,
+          7
+        ]
+      }
+    ],
+    "208": [
+      {
+        "start_beat": 0,
+        "end_beat": 0.5,
+        "chord": "B minor",
+        "pitch_classes": [
+          11,
+          2,
+          6
+        ]
+      },
+      {
+        "start_beat": 0.5,
+        "end_beat": 1,
+        "chord": "E minor seventh over G",
+        "pitch_classes": [
+          4,
+          7,
+          11,
+          2
+        ]
+      },
+      {
+        "start_beat": 1,
+        "end_beat": 2.5,
+        "chord": "A",
+        "pitch_classes": [
+          9,
+          1,
+          4
+        ]
+      },
+      {
+        "start_beat": 2.5,
+        "end_beat": 3,
+        "chord": "open D resolution",
+        "pitch_classes": [
+          2,
+          9
+        ]
+      }
+    ]
+  }
+}
