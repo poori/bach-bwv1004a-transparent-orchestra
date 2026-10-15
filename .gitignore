@@ -14,3 +14,6 @@ build/revision-*/qa/
 
 # Local DAW trial, stems, and preview production sessions.
 build/performance-preview/
+
+# Lossless preview masters stay local; the MP3 renders are published.
+audio/performance-preview/*.wav
