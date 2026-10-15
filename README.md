@@ -142,8 +142,9 @@ exports, `python3 src/record_artifacts.py` records their checksums for
 The current listening render uses MuseSounds with MS Basic fallback for the
 two natural-D horns and violone; see the exported track report and editorial
 notes for the exact assignments. The separately named MuseScore Basic render
-and the performance-preview excerpt are retained earlier comparisons, not exports
-of this revision.
+and the [performance-preview excerpt](audio/performance-preview/README.md)
+(bars 125–156, a shaped mix beside a gain-matched reference) are retained
+earlier comparisons, not exports of this revision.
 
 ## Credits and license
 
