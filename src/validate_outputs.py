@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Validate the authoritative score and, optionally, its published artifacts."""
+"""Validate the score and, optionally, its published artifacts.
+
+The LilyPond files in ly/ are the source of truth; this validates the MusicXML
+that `make musicxml` generates from them (score/<stem>.musicxml).
+"""
 
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -527,14 +531,17 @@ def main() -> None:
 
     if source_only:
         print(
-            "ok: authoritative MusicXML; 16 parts × 257 complete; exact rhythm; "
+            "ok: MusicXML generated from the LilyPond master; 16 parts × 257 complete; exact rhythm; "
             "source coverage and thematic phrases; local brass harmony; no cross-relations; continuous figured continuo; natural-D brass; "
             "metrics in build/musical_metrics.json"
         )
         return
 
     manifest = json.loads((ROOT / "score" / "artifact-manifest.json").read_text())
-    assert manifest["master_sha256"] == hashlib.sha256(xml_path.read_bytes()).hexdigest(), "derivatives refer to another master"
+    assert manifest["master_sha256"] == hashlib.sha256(xml_path.read_bytes()).hexdigest(), (
+        "the published MuseScore exports were rendered from an earlier MusicXML; "
+        "re-render with `make render`, promote the exports, then run src/record_artifacts.py"
+    )
     expected_artifacts = {str(path.relative_to(ROOT)) for path in (
         mxl_path, mscz_path, midi_path, xml_path.with_suffix(".pdf"),
         mp3_path, muse_mp3_path, muse_tracks_path
@@ -640,7 +647,7 @@ def main() -> None:
         ), track
     assert sum(t["type"] == "muse_sampler_sound_pack" for t in score_tracks) >= 13
     print(
-        "ok: authoritative score and exact rhythm; 16 parts × 257 complete; "
+        "ok: generated MusicXML and exact rhythm; 16 parts × 257 complete; "
         "continuous figured continuo; no cross-relations; natural-D brass; "
         "valid MXL/MSCZ; 16-track MIDI; verified MuseSounds/explicit Basic fallback mappings; "
         "metrics in build/musical_metrics.json"

@@ -1,0 +1,137 @@
+{
+  "_comment": "MusicXML-only settings for the export (MuseScore mixer channel/volume, page layout, identification). Music, names, MIDI instruments and pan live in the .ly files.",
+  "divisions": 384,
+  "naturalBrass": [
+    "hornOne",
+    "hornTwo",
+    "trumpetOne",
+    "trumpetTwo"
+  ],
+  "parts": [
+    {
+      "id": "P1",
+      "voice": "fluteOne",
+      "midiChannel": 1,
+      "volume": 82,
+      "structure": "structure"
+    },
+    {
+      "id": "P2",
+      "voice": "fluteTwo",
+      "midiChannel": 1,
+      "volume": 82
+    },
+    {
+      "id": "P3",
+      "voice": "oboeOne",
+      "midiChannel": 2,
+      "volume": 82
+    },
+    {
+      "id": "P4",
+      "voice": "oboeTwo",
+      "midiChannel": 2,
+      "volume": 82
+    },
+    {
+      "id": "P5",
+      "voice": "bassoonOne",
+      "midiChannel": 3,
+      "volume": 82
+    },
+    {
+      "id": "P6",
+      "voice": "bassoonTwo",
+      "midiChannel": 3,
+      "volume": 82
+    },
+    {
+      "id": "P7",
+      "voice": "hornOne",
+      "midiChannel": 4,
+      "volume": 82
+    },
+    {
+      "id": "P8",
+      "voice": "hornTwo",
+      "midiChannel": 4,
+      "volume": 82
+    },
+    {
+      "id": "P9",
+      "voice": "trumpetOne",
+      "midiChannel": 5,
+      "volume": 82
+    },
+    {
+      "id": "P10",
+      "voice": "trumpetTwo",
+      "midiChannel": 5,
+      "volume": 82
+    },
+    {
+      "id": "P11",
+      "voice": "timpani",
+      "midiChannel": 6,
+      "volume": 82
+    },
+    {
+      "id": "P12",
+      "voice": "violinOne",
+      "midiChannel": 7,
+      "volume": 82
+    },
+    {
+      "id": "P13",
+      "voice": "violinTwo",
+      "midiChannel": 7,
+      "volume": 82
+    },
+    {
+      "id": "P14",
+      "voice": "viola",
+      "midiChannel": 8,
+      "volume": 82
+    },
+    {
+      "id": "P15",
+      "voice": "violoncello",
+      "midiChannel": 9,
+      "volume": 82,
+      "figures": "violoncelloFigures"
+    },
+    {
+      "id": "P16",
+      "voice": "doubleBass",
+      "midiChannel": 12,
+      "volume": 82
+    }
+  ],
+  "identification": {
+    "other": "Created in collaboration with the repository owner",
+    "encodingDescription": "Generated from the LilyPond master in ly/ by src/ly_to_musicxml.py. Editorial history: selective revision of 5 September 2026, informed by Claude (Anthropic) feedback and source-reviewed by Codex (OpenAI); ported to LilyPond 15 October 2026."
+  },
+  "defaults": {
+    "millimeters": "7.0",
+    "tenths": "40",
+    "pageHeight": "2468",
+    "pageWidth": "1597",
+    "margin": "70"
+  },
+  "credits": {
+    "title": {
+      "default-x": "798.5",
+      "default-y": "2398",
+      "justify": "center",
+      "valign": "top",
+      "font-size": "18"
+    },
+    "composer": {
+      "default-x": "1527",
+      "default-y": "2310",
+      "justify": "right",
+      "valign": "top",
+      "font-size": "10"
+    }
+  }
+}

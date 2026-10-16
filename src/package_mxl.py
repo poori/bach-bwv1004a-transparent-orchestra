@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Package an authoritative MusicXML file as a deterministic MXL archive."""
+"""Package the generated MusicXML file as a deterministic MXL archive."""
 
 from __future__ import annotations
 
