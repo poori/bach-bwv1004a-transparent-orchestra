@@ -1,0 +1,43 @@
+Round trip of the LilyPond port, 15 October 2026.
+Old: MusicXML master at 7730806. New: MusicXML generated from ly/ by src/ly_to_musicxml.py.
+Every category not listed below is identical (notes, rhythm, tuplets, slurs, articulations,
+dynamics, hairpins, text, rehearsal marks, tempi, figured bass, part list, header).
+
+attributes: 12 difference(s)
+    P7 m1: [('attributes', (), '', (('divisions', (), '384', ()), ('key', (), '', (('fifths', (), '1', ()), ('mode', (), 'minor', ()))), ('time', (), '', (('beats', (), '3', ()), ('beat-type', (), '4', ()))), ('clef', (), '', (('sign', (), 'G', ()), ('line', (), '2', ()))), ('transpose', (), '', (('diatonic', (), '1', ()), ('chromatic', (), '2', ())))))] -> [('attributes', (), '', (('divisions', (), '384', ()), ('key', (), '', (('fifths', (), '0', ()), ('mode', (), 'major', ()))), ('time', (), '', (('beats', (), '3', ()), ('beat-type', (), '4', ()))), ('clef', (), '', (('sign', (), 'G', ()), ('line', (), '2', ()))), ('transpose', (), '', (('diatonic', (), '1', ()), ('chromatic', (), '2', ())))))]
+    P7 m133: [('attributes', (), '', (('key', (), '', (('fifths', (), '0', ()), ('mode', (), 'major', ()))),))] -> []
+    P7 m209: [('attributes', (), '', (('key', (), '', (('fifths', (), '1', ()), ('mode', (), 'minor', ()))),))] -> []
+    P8 m1: [('attributes', (), '', (('divisions', (), '384', ()), ('key', (), '', (('fifths', (), '1', ()), ('mode', (), 'minor', ()))), ('time', (), '', (('beats', (), '3', ()), ('beat-type', (), '4', ()))), ('clef', (), '', (('sign', (), 'G', ()), ('line', (), '2', ()))), ('transpose', (), '', (('diatonic', (), '1', ()), ('chromatic', (), '2', ())))))] -> [('attributes', (), '', (('divisions', (), '384', ()), ('key', (), '', (('fifths', (), '0', ()), ('mode', (), 'major', ()))), ('time', (), '', (('beats', (), '3', ()), ('beat-type', (), '4', ()))), ('clef', (), '', (('sign', (), 'G', ()), ('line', (), '2', ()))), ('transpose', (), '', (('diatonic', (), '1', ()), ('chromatic', (), '2', ())))))]
+    P8 m133: [('attributes', (), '', (('key', (), '', (('fifths', (), '0', ()), ('mode', (), 'major', ()))),))] -> []
+    P8 m209: [('attributes', (), '', (('key', (), '', (('fifths', (), '1', ()), ('mode', (), 'minor', ()))),))] -> []
+    P9 m1: [('attributes', (), '', (('divisions', (), '384', ()), ('key', (), '', (('fifths', (), '1', ()), ('mode', (), 'minor', ()))), ('time', (), '', (('beats', (), '3', ()), ('beat-type', (), '4', ()))), ('clef', (), '', (('sign', (), 'G', ()), ('line', (), '2', ()))), ('transpose', (), '', (('diatonic', (), '1', ()), ('chromatic', (), '2', ())))))] -> [('attributes', (), '', (('divisions', (), '384', ()), ('key', (), '', (('fifths', (), '0', ()), ('mode', (), 'major', ()))), ('time', (), '', (('beats', (), '3', ()), ('beat-type', (), '4', ()))), ('clef', (), '', (('sign', (), 'G', ()), ('line', (), '2', ()))), ('transpose', (), '', (('diatonic', (), '1', ()), ('chromatic', (), '2', ())))))]
+    P9 m133: [('attributes', (), '', (('key', (), '', (('fifths', (), '0', ()), ('mode', (), 'major', ()))),))] -> []
+    P9 m209: [('attributes', (), '', (('key', (), '', (('fifths', (), '1', ()), ('mode', (), 'minor', ()))),))] -> []
+    P10 m1: [('attributes', (), '', (('divisions', (), '384', ()), ('key', (), '', (('fifths', (), '1', ()), ('mode', (), 'minor', ()))), ('time', (), '', (('beats', (), '3', ()), ('beat-type', (), '4', ()))), ('clef', (), '', (('sign', (), 'G', ()), ('line', (), '2', ()))), ('transpose', (), '', (('diatonic', (), '1', ()), ('chromatic', (), '2', ())))))] -> [('attributes', (), '', (('divisions', (), '384', ()), ('key', (), '', (('fifths', (), '0', ()), ('mode', (), 'major', ()))), ('time', (), '', (('beats', (), '3', ()), ('beat-type', (), '4', ()))), ('clef', (), '', (('sign', (), 'G', ()), ('line', (), '2', ()))), ('transpose', (), '', (('diatonic', (), '1', ()), ('chromatic', (), '2', ())))))]
+    P10 m133: [('attributes', (), '', (('key', (), '', (('fifths', (), '0', ()), ('mode', (), 'major', ()))),))] -> []
+    P10 m209: [('attributes', (), '', (('key', (), '', (('fifths', (), '1', ()), ('mode', (), 'minor', ()))),))] -> []
+identification: 1 difference(s)
+    creator/encoding metadata differs
+layout: 1 difference(s)
+    P1 m254: [('print', (('new-page', 'yes'),), '', ())] -> []
+note: 20 difference(s)
+    P1 m1 only in old: note @0: (('rest', 'yes'), 768, 'half', 0, None, False, False, (), ())
+    P1 m1 only in new: note @0: (('rest', 'no'), 768, 'half', 0, None, False, False, (), ())
+    P2 m1 only in old: note @0: (('rest', 'yes'), 768, 'half', 0, None, False, False, (), ())
+    P2 m1 only in new: note @0: (('rest', 'no'), 768, 'half', 0, None, False, False, (), ())
+    P4 m1 only in old: note @0: (('rest', 'yes'), 768, 'half', 0, None, False, False, (), ())
+    P4 m1 only in new: note @0: (('rest', 'no'), 768, 'half', 0, None, False, False, (), ())
+    P5 m1 only in old: note @0: (('rest', 'yes'), 768, 'half', 0, None, False, False, (), ())
+    P5 m1 only in new: note @0: (('rest', 'no'), 768, 'half', 0, None, False, False, (), ())
+    P6 m1 only in old: note @0: (('rest', 'yes'), 768, 'half', 0, None, False, False, (), ())
+    P6 m1 only in new: note @0: (('rest', 'no'), 768, 'half', 0, None, False, False, (), ())
+    P7 m1 only in old: note @0: (('rest', 'yes'), 768, 'half', 0, None, False, False, (), ())
+    P7 m1 only in new: note @0: (('rest', 'no'), 768, 'half', 0, None, False, False, (), ())
+    P8 m1 only in old: note @0: (('rest', 'yes'), 768, 'half', 0, None, False, False, (), ())
+    P8 m1 only in new: note @0: (('rest', 'no'), 768, 'half', 0, None, False, False, (), ())
+    P9 m1 only in old: note @0: (('rest', 'yes'), 768, 'half', 0, None, False, False, (), ())
+    P9 m1 only in new: note @0: (('rest', 'no'), 768, 'half', 0, None, False, False, (), ())
+    P10 m1 only in old: note @0: (('rest', 'yes'), 768, 'half', 0, None, False, False, (), ())
+    P10 m1 only in new: note @0: (('rest', 'no'), 768, 'half', 0, None, False, False, (), ())
+    P11 m1 only in old: note @0: (('rest', 'yes'), 768, 'half', 0, None, False, False, (), ())
+    P11 m1 only in new: note @0: (('rest', 'no'), 768, 'half', 0, None, False, False, (), ())

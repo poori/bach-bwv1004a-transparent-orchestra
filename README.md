@@ -21,10 +21,40 @@ opening the MP3 first.
 </audio>
 
 [Open or download the current mock-up](audio/Bach_BWV1004a_Leipzig_orchestral_realization.mp3?raw=1)
-· [Edit the authoritative MusicXML](score/Bach_BWV1004a_Leipzig_orchestral_realization.musicxml)
+· [Read the conductor score (LilyPond)](score/Bach_BWV1004a_Leipzig_orchestral_realization_LilyPond_conductor_score.pdf)
+· [Edit the LilyPond master](ly/)
+· [Open the generated MusicXML](score/Bach_BWV1004a_Leipzig_orchestral_realization.musicxml)
 · [Open the packaged MXL](score/Bach_BWV1004a_Leipzig_orchestral_realization.mxl)
 · [Open the current MuseScore snapshot](score/Bach_BWV1004a_Leipzig_orchestral_realization.mscz)
 · [Read the orchestration notes](docs/orchestration-notes.md)
+
+## 15 October 2026: LilyPond port
+
+The edition's source of truth is now LilyPond, in `ly/`. LilyPond engraves the
+11×17-inch conductor score and a MIDI file; the MusicXML that validation and
+MuseScore playback use is generated from the same source.
+
+The port was checked by regenerating MusicXML from the new source and
+comparing it with the previous master. Every note, rhythm, tuplet, slur,
+articulation, dynamic, hairpin, text, rehearsal mark, tempo, continuo figure
+and part setting is identical, and all existing validation passes. LilyPond's
+MIDI matches it on all 5,817 notes (onsets and sounding pitches). The only
+differences are deliberate:
+
+- Natural horns and trumpets have no key signature. The old master wrote
+  one sharp for them in the D-minor sections, a transposition error that was
+  hidden only because the brass rest there.
+- Rests in the pickup bar are ordinary half rests (LilyPond cannot start a
+  whole-bar rest mid-bar).
+- MuseScore's forced page break before bar 254 is gone; LilyPond lays out the
+  pages itself.
+
+The full comparison is in `build/lilypond-port-2026-10-15/roundtrip-report.txt`;
+the one-time import script sits beside it.
+
+The MuseScore snapshot, MuseScore PDF and MIDI, and MP3s were rendered from the
+pre-port MusicXML. They sound the same, but `make check-artifacts` will fail
+until they are re-rendered with `make render` and recorded.
 
 ## 5 September 2026 revision
 
@@ -91,28 +121,50 @@ and 11:18 for the theme's final recollection.
 audio/   current mock-up and retained comparison renders
 build/   validation reports, review renders, and one-shot proposals
 docs/    orchestration and editorial notes
-score/   authoritative MusicXML plus published MXL, MuseScore, PDF, and MIDI
+ly/      LilyPond master: the source of truth
+score/   LilyPond conductor score and MIDI; generated MusicXML and MXL;
+         MuseScore snapshot, PDF, and MIDI
 source/  Mutopia LilyPond and MIDI source
-src/     validation, packaging, and opt-in proposal tools
+src/     export, engraving, validation, packaging, and proposal tools
 ```
 
 ## Editing, checking, and packaging
 
-The checked-in `.musicxml` file is the source of truth. Open that file in
-MuseScore, make musical corrections there, and export back to the same
-MusicXML path. The `.mxl`, `.mscz`, `.pdf`, `.mid`, and `.mp3` files are
-published derivatives; editing one of them does not update the master.
+The LilyPond files in `ly/` are the source of truth (LilyPond 2.24):
+
+```text
+ly/bwv1004a.ly              conductor score layout and MIDI
+ly/score.ily                instruments, staff order, MIDI instruments and pan
+ly/definitions.ily          shared helpers
+ly/parts/00-global.ily      meter, pickup, key signatures
+ly/parts/00-structure.ily   rehearsal marks, section tempi, poco accel./rit.
+ly/parts/NN-*.ily           one file per player, one bar per line
+ly/parts/15-violoncello-figures.ily   continuo figures
+```
+
+Make musical corrections in those files. Each part is written in absolute
+pitch (`\fixed`), with a bar check and bar-number comment on every line; the
+pickup counts as bar 1. Brass parts are written pitch, with `\transposition`
+for MIDI. Two export hints, `\xmlBarEnd` and `\xmlOffset`, carry MusicXML
+details LilyPond has no notion of; they do not affect the engraving.
+
+Everything else is derived. Editing the `.musicxml`, `.mxl`, `.mscz`, `.pdf`,
+`.mid` or `.mp3` files does not update the master.
 
 The default build never composes or replaces notes:
 
 ```bash
 make
-python3 -m unittest discover -s src -p 'test_*.py'
+make test
 ```
 
-That validates the master and packages its exact bytes as deterministic MXL.
-`make check` checks the editable master alone, so it is useful immediately
-after a hand edit. `make check-artifacts` additionally checks the published
+`make` regenerates the MusicXML from `ly/` (`make musicxml`), validates it
+(`make check`), packages it as deterministic MXL, and engraves the conductor
+score and MIDI (`make engrave`). The export reads the music through LilyPond
+itself and fails on anything it cannot represent, rather than dropping it;
+any LilyPond warning also fails the build. `make compare` lists the musical
+differences from an earlier commit's MusicXML (`BASELINE=<commit>`).
+The tests check that the checked-in MusicXML is exactly what `ly/` generates. `make check-artifacts` additionally checks the published
 MuseScore, MIDI, audio, and track-profile snapshots for structural integrity;
 the MXL package is also checked byte-for-byte against the master. A checksum
 manifest ties the current derivatives to the master used to export them.
@@ -152,6 +204,7 @@ of this revision.
   collaboration with the repository owner
 - Editorial feedback and provisional brass/bass revision: **Claude (Anthropic)**
 - Selective source review, final editing, and validation: **Codex (OpenAI)**
+- LilyPond port and MusicXML export: **Claude (Anthropic)**
 - Source engraving: Hajo Dezelski / Mutopia Project, based on the
   Bach-Gesellschaft Edition (1879)
 

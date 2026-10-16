@@ -74,8 +74,9 @@ per concertino part. A notional organ or harpsichord may realize the
 parenthesized continuo figures; it has no dedicated playback staff.
 
 Natural horns and trumpets are notated in D using this edition's D-alto
-convention: written C sounds concert D, two semitones higher. MIDI and audio
-use sounding pitch. This convention is consistent within the edition;
+convention: written C sounds concert D, two semitones higher, with no key
+signature (the usual practice for natural brass). MIDI and audio use
+sounding pitch. This convention is consistent within the edition;
 another historical horn register would require a separate transposition
 decision.
 
